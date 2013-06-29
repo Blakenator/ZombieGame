@@ -213,3 +213,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+##MONODEVELOP
+*.userprefs
+*.usertasks
+*.pidb
+*.resources
+test-results/
