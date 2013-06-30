@@ -23,6 +23,8 @@ private var isColliding:boolean=false;
 private var isWandering:boolean=true;
 private var wanderstart:boolean=true;
 
+private var lastPos:Vector3;
+
 function Start () {
 	seeker=this.GetComponent(Seeker);
 	player=GameObject.Find("player").transform;
@@ -31,11 +33,12 @@ function Start () {
 	controller=this.GetComponent(CharacterController);
 	seeker.StartPath (transform.position,targetPosition, OnPathComplete);
 	controller.Move(Vector3(0,0,0)*Time.fixedDeltaTime);
+	lastPos=player.transform.position;
 }
 
 function Update () {
+	//lastPos=targetPosition;
 	targetPosition=player.transform.position;
-	
 	distance = Vector3.Distance(gameObject.transform.position, targetPosition);
 	transform.rotation.x = 0;
 	transform.rotation.z = 0;
@@ -66,6 +69,7 @@ function FixedUpdate()
 	}
 	
 	
+	
 	if((distance>minDistance)&&(!isColliding)){
 	
 		if(currentWaypoint>=path.vectorPath.Count)
@@ -79,19 +83,6 @@ function FixedUpdate()
 			}
 			return; //do something... nothing for now.
 		}
-		
-		
-		/**
-		if(distance>engagerange)
-		{
-			dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
-			controller.Move(dirToMove*Time.fixedDeltaTime);
-			return;
-		}
-		**/
-		
-		
-		
 			
 		dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
 		
@@ -110,8 +101,6 @@ function FixedUpdate()
 		SmoothLookAt(dir2,150.0);
 			
 		
-		
-		
 		//Check if we are close enough to the next waypoint
 	    //If we are, proceed to follow the next waypoint
 		if(Vector3.Distance(transform.position,path.vectorPath[currentWaypoint])<nextWaypointDistance)
@@ -119,11 +108,9 @@ function FixedUpdate()
 	        currentWaypoint++;
 	        return;
 	    }
-	    
-	    if(distance<=engagerange&&distance>minDistance){
+	    if((distance<=engagerange)&&(distance>minDistance)&&(CharMoved())){
 	    	seeker.StartPath (transform.position,targetPosition, OnPathComplete);
 	    }
-    
     }
     else
     {
@@ -182,18 +169,6 @@ function wander()
 		return; //do something... nothing for now.
 	}
 	
-	
-	/**
-	if(distance>engagerange)
-	{
-		dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
-		controller.Move(dirToMove*Time.fixedDeltaTime);
-		return;
-	}
-	**/
-	
-	
-	
 		
 	dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
 	
@@ -222,5 +197,11 @@ function wander()
     else{
     return;
     }
+}
+
+function CharMoved(): boolean {
+  var displacement = player.transform.position - lastPos;
+  lastPos = player.transform.position;
+  return displacement.magnitude > 0.001; // return true if char moved 1mm
 }
 
