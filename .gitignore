@@ -221,3 +221,4 @@ pip-log.txt
 *.pidb
 *.resources
 test-results/
+Temp/
