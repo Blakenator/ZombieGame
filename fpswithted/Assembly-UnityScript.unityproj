@@ -74,6 +74,7 @@
      <Compile Include="Assets\traildestroy.js" />
      <Compile Include="Assets\turn.js" />
      <Compile Include="Assets\weaponBase.js" />
+     <Compile Include="Assets\zombieAI1.js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh2.shader" />
