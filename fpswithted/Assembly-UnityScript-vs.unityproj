@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_5;UNITY_4_1;UNITY_64;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_5;UNITY_4_1;UNITY_64;ENABLE_PROFILER;UNITY_EDITOR;UNITY_TEAM_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -44,38 +44,38 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AIGunshot.js" />
-     <Compile Include="Assets\AiScript.js" />
-     <Compile Include="Assets\BarrelRotation.js" />
-     <Compile Include="Assets\BulletScript.js" />
-     <Compile Include="Assets\Daynight.js" />
-     <Compile Include="Assets\EbrWeapon.js" />
-     <Compile Include="Assets\Exit.js" />
-     <Compile Include="Assets\Flash.js" />
-     <Compile Include="Assets\Flashlight.js" />
-     <Compile Include="Assets\Ghosts.js" />
-     <Compile Include="Assets\GrenadeBase.js" />
-     <Compile Include="Assets\GuiScript.js" />
-     <Compile Include="Assets\GunSwitcher.js" />
-     <Compile Include="Assets\Gunshot.js" />
-     <Compile Include="Assets\MetalResource.js" />
-     <Compile Include="Assets\MovingGraph.js" />
-     <Compile Include="Assets\Remover.js" />
-     <Compile Include="Assets\ResourceManager.js" />
-     <Compile Include="Assets\SpawnGun.js" />
-     <Compile Include="Assets\Torch.js" />
-     <Compile Include="Assets\TurretBase.js" />
-     <Compile Include="Assets\WoodResource.js" />
-     <Compile Include="Assets\carenterscript.js" />
-     <Compile Include="Assets\carscript.js" />
-     <Compile Include="Assets\grenadeLauncher.js" />
-     <Compile Include="Assets\guitext.js" />
-     <Compile Include="Assets\health bar.js" />
-     <Compile Include="Assets\player.js" />
-     <Compile Include="Assets\traildestroy.js" />
-     <Compile Include="Assets\turn.js" />
-     <Compile Include="Assets\weaponBase.js" />
-     <Compile Include="Assets\zombieAI1.js" />
+     <Compile Include="Assets\Scripts\AIGunshot.js" />
+     <Compile Include="Assets\Scripts\AiScript.js" />
+     <Compile Include="Assets\Scripts\BarrelRotation.js" />
+     <Compile Include="Assets\Scripts\BulletScript.js" />
+     <Compile Include="Assets\Scripts\Daynight.js" />
+     <Compile Include="Assets\Scripts\EbrWeapon.js" />
+     <Compile Include="Assets\Scripts\Exit.js" />
+     <Compile Include="Assets\Scripts\Flash.js" />
+     <Compile Include="Assets\Scripts\Flashlight.js" />
+     <Compile Include="Assets\Scripts\Ghosts.js" />
+     <Compile Include="Assets\Scripts\GrenadeBase.js" />
+     <Compile Include="Assets\Scripts\GuiScript.js" />
+     <Compile Include="Assets\Scripts\GunSwitcher.js" />
+     <Compile Include="Assets\Scripts\Gunshot.js" />
+     <Compile Include="Assets\Scripts\MetalResource.js" />
+     <Compile Include="Assets\Scripts\MovingGraph.js" />
+     <Compile Include="Assets\Scripts\Remover.js" />
+     <Compile Include="Assets\Scripts\ResourceManager.js" />
+     <Compile Include="Assets\Scripts\SpawnGun.js" />
+     <Compile Include="Assets\Scripts\Torch.js" />
+     <Compile Include="Assets\Scripts\TurretBase.js" />
+     <Compile Include="Assets\Scripts\WoodResource.js" />
+     <Compile Include="Assets\Scripts\carenterscript.js" />
+     <Compile Include="Assets\Scripts\carscript.js" />
+     <Compile Include="Assets\Scripts\grenadeLauncher.js" />
+     <Compile Include="Assets\Scripts\guitext.js" />
+     <Compile Include="Assets\Scripts\health bar.js" />
+     <Compile Include="Assets\Scripts\player.js" />
+     <Compile Include="Assets\Scripts\traildestroy.js" />
+     <Compile Include="Assets\Scripts\turn.js" />
+     <Compile Include="Assets\Scripts\weaponBase.js" />
+     <Compile Include="Assets\Scripts\zombieAI1.js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh2.shader" />
