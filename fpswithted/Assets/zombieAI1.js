@@ -1,8 +1,8 @@
 #pragma strict
 import Pathfinding;
 
-private var targetPosition : Vector3;
-private var wandertargetPosition : Vector3;
+var targetPosition : Vector3;
+var wandertargetPosition : Vector3;
 private var seeker:Seeker;
 private var controller:CharacterController;
 
@@ -164,12 +164,23 @@ function wander()
 		controller.Move(dirToMove*Time.fixedDeltaTime);
 		
 		
-		wandertargetPosition=Vector3(Random.Range(10,15),1,Random.Range(10,15));
+		wandertargetPosition=Vector3(Random.Range(15,15),1,Random.Range(15,15));
+		
+		var plusminus:int=Random.Range(1,3);
+		Debug.Log(plusminus);
+		if(plusminus==1){
+			wandertargetPosition=transform.position-wandertargetPosition;
+		}else{
+			wandertargetPosition=transform.position+wandertargetPosition;
+		}
+		
 		seeker.StartPath(transform.position,wandertargetPosition,OnPathComplete);
+		
 		return; //do something... nothing for now.
 	}
 	
-		
+	
+	
 	dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
 	
 	var dir2:Vector3;
