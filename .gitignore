@@ -222,3 +222,4 @@ pip-log.txt
 *.resources
 test-results/
 Temp/
+Library/metadata/

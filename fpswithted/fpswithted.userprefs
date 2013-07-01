@@ -1,14 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\WoodResource.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\zombieAI1.js">
     <Files>
-      <File FileName="Assets\TurretBase.js" Line="1" Column="1" />
-      <File FileName="Assets\ResourceManager.js" Line="16" Column="12" />
-      <File FileName="Assets\MetalResource.js" Line="10" Column="34" />
-      <File FileName="Assets\Torch.js" Line="43" Column="4" />
-      <File FileName="Assets\WoodResource.js" Line="10" Column="34" />
-      <File FileName="Assets\Remover.js" Line="1" Column="1" />
-      <File FileName="Assets\SpawnGun.js" Line="58" Column="20" />
+      <File FileName="Assets\zombieAI1.js" Line="201" Column="1" />
+      <File FileName="Assets\MovingGraph.js" Line="17" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
