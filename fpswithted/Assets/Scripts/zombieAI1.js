@@ -158,52 +158,53 @@ function wander()
 	
 	if(!isColliding){
 	
-	if(currentWaypoint>=path.vectorPath.Count)
-	{
-		dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
-		controller.Move(dirToMove*Time.fixedDeltaTime);
-		
-		
-		wandertargetPosition=Vector3(Random.Range(15,15),1,Random.Range(15,15));
-		
-		var plusminus:int=Random.Range(1,3);
-		Debug.Log(plusminus);
-		if(plusminus==1){
-			wandertargetPosition=transform.position-wandertargetPosition;
-		}else{
-			wandertargetPosition=transform.position+wandertargetPosition;
+		if(currentWaypoint>=path.vectorPath.Count)
+		{
+			dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
+			controller.Move(dirToMove*Time.fixedDeltaTime);
+			
+			
+			wandertargetPosition=Vector3(Random.Range(-15,15),-1,Random.Range(-15,15));
+			
+			var plusminus:int=Random.Range(1,3);
+			if(plusminus==1){
+				wandertargetPosition=transform.position-wandertargetPosition;
+				wandertargetPosition.y=0;
+			}else{
+				wandertargetPosition=transform.position+wandertargetPosition;
+				wandertargetPosition.y=0;
+			}
+			
+			seeker.StartPath(transform.position,wandertargetPosition,OnPathComplete);
+			
+			return; //do something... nothing for now.
 		}
 		
-		seeker.StartPath(transform.position,wandertargetPosition,OnPathComplete);
 		
-		return; //do something... nothing for now.
-	}
-	
-	
-	
-	dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
-	
-	var dir2:Vector3;
-	if(currentWaypoint+1>=path.vectorPath.Count-1)
-	{
-		dir2=targetPosition;
-	}
-	else
-	{
-		dir2=(path.vectorPath[currentWaypoint+1]);
-	}
-	
-	dirToMove*=Speed;
-	controller.Move(dirToMove*Time.fixedDeltaTime);
-	SmoothLookAt(dir2,150.0);
-	
-	//Check if we are close enough to the next waypoint
-    //If we are, proceed to follow the next waypoint
-	if(Vector3.Distance(transform.position,path.vectorPath[currentWaypoint])<nextWaypointDistance)
-	{
-        currentWaypoint++;
-        return;
-    }
+		
+		dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
+		
+		var dir2:Vector3;
+		if(currentWaypoint+1>=path.vectorPath.Count-1)
+		{
+			dir2=wandertargetPosition;
+		}
+		else
+		{
+			dir2=(path.vectorPath[currentWaypoint+1]);
+		}
+		
+		dirToMove*=Speed;
+		controller.Move(dirToMove*Time.fixedDeltaTime);
+		SmoothLookAt(dir2,150.0);
+		
+		//Check if we are close enough to the next waypoint
+	    //If we are, proceed to follow the next waypoint
+		if(Vector3.Distance(transform.position,path.vectorPath[currentWaypoint])<nextWaypointDistance)
+		{
+	        currentWaypoint++;
+	        return;
+	    }
     }
     else{
     return;
