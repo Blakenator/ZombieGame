@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\GuiScript.js" />
      <Compile Include="Assets\Scripts\GunSwitcher.js" />
      <Compile Include="Assets\Scripts\Gunshot.js" />
+     <Compile Include="Assets\Scripts\Knife.js" />
      <Compile Include="Assets\Scripts\MetalResource.js" />
      <Compile Include="Assets\Scripts\MovingGraph.js" />
      <Compile Include="Assets\Scripts\Remover.js" />

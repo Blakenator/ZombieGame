@@ -1,9 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\stayOnGround.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Knife.js">
     <Files>
-      <File FileName="Assets\Scripts\stayOnGround.js" Line="9" Column="22" />
-      <File FileName="Assets\Scripts\zombieAI1.js" Line="172" Column="30" />
+      <File FileName="Assets\Scripts\Knife.js" Line="44" Column="68" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
