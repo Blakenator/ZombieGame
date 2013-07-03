@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Knife.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\carenterscript.js">
     <Files>
-      <File FileName="Assets\Scripts\Knife.js" Line="44" Column="68" />
+      <File FileName="Assets\Scripts\carenterscript.js" Line="24" Column="1" />
+      <File FileName="Assets\Scripts\GrenadeBase.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Flashlight.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

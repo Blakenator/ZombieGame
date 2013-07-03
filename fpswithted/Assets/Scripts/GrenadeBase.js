@@ -6,6 +6,8 @@ var explosionForce:double;
 var audioboom:AudioClip;
 private var thrown=false;
 private var start:double;
+var damageToDestructibles:int;
+private var origForce:double;
 
 function Start () {
 	start=Time.time;
@@ -16,6 +18,7 @@ function setThrown(enabled:boolean){
 }
 
 function Update () {
+	explosionForce=origForce;
 	if(thrown && Time.time>start+fuseTime){
 		
 		var explosionPos=this.transform.position;
@@ -25,8 +28,14 @@ function Update () {
 	        if (!hit){
 	            continue;
 	        }
-	        
+	        if(hit.collider.CompareTag("destructible")&&!hit.rigidbody){
+	    		hit.collider.gameObject.SendMessage("addHealth",-damageToDestructibles,SendMessageOptions.RequireReceiver);
+	    		explosionForce*=10;
+	    		
+	    		//Debug.Log(colliders.Length);
+	    	}
 	        if (hit.rigidbody){
+	        	//Debug.Log("has it");
 	            hit.rigidbody.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 0);
 	        }
 	    }

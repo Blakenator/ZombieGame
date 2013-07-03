@@ -72,7 +72,7 @@ function Update () {
 
 // If we press the desired key and the player is in the trigger area
 
-if (Input.GetKeyDown("f")){ 
+if (Input.GetKeyDown("e")){ 
 
 if (IsPlayerInTrigger && !IsPlayerInCar) {
 

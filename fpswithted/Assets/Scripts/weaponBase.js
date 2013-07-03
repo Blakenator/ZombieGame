@@ -8,6 +8,7 @@ private var originalAccuracy:double;
 var accuracy:double;
 var ADS_Multiplier:double;
 var bulletSpeed:float;
+var damageTodestructibles:int;
 
 var maxAmmo:int;
 var currAmmo:int;
@@ -111,6 +112,12 @@ function spawnBullet(){
 	  		{
 	    		Debug.Log("HIT");
 	            GameObject.Destroy(hit.collider.gameObject);
+	    	}
+	    	//Debug.Log(hit.collider.tag);
+	    	if(hit.collider.CompareTag("destructible")&&!hit.rigidbody){
+	    		hit.collider.gameObject.SendMessage("addHealth",-damageTodestructibles,SendMessageOptions.RequireReceiver);
+	    		
+	    		return;
 	    	}
 			if (hit.rigidbody)
 			{
