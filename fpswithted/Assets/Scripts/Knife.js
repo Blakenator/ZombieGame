@@ -66,7 +66,6 @@ if(Input.GetKey(KeyCode.LeftControl)){
 					aimpoint.position=lastmousepos;
 					aimpoint.localRotation=Quaternion(0,0,0,0);
 					swingdir = Quaternion.LookRotation(sword.localPosition-aimpoint.localPosition, sword.up);
-
 					Debug.Log("LAST!");
 					lastmouseposgotten=true;
 				}
@@ -125,8 +124,6 @@ function resetweapon(){
 	if(Quaternion.Angle(sword.rotation,resetdir)<.5||sword.rotation==resetdir){
 		Debug.Log("RESETED!");
 		isReseting=false;
-		sword.localRotation.y=0;
-		sword.localRotation.x=0;
 		sword.localRotation.z=0;
 		
 		return;
@@ -141,6 +138,7 @@ function resetweapon(){
 		canSwing=false;
 		firstmouseposgotten=false;
 		lastmouseposgotten=false;
+		canReady=false;
 	}
 }
 
