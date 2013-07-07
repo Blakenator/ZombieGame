@@ -4,7 +4,7 @@ var swinging:boolean;
 var targetGUI:GUIText;
 
 function Start () {
-
+	swinging=false;
 }
 
 function Update () {
@@ -12,7 +12,7 @@ function Update () {
 		if(Input.GetMouseButtonDown(0)&&!swinging){
 			swing();
 		}
-		swinging=animation.isPlaying;
+		swinging=animation.IsPlaying("sledge");
 		targetGUI.text="Sledgehammer";
 	}
 }
@@ -22,5 +22,5 @@ function setEnabled(val:boolean){
 }
 
 function swing(){
-	animation.Play();
+	animation.Play("sledge");
 }

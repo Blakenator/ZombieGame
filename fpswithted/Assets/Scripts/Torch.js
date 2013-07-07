@@ -23,12 +23,14 @@ function Start () {
 }
 
 function Update () {
-	if(Input.GetMouseButton(0)){
-		if(isEnabled){
-			cut();
+	if(isEnabled){
+		if(Input.GetMouseButton(0)){
+			if(isEnabled){
+				cut();
+			}
 		}
+		targetGUI.text="Cutting Torch";
 	}
-	targetGUI.text="Cutting Torch";
 }
 
 function cut(){

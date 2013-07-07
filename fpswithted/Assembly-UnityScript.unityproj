@@ -44,7 +44,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Hammer.js" />
      <Compile Include="Assets\Scripts\AIGunshot.js" />
      <Compile Include="Assets\Scripts\AiScript.js" />
      <Compile Include="Assets\Scripts\BarrelRotation.js" />
@@ -60,6 +59,7 @@
      <Compile Include="Assets\Scripts\GuiScript.js" />
      <Compile Include="Assets\Scripts\GunSwitcher.js" />
      <Compile Include="Assets\Scripts\Gunshot.js" />
+     <Compile Include="Assets\Scripts\Hammer.js" />
      <Compile Include="Assets\Scripts\Knife.js" />
      <Compile Include="Assets\Scripts\MetalResource.js" />
      <Compile Include="Assets\Scripts\MovingGraph.js" />

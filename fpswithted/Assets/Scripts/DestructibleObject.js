@@ -13,7 +13,10 @@ var minDist:double;
 private var done:boolean;
 
 function OnCollisionEnter(other:Collision){
-	//Debug.Log(other.impactForceSum.magnitude);
+	if(other.impactForceSum.magnitude>=1){
+		Debug.Log(other.impactForceSum.magnitude);
+	}
+	
 	if(other.impactForceSum.magnitude>=forceRequired){
 		separate();
 	}
