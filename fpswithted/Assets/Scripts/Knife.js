@@ -1,6 +1,8 @@
 #pragma strict
 
 var sword:Transform;
+private var isEnabled:boolean;
+
 private var playerCameraY:MouseLook;
 private var playerCameraX:MouseLook;
 private var player:Transform;
@@ -32,67 +34,68 @@ function Start () {
 }
 
 function Update () {
+if(isEnabled){
 
-
-if(Input.GetKey(KeyCode.LeftControl)){
-	
-		playerCameraY.enabled=false;
-		playerCameraX.enabled=false;
-		if(Input.GetMouseButton(1)){
-			if(isSwinging){
+	if(Input.GetKey(KeyCode.LeftControl)){
+		
+			playerCameraY.enabled=false;
+			playerCameraX.enabled=false;
+			if(Input.GetMouseButton(1)){
+				if(isSwinging){
+				}
+				else{
+					if(!firstmouseposgotten){
+						firstmousepos = Input.mousePosition;
+						firstmousepos = Camera.main.ScreenToWorldPoint (Vector3 (firstmousepos.x, firstmousepos.y, 3));//3 can be replaced by a depth
+						aimpoint.position=firstmousepos;
+						Debug.Log("FIRST!");
+						aimpoint.localRotation=Quaternion(0,0,0,0);
+						readydir = Quaternion.LookRotation(sword.position-aimpoint.position, sword.up);
+						firstmouseposgotten=true;
+						canReady=true;
+					}
+				}
 			}
-			else{
-				if(!firstmouseposgotten){
-					firstmousepos = Input.mousePosition;
-					firstmousepos = Camera.main.ScreenToWorldPoint (Vector3 (firstmousepos.x, firstmousepos.y, 3));//3 can be replaced by a depth
-					aimpoint.position=firstmousepos;
-					Debug.Log("FIRST!");
-					aimpoint.localRotation=Quaternion(0,0,0,0);
-					readydir = Quaternion.LookRotation(sword.position-aimpoint.position, sword.up);
-					firstmouseposgotten=true;
-					canReady=true;
+			
+			if(Input.GetMouseButtonUp(1)){
+				if(!isReady){
+					resetweapon();
+				}
+				else{
+					if(!lastmouseposgotten&&firstmouseposgotten){
+						lastmousepos = Input.mousePosition;
+						lastmousepos = Camera.main.ScreenToWorldPoint(Vector3(lastmousepos.x, lastmousepos.y, 3));//3 can be replaced by a depth
+						aimpoint.position=lastmousepos;
+						aimpoint.localRotation=Quaternion(0,0,0,0);
+						swingdir = Quaternion.LookRotation(sword.localPosition-aimpoint.localPosition, sword.up);
+						Debug.Log("LAST!");
+						lastmouseposgotten=true;
+					}
+					else{
+						resetweapon();
+					}
 				}
 			}
 		}
 		
-		if(Input.GetMouseButtonUp(1)){
-			if(!isReady){
-				resetweapon();
-			}
-			else{
-				if(!lastmouseposgotten&&firstmouseposgotten){
-					lastmousepos = Input.mousePosition;
-					lastmousepos = Camera.main.ScreenToWorldPoint(Vector3(lastmousepos.x, lastmousepos.y, 3));//3 can be replaced by a depth
-					aimpoint.position=lastmousepos;
-					aimpoint.localRotation=Quaternion(0,0,0,0);
-					swingdir = Quaternion.LookRotation(sword.localPosition-aimpoint.localPosition, sword.up);
-					Debug.Log("LAST!");
-					lastmouseposgotten=true;
-				}
-				else{
-					resetweapon();
-				}
-			}
+		if(Input.GetKeyUp(KeyCode.LeftControl)){
+			playerCameraY.enabled=true;
+			playerCameraX.enabled=true;
 		}
-	}
-	
-	if(Input.GetKeyUp(KeyCode.LeftControl)){
-		playerCameraY.enabled=true;
-		playerCameraX.enabled=true;
-	}
-	
-	
-	
-	if(isReseting){
-		resetweapon();
-	}
-	
-	if(canReady&&!isSwinging){
-		readyweapon();
-	}
-	
-	if((isReady&&canSwing&&lastmouseposgotten)||isSwinging){
-		swingweapon();
+		
+		
+		
+		if(isReseting){
+			resetweapon();
+		}
+		
+		if(canReady&&!isSwinging){
+			readyweapon();
+		}
+		
+		if((isReady&&canSwing&&lastmouseposgotten)||isSwinging){
+			swingweapon();
+		}
 	}
 }
 
@@ -159,4 +162,9 @@ function swingweapon(){	//auctual swing
 		swingdir = Quaternion.LookRotation(aimpoint.position-sword.position, sword.up);
 		sword.rotation = Quaternion.RotateTowards(sword.rotation, swingdir, 500*Time.deltaTime);
 	}
+}
+
+
+function setEnabled(enabled:boolean){
+	isEnabled=enabled;
 }
