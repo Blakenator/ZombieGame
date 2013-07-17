@@ -10,27 +10,56 @@ private var currSuppObjs:int;
 var refreshRate:double;
 var buildingFragments:GameObject[];
 var minDist:double;
+var player:Transform;
+var sightDist:double;
 private var done:boolean;
 
 function OnCollisionEnter(other:Collision){
-	if(other.impactForceSum.magnitude>=1){
-		Debug.Log(other.impactForceSum.magnitude);
+	if(!isRigidbody){
+				
+		if(other.impactForceSum.magnitude>=forceRequired){
+			separate();
+		}
 	}
 	
-	if(other.impactForceSum.magnitude>=forceRequired){
-		separate();
-	}
 }
+private var just:boolean;
+private var lastPos:Transform;
 private var last:double;
+/*
 function Update(){
-	if(last+refreshRate>Time.time&&!isRigidbody){
-		last=Time.time;
-		updateSupports();
+	if(!isRigidbody){
+		if(last+refreshRate>Time.time&&!isRigidbody){
+			last=Time.time;
+			updateSupports();
+		}
+	}
+	//   -----------this optimization makes it slower-------------
+	player = GameObject.Find("player").transform;
+	if(Vector3.Distance(transform.position,player.position)>sightDist){
+	
+	}
+	if(isRigidbody){
+		player = GameObject.Find("player").transform;
+		if(Vector3.Distance(transform.position,player.position)>sightDist){
+			renderer.enabled=false;
+			if(just){
+				transform.position=lastPos.position;
+				transform.rotation=lastPos.rotation;
+			}else{
+				lastPos=transform;
+				just=true;
+			}
+		}else{
+			renderer.enabled=true;
+			just=false;
+		}
 	}
 	
-}
+}*/
 
 function Start(){
+	
 	done=false;
 	last=Time.time;
 	supportObjectsArr=new Array();
@@ -40,17 +69,30 @@ function Start(){
 		}
 	}
 	supportObjects=supportObjectsArr;
+	//Debug.Log(supportObjects.Length);
 	buildingFragments=null;
 	done=true;
 }
 
 function separate(){
+	//Debug.Log(supportObjects.Length);
+	if(!supportObjects){
+		return;
+	}
 	var tmp=supportObjects.Clone;
-	coldRemove(gameObject);
+	for(var i=0;i<supportObjects.length;i++){
+		if(supportObjects[i]){
+			supportObjects[i].SendMessage("updateSupports",SendMessageOptions.RequireReceiver);
+		}
+	}
+	//supp objs array is being set to null anyway, no need to loop through it
+	//coldRemove(gameObject);
 	supportObjects=null;
 	var clone:GameObject=Instantiate(gameObject,gameObject.transform.position,gameObject.transform.rotation);
 	clone.AddComponent("Rigidbody");
 	clone.SendMessage("setIsClone",true,SendMessageOptions.RequireReceiver);
+	transform.parent.SendMessage("addObj",clone,SendMessageOptions.RequireReceiver);
+	DontDestroyOnLoad(clone);
 	Destroy(gameObject);
 }
 function setIsClone(val:boolean){
@@ -75,17 +117,16 @@ function coldRemove(obj:GameObject){
 }
 
 function updateSupports(){
-	if(!supportObjects||!done){
-		return;
-	}
-	var cntr=0;
-	for(var i=0;i<supportObjects.length;i++){
-		if(supportObjects[i]){
-			cntr++;
+	if(supportObjects&&done){
+		var cntr=0;
+		for(var i=0;i<supportObjects.length;i++){
+			if(supportObjects[i]){
+				cntr++;
+			}
 		}
-	}
-	currSuppObjs=cntr;
-	if(cntr<minSupportObjects){
-		separate();
+		currSuppObjs=cntr;
+		if(cntr<minSupportObjects){
+			separate();
+		}
 	}
 }

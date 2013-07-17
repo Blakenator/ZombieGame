@@ -24,6 +24,7 @@ function setChildrenVisible(obj:GameObject,val:boolean){
 	for(child in allchildren){
 		try{
 			child.gameObject.renderer.enabled=val;
+			child.collider.isTrigger=!val;
 		}
 		catch(err){
 		

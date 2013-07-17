@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\BarrelRotation.js" />
      <Compile Include="Assets\Scripts\BulletScript.js" />
      <Compile Include="Assets\Scripts\Daynight.js" />
+     <Compile Include="Assets\Scripts\DestrOptimizer.js" />
      <Compile Include="Assets\Scripts\DestructibleObject.js" />
      <Compile Include="Assets\Scripts\EbrWeapon.js" />
      <Compile Include="Assets\Scripts\Exit.js" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\Gunshot.js" />
      <Compile Include="Assets\Scripts\Hammer.js" />
      <Compile Include="Assets\Scripts\Knife.js" />
+     <Compile Include="Assets\Scripts\LevelGenerator.js" />
      <Compile Include="Assets\Scripts\MetalResource.js" />
      <Compile Include="Assets\Scripts\MovingGraph.js" />
      <Compile Include="Assets\Scripts\Remover.js" />

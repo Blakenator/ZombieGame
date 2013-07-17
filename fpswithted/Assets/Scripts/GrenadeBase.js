@@ -28,7 +28,7 @@ function Update () {
 	        if (!hit){
 	            continue;
 	        }
-	        if(hit.collider.CompareTag("destructible")&&!hit.rigidbody){
+	        if(hit.collider.CompareTag("destructible")&&!hit.rigidbody&&hit.collider.transform.childCount==0){
 	    		hit.collider.gameObject.SendMessage("addHealth",-damageToDestructibles,SendMessageOptions.RequireReceiver);
 	    		explosionForce*=10;
 	    		
