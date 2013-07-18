@@ -11,17 +11,18 @@ private var origForce:double;
 
 function Start () {
 	start=Time.time;
+	origForce=explosionForce;
 }
 
 function setThrown(enabled:boolean){
 	thrown=enabled;
 }
 
-function Update () {
+function FixedUpdate () {
 	explosionForce=origForce;
 	if(thrown && Time.time>start+fuseTime){
 		
-		var explosionPos=this.transform.position;
+		var explosionPos=transform.position;
 		var colliders : Collider[] = Physics.OverlapSphere (explosionPos, explosionRadius);
 		
 	    for (var hit : Collider in colliders) {
@@ -30,22 +31,19 @@ function Update () {
 	        }
 	        if(hit.collider.CompareTag("destructible")&&!hit.rigidbody&&hit.collider.transform.childCount==0){
 	    		hit.collider.gameObject.SendMessage("addHealth",-damageToDestructibles,SendMessageOptions.RequireReceiver);
-	    		explosionForce*=10;
+	    		explosionForce=origForce*3;
 	    		
 	    		//Debug.Log(colliders.Length);
 	    	}
-	        if (hit.rigidbody){
-	        	//Debug.Log("has it");
+	        if (hit.rigidbody&&hit.name!=name){
+	        	Debug.Log(explosionForce);
 	            hit.rigidbody.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 0);
 	        }
 	    }
 		audio.PlayOneShot(audioboom,2);
 	    grenade.renderer.enabled=false;
-	    wait(3);
-	    Destroy(grenade);
+	    thrown=false;
+	    Destroy(grenade,1);
 	}
-}
-function wait(val:double){
-	yield WaitForSeconds(val);
 }
 

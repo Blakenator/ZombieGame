@@ -6,6 +6,9 @@ private var replaceDupe:GameObject;
 var sightDist:double;
 var repObjs:Array;
 private var children;
+private var inRange:boolean;
+private var isBottom;
+
 function Start () {
 	if(optimization){
 		var newpos=Vector3(transform.position.x+2.165222,transform.position.y+-3.176147,transform.position.z+-5.406738);
@@ -14,26 +17,29 @@ function Start () {
 		DontDestroyOnLoad(replaceDupe);
 		repObjs=new Array();
 		children=gameObject.GetComponentsInChildren(Renderer);
-		/*
-		for(var o:GameObject in repObjs){
-			DontDestroyOnLoad(o);
-		}*/
+		last=true;
+		isBottom=true;
+		setVis(false);
 	}
 }
-
+private var lastup:double;
+var outOfRangeRefreshRate:double;
 function Update () {
 	if(optimization){
-		player = GameObject.Find("player").transform;
-		if(Vector3.Distance(transform.position,player.position)>sightDist){
-			setVis(false);
-			
-			//Debug.Log(repObjs.length);
-			if(repObjs.length<83){
-				replaceDupe.renderer.enabled=true;
+		if(inRange||Time.time>=lastup+outOfRangeRefreshRate){
+			player = GameObject.Find("player").transform;
+			if(Vector3.Distance(transform.position,player.position)>sightDist){
+				setVis(false);
+				inRange=false;
+				if(repObjs.length<20){
+					replaceDupe.renderer.enabled=true;
+				}
+			}else{
+				setVis(true);
+				inRange=true;
+				replaceDupe.renderer.enabled=false;
 			}
-		}else{
-			setVis(true);
-			replaceDupe.renderer.enabled=false;
+			lastup=Time.time;
 		}
 	}
 }
@@ -43,7 +49,7 @@ function setVis(val:boolean){
 	if(last==val){
 		return;
 	}
-	Debug.Log(val);
+	//Debug.Log(val);
 	//var children=gameObject.GetComponentsInChildren(Renderer);
 	for(var r:Renderer in children){
 		if(r){
@@ -60,4 +66,12 @@ function setVis(val:boolean){
 }
 function addObj(obj:GameObject){
 	repObjs.push(obj);
+}
+function setNotBottom(){
+	outOfRangeRefreshRate+=1;
+	isBottom=false;
+}
+function setInRange(val:boolean){
+	inRange=val;
+	lastup=Time.time;
 }

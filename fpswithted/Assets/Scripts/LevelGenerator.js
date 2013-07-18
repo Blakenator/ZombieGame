@@ -22,7 +22,8 @@ function Start () {
 	//arr=new Array();
 	x=y=0;
 }
-function Update () {
+private var waitr:int;
+function FixedUpdate () {
 	if(done){
 		DontDestroyOnLoad(groundObject);
 		//for(var f:GameObject in arr){
@@ -31,36 +32,46 @@ function Update () {
 		Application.LoadLevel(1);
 	}
 	//create a map
-	tot=size.x*size.y;
-	//get prob range
-	var s=probabilityOfBuilding.ToString().Split(".".ToCharArray()[0])[1];
-	realprob.x=int.Parse(s);
-	realprob.y=10^s.ToCharArray().length;
-	//Debug.Log(x+"|"+y);
-	if(x<size.x){
-		if(y<size.y){
-			if(Random.Range(0,realprob.y)<=realprob.y){
-				//make a building
-				var buildHeight=Random.Range(0,maxBuildingHeight);
-				var buildType=Random.Range(0,buildingPrefab.length-1);
-				for(var i=0;i<buildHeight;i++){
-					var floor:GameObject =Instantiate(buildingPrefab[buildType],Vector3(spacing.x*x+startingPos.position.x,startingPos.position.y+i*spacing.z,startingPos.position.z+spacing.y*y),buildingPrefab[buildType].transform.rotation);
-					DontDestroyOnLoad(floor);//floor.transform.Rotate(0,Random.Range(0,4)*90,0);
-					//floor.active=false;
-					//arr.push(floor);
+	if(waitr>1){
+		tot=size.x*size.y;
+		//get prob range
+		var s=probabilityOfBuilding.ToString().Split(".".ToCharArray()[0])[1];
+		realprob.x=int.Parse(s);
+		realprob.y=10^s.ToCharArray().length;
+		//Debug.Log(x+"|"+y);
+		if(x<size.x){
+			if(y<size.y){
+				if(Random.Range(0,realprob.y)<=realprob.y){
+					//make a building
+					var buildHeight=Random.Range(0,maxBuildingHeight);
+					var buildType=Random.Range(0,buildingPrefab.length-1);
+					for(var i=0;i<buildHeight;i++){
+						var floor:GameObject =Instantiate(buildingPrefab[buildType],Vector3(spacing.x*x+startingPos.position.x,startingPos.position.y+i*spacing.z,startingPos.position.z+spacing.y*y),buildingPrefab[buildType].transform.rotation);
+						DontDestroyOnLoad(floor);//floor.transform.Rotate(0,Random.Range(0,4)*90,0);
+						var loop=0;
+						while(loop<=i){
+							floor.SendMessage("setNotBottom",SendMessageOptions.RequireReceiver);
+							loop++;
+						}
+						//floor.active=false;
+						//arr.push(floor);
+					}
+				}else{
+					//make a resource cluster
+					
 				}
+				y++;
+				curr++;
+				targetGUI.text=curr+"/"+tot+"--"+Mathf.Round((curr/tot)*100)+"%";
 			}else{
-				//make a resource cluster
-				
+				y=0;
+				x++;
 			}
-			y++;
-			curr++;
-			targetGUI.text=curr+"/"+tot+"--"+Mathf.Round((curr/tot)*100)+"%";
 		}else{
-			y=0;
-			x++;
+			done=true;
 		}
+		waitr=0;
 	}else{
-		done=true;
+		waitr++;
 	}
 }

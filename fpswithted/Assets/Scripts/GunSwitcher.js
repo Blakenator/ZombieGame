@@ -1,43 +1,59 @@
 #pragma strict
 var currentGunIndex:int;
-var inventory:GameObject[];
-
+var startingInventory:GameObject[];
+private var inventoryArray:Array;
+private var last:int;
 
 function Start () {
-
+	inventoryArray=startingInventory.Clone();
+	allButCurrent();
 }
 function getCurrGunIndex(){
 	return currentGunIndex;
 }
 function allButCurrent(){
-	for(gun in inventory){
-			setChildrenVisible(gun,false);
-			gun.renderer.enabled=false;
-			gun.SendMessage("setEnabled",false,SendMessageOptions.RequireReceiver);
-		}
-		setChildrenVisible(inventory[currentGunIndex],true);
-		inventory[currentGunIndex].renderer.enabled=true;
-		inventory[currentGunIndex].SendMessage("setEnabled",true,SendMessageOptions.RequireReceiver);
+	for(var gun:GameObject in inventoryArray){
+		gun.renderer.enabled=false;
+		gun.SendMessage("setEnabled",false,SendMessageOptions.RequireReceiver);
+		setChildrenVisible(gun,false);
+	}
+	var tmp:GameObject=inventoryArray[currentGunIndex];
+	setChildrenVisible(tmp,true);
+	tmp.renderer.enabled=true;
+	tmp.SendMessage("setEnabled",true,SendMessageOptions.RequireReceiver);
 }
 function setChildrenVisible(obj:GameObject,val:boolean){
 	var allchildren=obj.transform.GetComponentsInChildren(Transform);
 	for(child in allchildren){
 		try{
 			child.gameObject.renderer.enabled=val;
-			child.collider.isTrigger=!val;
+			//child.collider.active=val;
+			child.collider.enabled=val;
 		}
 		catch(err){
 		
 		};
 	}
 }
-
-function Update () {
-	allButCurrent();	
+function dropIndex(index:int){
+	var tmp:GameObject=inventoryArray[index];
+	var tmp2:GameObject=inventoryArray[inventoryArray.length-1];
+	inventoryArray[index]=tmp2;
+	inventoryArray[inventoryArray.length-1]=tmp;
+	var clone:GameObject=Instantiate(tmp,tmp.transform.position,tmp.transform.rotation);
+	if(!tmp.rigidbody){
+		clone.AddComponent("Rigidbody");
+	}
+	inventoryArray.pop();
+}
+function FixedUpdate () {
+	if(!last==currentGunIndex){
+		allButCurrent();
+	}	
 }
 
 function switchUp(){
-	if(currentGunIndex>=inventory.Length-1){
+	if(currentGunIndex>=inventoryArray.length-1){
 		currentGunIndex=0;
 		allButCurrent();
 		Debug.Log("switchup");
@@ -49,7 +65,7 @@ function switchUp(){
 
 function switchDown(){
 	if(currentGunIndex<=0){
-		currentGunIndex=inventory.Length-1;
+		currentGunIndex=inventoryArray.length-1;
 		allButCurrent();
 		Debug.Log("switchdown");
 	}else{
