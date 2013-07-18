@@ -1,5 +1,5 @@
 #pragma strict
-var health:double=1.0;
+var health:double=100.0;
 var gun1:Gunshot;
 var gunSwitcherObject:GameObject;
 //var gun2:Gunshot;
@@ -27,6 +27,10 @@ function addhealth(num:double)
 function subhealth(num:double)
 {
 	health=health-num;
+	if(health<0){
+		health=0;
+		Debug.Log("dead");
+	}
 }
 function gethealth()
 {

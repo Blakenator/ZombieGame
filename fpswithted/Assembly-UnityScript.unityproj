@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\WoodResource.js" />
      <Compile Include="Assets\Scripts\carenterscript.js" />
      <Compile Include="Assets\Scripts\carscript.js" />
+     <Compile Include="Assets\Scripts\fallListener.js" />
      <Compile Include="Assets\Scripts\grenadeLauncher.js" />
      <Compile Include="Assets\Scripts\guitext.js" />
      <Compile Include="Assets\Scripts\health bar.js" />

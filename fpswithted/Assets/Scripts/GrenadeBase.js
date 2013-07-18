@@ -36,7 +36,7 @@ function FixedUpdate () {
 	    		//Debug.Log(colliders.Length);
 	    	}
 	        if (hit.rigidbody&&hit.name!=name){
-	        	Debug.Log(explosionForce);
+	        	//Debug.Log(explosionForce);
 	            hit.rigidbody.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 0);
 	        }
 	    }

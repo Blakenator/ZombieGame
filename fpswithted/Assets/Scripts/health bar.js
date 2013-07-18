@@ -38,5 +38,5 @@ function Update()
     // however you would set this value based on your desired display
     // eg, the loading progress, the player's health, or whatever.
     
-    barDisplay = player.gethealth();
+    barDisplay = player.gethealth()/100;
 }

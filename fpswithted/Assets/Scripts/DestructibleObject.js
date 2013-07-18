@@ -71,6 +71,7 @@ function Start(){
 	supportObjects=supportObjectsArr;
 	//Debug.Log(supportObjects.Length);
 	buildingFragments=null;
+	
 	done=true;
 }
 
@@ -91,6 +92,7 @@ function separate(){
 	var clone:GameObject=Instantiate(gameObject,gameObject.transform.position,gameObject.transform.rotation);
 	clone.AddComponent("Rigidbody");
 	clone.SendMessage("setIsClone",true,SendMessageOptions.RequireReceiver);
+	clone.rigidbody.mass=clone.collider.bounds.size.x*clone.collider.bounds.size.y*clone.collider.bounds.size.z*3;
 	transform.parent.SendMessage("addObj",clone,SendMessageOptions.RequireReceiver);
 	DontDestroyOnLoad(clone);
 	Destroy(gameObject);
