@@ -1,16 +1,21 @@
 #pragma strict
 
 var sword:Transform;
-private var isEnabled:boolean;
+private var isEnabled:boolean=true;
 
 private var playerCameraY:MouseLook;
 private var playerCameraX:MouseLook;
 private var player:Transform;
 private var forward:Transform;
+
+
 private var firstmousepos:Vector3;
 private var firstmouseposgotten:boolean=false;
+
 private var lastmousepos:Vector3;
 private var lastmouseposgotten:boolean=false;
+
+
 private var aimpoint:Transform;
 
 private var swingdir:Quaternion;
@@ -67,7 +72,9 @@ if(isEnabled){
 						lastmousepos = Camera.main.ScreenToWorldPoint(Vector3(lastmousepos.x, lastmousepos.y, 3));//3 can be replaced by a depth
 						aimpoint.position=lastmousepos;
 						aimpoint.localRotation=Quaternion(0,0,0,0);
-						swingdir = Quaternion.LookRotation(sword.localPosition-aimpoint.localPosition, sword.up);
+						
+						swingdir = Quaternion.LookRotation(sword.position-aimpoint.position, sword.up);
+						
 						Debug.Log("LAST!");
 						lastmouseposgotten=true;
 					}
