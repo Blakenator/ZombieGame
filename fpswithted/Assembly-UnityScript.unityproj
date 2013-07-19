@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\turn.js" />
      <Compile Include="Assets\Scripts\weaponBase.js" />
      <Compile Include="Assets\Scripts\zombieAI1.js" />
+     <Compile Include="Assets\pauseGUI.js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh2.shader" />
