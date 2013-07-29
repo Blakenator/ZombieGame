@@ -46,6 +46,9 @@ function dropIndex(index:int){
 	}
 	inventoryArray.pop();
 }
+function addObject(obj:GameObject){
+	inventoryArray.push(obj);
+}
 function FixedUpdate () {
 	if(!last==currentGunIndex){
 		allButCurrent();
