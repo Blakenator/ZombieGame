@@ -11,7 +11,7 @@ private var isBottom;
 
 function Start () {
 	if(optimization){
-		var newpos=Vector3(transform.position.x+2.165222,transform.position.y+-3.176147,transform.position.z+-5.406738);
+		var newpos=Vector3(transform.position.x+2.127319,transform.position.y+-3.299795,transform.position.z+-5.413696);
 		replaceDupe=Instantiate(replace,newpos,transform.rotation);
 		replaceDupe.transform.Rotate(0,0,90);
 		DontDestroyOnLoad(replaceDupe);
@@ -67,8 +67,8 @@ function setVis(val:boolean){
 function addObj(obj:GameObject){
 	repObjs.push(obj);
 }
-function setNotBottom(){
-	outOfRangeRefreshRate+=1;
+function setNotBottom(val:int){
+	outOfRangeRefreshRate+=val;
 	isBottom=false;
 }
 function setInRange(val:boolean){

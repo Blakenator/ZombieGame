@@ -82,7 +82,7 @@ function separate(){
 	}
 	var tmp=supportObjects.Clone;
 	for(var i=0;i<supportObjects.length;i++){
-		if(supportObjects[i]){
+		if(supportObjects[i]&&supportObjects[i]!=gameObject){
 			supportObjects[i].SendMessage("updateSupports",SendMessageOptions.RequireReceiver);
 		}
 	}
@@ -101,8 +101,8 @@ function setIsClone(val:boolean){
 	isRigidbody=val;
 }
 function addHealth(val:int){
-	Debug.Log(health);
 	health+=val;
+	//Debug.Log(health);
 	if(val<0 && health<=0){
 		separate();
 	}
@@ -111,7 +111,7 @@ function addHealth(val:int){
 function coldRemove(obj:GameObject){
 	for(var i=0;i<supportObjects.length;i++){
 		var temp:GameObject=supportObjects[i];
-		if(temp.GetInstanceID()==obj.GetInstanceID()&&temp.GetInstanceID()!=GetInstanceID()){
+		if(temp.GetInstanceID()==obj.GetInstanceID()&&temp!=gameObject){
 			supportObjects[i]=null;
 			return;
 		}
