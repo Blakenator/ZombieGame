@@ -1,5 +1,5 @@
 #pragma strict
-var gameState:String;
+var gameState:String="running";
 var player:Transform;
 var MainCamera:MouseLook;
 
