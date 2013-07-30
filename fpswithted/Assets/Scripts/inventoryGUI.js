@@ -18,7 +18,7 @@ function Update(){
 			var tmp:MouseLook=player.GetComponent("MouseLook");
 			tmp.isPaused=true;
 			MainCamera.isPaused=true;
-			inventoryArray=gunSwitcher.getInventory();
+			inventoryArray=gunSwitcher.GetInventory();
 		}else{
 			gameState="running";
 			Time.timeScale=1;
@@ -33,7 +33,7 @@ function Update(){
 function OnGUI(){
 	if(gameState=="paused"){
 		GUILayout.BeginArea(new Rect(margin.x,margin.y,Screen.width-margin.x*2,Screen.height-margin.y*2));
-			//GUILayout.Box(new Rect(margin.x,margin.y,Screen.width-margin.x*2,Screen.height-margin.y*2));
+			GUI.Box(new Rect(margin.x,margin.y,Screen.width-margin.x*2,Screen.height-margin.y*2),GUIContent.none);
 			
 			GUILayout.BeginVertical();
 				for(var i=0;i<inventoryArray.length/4;i++){
