@@ -9,6 +9,8 @@ function pickUp(){
 	rigidbody.isKinematic=true;
 	gameObject.collider.enabled=false;
 	
+	gameObject.GetComponent(weaponBase).setEnabled(true);
+	
 	this.enabled=false;
 	
 	//Add ammo if same gun

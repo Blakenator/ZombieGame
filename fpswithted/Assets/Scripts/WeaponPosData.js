@@ -1,12 +1,14 @@
 #pragma strict
 var gunSwitch:GunSwitcher;
-private var myArray = new Hashtable();
+private var posArray = new Hashtable();
+private var rotArray = new Hashtable();
 private var modName:String;
 function Awake () {
 	var gunArr:GameObject[]=gunSwitch.GetInventory();
 	
 	for(var I in gunArr){
-		myArray[I.gameObject.name]=I.transform;
+		posArray[I.gameObject.name]=I.transform.localPosition;
+		rotArray[I.gameObject.name]=I.transform.localRotation;
 		Debug.LogWarning(I.gameObject.name);
 	}
 	
@@ -35,15 +37,17 @@ function getWepPos(str:String){
 		split(modName);
 	}
 	
+	var wepPos:Vector3=posArray[modName];
 	
+	Debug.Log(wepPos);
 	
-	var wepPos:Transform=myArray[modName];
 	//Debug.Log(myArray[modName]);
 	//Debug.Log(modName);
-	return wepPos.localPosition;
+	
+	return wepPos;
 }
 
 function getWepRot(str:String){
-	var wepPos:Transform=myArray[modName];
-	return wepPos.localRotation;
+	var wepRot:Quaternion=rotArray[modName];
+	return wepRot;
 }
