@@ -70,6 +70,10 @@ function getCurrClips()
 {
 	return currClips;
 }
+function addClips(ammount:int){
+	currClips+=ammount;
+}
+
 
 function fireGun(){
 	if(isEnabled){

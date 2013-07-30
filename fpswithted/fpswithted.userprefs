@@ -1,28 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GunSwitcher.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PickUp.js">
     <Files>
-      <File FileName="Assets\Scripts\GunSwitcher.js" Line="20" Column="37" />
-      <File FileName="Assets\Scripts\pauseGUI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\player.js" Line="35" Column="5" />
+      <File FileName="Assets\Scripts\WeaponPosData.js" Line="11" Column="2" />
+      <File FileName="Assets\Scripts\GunSwitcher.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PickUp.js" Line="23" Column="16" />
+      <File FileName="Assets\Scripts\weaponBase.js" Line="74" Column="21" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Assembly-CSharp-firstpass" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Standard Assets" expanded="True">
-                <Node name="Character Controllers" expanded="True">
-                  <Node name="Sources" expanded="True">
-                    <Node name="Scripts" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="GunSwitcher.js" selected="True" />
+                <Node name="PickUp.js" selected="True" />
               </Node>
             </Node>
           </Node>

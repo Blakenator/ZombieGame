@@ -76,3 +76,7 @@ function switchDown(){
 		allButCurrent();
 	}
 }
+
+function GetInventory(){
+	return startingInventory;
+}
