@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Remover.js" />
      <Compile Include="Assets\Scripts\ResourceManager.js" />
      <Compile Include="Assets\Scripts\SpawnGun.js" />
+     <Compile Include="Assets\Scripts\StatsController.js" />
      <Compile Include="Assets\Scripts\Torch.js" />
      <Compile Include="Assets\Scripts\TurretBase.js" />
      <Compile Include="Assets\Scripts\WeaponPosData.js" />

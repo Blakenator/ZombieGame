@@ -58,12 +58,13 @@ function dropCurrent(){
 		
 	}
 	clone.rigidbody.isKinematic=false;
-	clone.rigidbody.AddForce(Vector3.forward*5);
+	clone.rigidbody.AddForce(Vector3.forward*10);
 	
-	//inventoryArray.Remove(currentGunIndex);
+	
 	
 	clone.gameObject.GetComponent(weaponBase).setEnabled(false);
 	clone.name=tmp.gameObject.name;
+	
 	Destroy(inventoryArray[currentGunIndex]);
 	
 	inventoryArray.RemoveAt(currentGunIndex);

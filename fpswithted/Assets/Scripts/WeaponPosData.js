@@ -6,9 +6,7 @@ function Awake () {
 	var gunArr:GameObject[]=gunSwitch.GetInventory();
 	
 	for(var I in gunArr){
-		var t:Transform=I.transform;
-		
-		myArray[I.gameObject.name]=t;
+		myArray[I.gameObject.name]=I.transform;
 		Debug.LogWarning(I.gameObject.name);
 	}
 	
@@ -37,10 +35,11 @@ function getWepPos(str:String){
 		split(modName);
 	}
 	
-	//Debug.Log(modName);
+	
 	
 	var wepPos:Transform=myArray[modName];
-	Debug.Log(myArray[modName]);
+	//Debug.Log(myArray[modName]);
+	//Debug.Log(modName);
 	return wepPos.localPosition;
 }
 

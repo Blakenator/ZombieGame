@@ -8,6 +8,7 @@ function pickUp(){
 	transform.localRotation=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 	rigidbody.isKinematic=true;
 	gameObject.collider.enabled=false;
+	
 	this.enabled=false;
 	
 	//Add ammo if same gun
