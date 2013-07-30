@@ -22,12 +22,10 @@ function Update () {
 		//do work
 	}
 	
+	Debug.DrawRay(cam.position, cam.forward*6,Color.red);
 	
 	if (Input.GetKeyDown("e")){
-		Debug.Log("EEEEEE");
-		
 		if(Physics.Raycast (cam.position, cam.forward, hit, 6)){
-		Debug.Log("HIT SOMETHING!");
 			if(hit.transform.gameObject.CompareTag("Pickup")){
 				Debug.Log("HIT AN OBJECT!");
 				
@@ -36,7 +34,15 @@ function Update () {
 			}
 		}
 	}
-	Debug.DrawRay(cam.position, cam.forward*6,Color.red);
+	
+	
+	
+	if (Input.GetKeyDown("q")){
+		Debug.Log("drop");
+		gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
+	}
+	
+	
 	
 }
 

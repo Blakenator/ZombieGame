@@ -1,13 +1,5 @@
 #pragma strict
 
-function Start () {
-
-}
-
-function Update () {
-
-}
-
 function pickUp(){
 	GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).addObject(gameObject);
 	transform.parent=GameObject.Find("WeaponAnchor").transform;

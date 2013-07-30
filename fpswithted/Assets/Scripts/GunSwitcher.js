@@ -46,6 +46,32 @@ function dropIndex(index:int){
 	}
 	inventoryArray.pop();
 }
+
+
+function dropCurrent(){
+	Debug.Log(inventoryArray.length-1);
+	var tmp:GameObject=inventoryArray[currentGunIndex];
+	var clone:GameObject=Instantiate(tmp,tmp.transform.position,tmp.transform.rotation);
+	if(!tmp.rigidbody){
+		//inventoryArray[currentGunIndex].AddComponent("Rigidbody");
+		clone.AddComponent("Rigidbody");
+		
+	}
+	clone.rigidbody.isKinematic=false;
+	clone.rigidbody.AddForce(Vector3.forward*5);
+	
+	//inventoryArray.Remove(currentGunIndex);
+	
+	clone.gameObject.GetComponent(weaponBase).setEnabled(false);
+	clone.name=tmp.gameObject.name;
+	Destroy(inventoryArray[currentGunIndex]);
+	
+	inventoryArray.RemoveAt(currentGunIndex);
+	
+	
+	Debug.Log(inventoryArray.length-1);
+}
+
 function addObject(obj:GameObject){
 	inventoryArray.push(obj);
 }
