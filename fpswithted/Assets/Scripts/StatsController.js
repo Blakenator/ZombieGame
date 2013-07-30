@@ -16,12 +16,15 @@ function Start(){
 	hungerGUI.text="Hunger: "+hunger;
 	thirstGUI.text="Thirst: "+thirst;
 }
+function getStamina(){
+	return stamina;
+}
 function Update(){
 }
 
 function updateStamina (ammount:float){
 	stamina+=ammount;
-	staminaGUI.text="Stamina: "+stamina;
+	staminaGUI.text="Stamina: "+Mathf.Round(stamina*10)/10;
 }
 
 function updateHealth (ammount:float){

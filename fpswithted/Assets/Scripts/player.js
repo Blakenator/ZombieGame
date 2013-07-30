@@ -4,7 +4,7 @@ var gun1:Gunshot;
 var gunSwitcherObject:GameObject;
 var runSpeed:float=20;
 var walkSpeed:float=10;
-var staminaRegenRate:double=0.2;
+var staminaRegenRate:double=0.05;
 private var chMotor: CharacterMotor;
 private var ch: CharacterController;
 private var stats:StatsController;
@@ -60,8 +60,8 @@ function Update () {
     if (ch.isGrounded && Input.GetKey("left shift") || Input.GetKey("right shift")){
         speed = runSpeed;
 		stats.updateStamina(-0.1);
-    }else if(ch.isGrounded){
-    	stats.updateStamina(staminaRegenRate);
+    }else if(ch.isGrounded&&stats.getStamina()<=100){
+    	stats.updateStamina(staminaRegenRate*Time.deltaTime);
     }
 	
 	chMotor.movement.maxForwardSpeed = speed;
