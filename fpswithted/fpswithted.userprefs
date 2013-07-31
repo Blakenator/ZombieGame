@@ -1,13 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\inventoryGUI.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\carenterscript.js">
     <Files>
-      <File FileName="Assets\Scripts\GunSwitcher.js" Line="136" Column="18" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GunSwitcher.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\inventoryGUI.js" Line="47" Column="7" />
-      <File FileName="Assets\Scripts\pauseGUI.js" Line="9" Column="1" />
-      <File FileName="Assets\Scripts\player.js" Line="54" Column="21" />
-      <File FileName="Assets\Scripts\inventoryItem.js" Line="5" Column="2" />
-      <File FileName="Assets\Scripts\WeaponPosData.js" Line="7" Column="47" />
+      <File FileName="Assets\Scripts\pauseGUI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\player.js" Line="24" Column="45" />
+      <File FileName="Assets\Scripts\inventoryItem.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WeaponPosData.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\health bar.js" Line="41" Column="1" />
+      <File FileName="Assets\Scripts\carenterscript.js" Line="54" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +18,7 @@
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="inventoryGUI.js" selected="True" />
+                <Node name="carenterscript.js" selected="True" />
               </Node>
             </Node>
           </Node>

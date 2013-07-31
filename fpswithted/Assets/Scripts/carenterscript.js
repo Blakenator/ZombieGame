@@ -24,29 +24,29 @@ var BackWheelRight : WheelCollider;
 
 function Start(){
 
-CarCamera.GetComponent(MouseLook).enabled = false;
-
-Player.active = true;
-
-PlayerCamera.GetComponent(AudioListener).enabled = true;
-
-Player.transform.parent = null;
-
-Player.transform.localRotation = Quaternion.identity;
-
- 
-
-//Car.GetComponent(AlinCAR).enabled = false;
-
-//Car.GetComponent(AudioSource).enabled = false;
-
-PlayerCamera.enabled = true;
-
-CarCamera.enabled = false;
-
-CarCamera.GetComponent(AudioListener).enabled = false;
-
-IsPlayerInCarFalse();
+	CarCamera.GetComponent(MouseLook).enabled = false;
+	
+	Player.active = true;
+	
+	PlayerCamera.GetComponent(AudioListener).enabled = true;
+	
+	Player.transform.parent = null;
+	
+	Player.transform.localRotation = Quaternion.identity;
+	
+	 
+	
+	//Car.GetComponent(AlinCAR).enabled = false;
+	
+	//Car.GetComponent(AudioSource).enabled = false;
+	
+	PlayerCamera.enabled = true;
+	
+	CarCamera.enabled = false;
+	
+	CarCamera.GetComponent(AudioListener).enabled = false;
+	
+	IsPlayerInCarFalse();
 }
 
 function OnTriggerEnter(Player : Collider) {
