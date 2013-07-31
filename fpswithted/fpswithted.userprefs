@@ -1,16 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\player.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\inventoryGUI.js">
     <Files>
-      <File FileName="Assets\Scripts\WeaponPosData.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PickUp.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GunSwitcher.js" Line="65" Column="62" />
-      <File FileName="Assets\Scripts\inventoryGUI.js" Line="36" Column="7" />
-      <File FileName="Assets\Scripts\player.js" Line="63" Column="29" />
+      <File FileName="Assets\Scripts\GunSwitcher.js" Line="136" Column="18" />
+      <File FileName="Assets\Scripts\inventoryGUI.js" Line="47" Column="7" />
+      <File FileName="Assets\Scripts\pauseGUI.js" Line="9" Column="1" />
+      <File FileName="Assets\Scripts\player.js" Line="54" Column="21" />
+      <File FileName="Assets\Scripts\inventoryItem.js" Line="5" Column="2" />
+      <File FileName="Assets\Scripts\WeaponPosData.js" Line="7" Column="47" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="Assembly-UnityScript" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="inventoryGUI.js" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />

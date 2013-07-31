@@ -1,6 +1,4 @@
 
-//class weaponBase{
-
 var isEnabled:boolean;
 
 var fireRate:double;
@@ -45,7 +43,6 @@ function Update(){
 		}
 	}
 }
-
 function reload(){
 	currAmmo=maxAmmo;
 	currClips-=1;
@@ -131,4 +128,3 @@ function spawnBullet(){
     }
 }
 
-//}

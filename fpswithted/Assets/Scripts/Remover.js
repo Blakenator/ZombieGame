@@ -1,3 +1,4 @@
+
 var isEnabled:boolean;
 var sound:AudioClip;
 var spawn:Transform;
@@ -36,4 +37,5 @@ function spawnObject(){
 			audio.PlayOneShot(sound,1);
 		}
 	}
+
 }

@@ -4,7 +4,7 @@ private var posArray = new Hashtable();
 private var rotArray = new Hashtable();
 private var modName:String;
 function Awake () {
-	var gunArr:GameObject[]=gunSwitch.GetInventory();
+	var gunArr:GameObject[]=gunSwitch.GetStartingInventory();
 	
 	for(var I in gunArr){
 		posArray[I.gameObject.name]=I.transform.localPosition;

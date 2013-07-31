@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\guitext.js" />
      <Compile Include="Assets\Scripts\health bar.js" />
      <Compile Include="Assets\Scripts\inventoryGUI.js" />
+     <Compile Include="Assets\Scripts\inventoryItem.js" />
      <Compile Include="Assets\Scripts\pauseGUI.js" />
      <Compile Include="Assets\Scripts\player.js" />
      <Compile Include="Assets\Scripts\stayOnGround.js" />
