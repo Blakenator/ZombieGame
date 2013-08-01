@@ -1,30 +1,38 @@
 #pragma strict
-private var optionsCam:Camera;
-private var mainCamera:Camera;
-
+var menu:String="main";
 function Start(){
-	optionsCam=gameObject.Find("Options Camera").GetComponent(Camera);
-	mainCamera=gameObject.Find("Main Camera").GetComponent(Camera);
+	volumeSlider=AudioListener.volume;
 }
 
 function OnGUI(){
-	if(GUI.Button(Rect(Screen.width/2-115,Screen.height/2+100,230,40),"Let's Go Kill Some Zombies!")){
-		Application.LoadLevel(2);
-	}
-
-	if(GUI.Button(Rect(Screen.width/2-87,Screen.height/2+150,175,40),"Options")){
-		Debug.Log("will swap!");
-			swapMenu(this.GetComponent(Camera),optionsCam);
-		
-	}
-
-	if(GUI.Button(Rect(Screen.width/2-60,Screen.height/2+200,120,40),"Quit!")){
-		Application.Quit();
+	if(menu=="main"){
+		GUILayout.BeginArea(new Rect(Screen.width/2-115,Screen.height/2+150,230,100));
+			GUILayout.BeginVertical();
+				if(GUILayout.Button("Let's Go Kill Some Zombies!")){
+					Application.LoadLevel(2);
+				}
+			
+				if(GUILayout.Button("Options")){
+					menu="options";
+				}
+			
+				if(GUILayout.Button("Quit!")){
+					Application.Quit();
+				}
+			GUILayout.EndVertical();
+		GUILayout.EndArea();
+	}else if(menu=="options"){
+		GUILayout.BeginArea(new Rect(Screen.width/2-115,Screen.height/2+200,230,100));
+			GUILayout.BeginVertical();
+				GUILayout.Box("Volume: "+volumeSlider);
+				volumeSlider=Mathf.Round(GUILayout.HorizontalSlider(volumeSlider,0,11));
+				AudioListener.volume=volumeSlider/10;
+				if(GUILayout.Button("Back")){
+					menu="main";
+				}
+			GUILayout.EndVertical();
+		GUILayout.EndArea();
 	}
 }
 
-function swapMenu(From:Camera,To:Camera){
-		To.enabled=true;
-		From.enabled=false;
-		Debug.Log("SWAP!");
-}
+var volumeSlider:float;

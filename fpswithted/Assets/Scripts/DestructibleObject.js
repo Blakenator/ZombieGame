@@ -58,7 +58,7 @@ function Update(){
 	
 }*/
 
-function Start(){
+function Awake(){
 	
 	done=false;
 	last=Time.time;

@@ -100,28 +100,37 @@ function addObject(obj:GameObject){
 function FixedUpdate () {
 	if(!last==currentGunIndex){
 		allButCurrent();
+	}
+	if(Time.timeScale==0){
+		for(var gun:GameObject in inventoryArray){
+			gun.SendMessage("setEnabled",false,SendMessageOptions.RequireReceiver);
+		}
 	}	
 }
 
 function switchUp(){
-	if(currentGunIndex>=inventoryArray.length-1){
-		currentGunIndex=0;
-		allButCurrent();
-		Debug.Log("switchup");
-	}else{
-		currentGunIndex+=1;
-		allButCurrent();
+	if(Time.timeScale>0){
+		if(currentGunIndex>=inventoryArray.length-1){
+			currentGunIndex=0;
+			allButCurrent();
+			Debug.Log("switchup");
+		}else{
+			currentGunIndex+=1;
+			allButCurrent();
+		}
 	}
 }
 
 function switchDown(){
-	if(currentGunIndex<=0){
-		currentGunIndex=inventoryArray.length-1;
-		allButCurrent();
-		Debug.Log("switchdown");
-	}else{
-		currentGunIndex-=1;
-		allButCurrent();
+	if(Time.timeScale>0){
+		if(currentGunIndex<=0){
+			currentGunIndex=inventoryArray.length-1;
+			allButCurrent();
+			Debug.Log("switchdown");
+		}else{
+			currentGunIndex-=1;
+			allButCurrent();
+		}
 	}
 }
 
