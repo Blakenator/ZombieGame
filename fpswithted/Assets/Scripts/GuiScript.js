@@ -6,17 +6,17 @@ function Start(){
 
 function OnGUI(){
 	if(menu=="main"){
-		GUILayout.BeginArea(new Rect(Screen.width/2-115,Screen.height/2+150,230,100));
-			GUILayout.BeginVertical();
-				if(GUILayout.Button("Let's Go Kill Some Zombies!")){
+		GUILayout.BeginArea(new Rect(Screen.width/2-115,Screen.height/2+150,230,150));
+			GUILayout.BeginVertical("box",GUILayout.ExpandHeight(true));
+				if(GUILayout.Button("Let's Go Kill Some Zombies!",GUILayout.ExpandHeight(true))){
 					Application.LoadLevel(2);
 				}
 			
-				if(GUILayout.Button("Options")){
+				if(GUILayout.Button("Options",GUILayout.ExpandHeight(true))){
 					menu="options";
 				}
 			
-				if(GUILayout.Button("Quit!")){
+				if(GUILayout.Button("Quit!",GUILayout.ExpandHeight(true))){
 					Application.Quit();
 				}
 			GUILayout.EndVertical();

@@ -12,7 +12,7 @@ function Start () {
 function Update () {
 	if(isEnabled){
 		targetGUI.text="Remover";
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetButtonDown("Fire1")){
 			spawnObject();
 		}
 	}

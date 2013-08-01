@@ -51,15 +51,12 @@
      <Compile Include="Assets\Scripts\Daynight.js" />
      <Compile Include="Assets\Scripts\DestrOptimizer.js" />
      <Compile Include="Assets\Scripts\DestructibleObject.js" />
-     <Compile Include="Assets\Scripts\EbrWeapon.js" />
-     <Compile Include="Assets\Scripts\Exit.js" />
      <Compile Include="Assets\Scripts\Flash.js" />
      <Compile Include="Assets\Scripts\Flashlight.js" />
      <Compile Include="Assets\Scripts\Ghosts.js" />
      <Compile Include="Assets\Scripts\GrenadeBase.js" />
      <Compile Include="Assets\Scripts\GuiScript.js" />
      <Compile Include="Assets\Scripts\GunSwitcher.js" />
-     <Compile Include="Assets\Scripts\Gunshot.js" />
      <Compile Include="Assets\Scripts\Hammer.js" />
      <Compile Include="Assets\Scripts\Knife.js" />
      <Compile Include="Assets\Scripts\LevelGenerator.js" />
@@ -89,6 +86,7 @@
      <Compile Include="Assets\Scripts\traildestroy.js" />
      <Compile Include="Assets\Scripts\turn.js" />
      <Compile Include="Assets\Scripts\weaponBase.js" />
+     <Compile Include="Assets\Scripts\zSpawnerRandom.js" />
      <Compile Include="Assets\Scripts\zombieAI1.js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />

@@ -12,7 +12,7 @@ function Start () {
 }
 
 function Update(){
-	if(Input.GetKeyDown("i")){
+	if(Input.GetButtonDown("Inventory")){
 		if(gameState=="running"){
 			Time.timeScale=0;
 			gameState="paused";

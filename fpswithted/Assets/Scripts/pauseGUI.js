@@ -10,7 +10,7 @@ function Start () {
 }
 
 function Update(){
-	if(Input.GetKeyDown("p")){
+	if(Input.GetButtonDown("Pause")){
 		if(gameState=="running"){
 			Time.timeScale=0;
 			gameState="paused";

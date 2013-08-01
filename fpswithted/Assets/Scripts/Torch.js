@@ -24,7 +24,7 @@ function Start () {
 
 function Update () {
 	if(isEnabled){
-		if(Input.GetMouseButton(0)){
+		if(Input.GetButton("Fire1")){
 			if(isEnabled){
 				cut();
 			}

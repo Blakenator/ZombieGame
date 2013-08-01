@@ -30,15 +30,15 @@ function Update(){
 	
 		targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + currClips;
 	
-		if (Input.GetMouseButton(2)){
+		if (Input.GetButton("Fire3")){
 			accuracy=originalAccuracy*ADS_Multiplier;
 		}else{
 			accuracy=originalAccuracy;
 		}
-		if (Input.GetMouseButton(0)){
+		if (Input.GetButton("Fire1")){
 			fireGun();
 		}
-		if (Input.GetKeyDown("r") && currClips > 0){
+		if (Input.GetButtonDown("Reload") && currClips > 0){
 			reload();
 		}
 	}

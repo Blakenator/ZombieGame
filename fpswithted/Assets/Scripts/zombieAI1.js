@@ -1,9 +1,9 @@
 #pragma strict
 import Pathfinding;
 
-private var targetPosition : Vector3;
-private var wandertargetPosition : Vector3;
-private var movePosition : Vector3;
+var targetPosition : Vector3;
+//private var wandertargetPosition : Vector3;
+var movePosition : Vector3;
 private var seeker:Seeker;
 private var controller:CharacterController;
 
@@ -24,9 +24,13 @@ private var isInRange:boolean;
 private var isColliding:boolean=false;
 private var isWandering:boolean=true;
 private var wanderstart:boolean=true;
-private var isCheckingHasMoved:boolean=false;
 
-//private var lastPos:Vector3;
+private var playerHasMoved:boolean=false;
+
+var canRefresh:boolean=true;
+var Mover:ZMover;
+
+private var lastPos:Vector3;
 
 function Start () {
 	seeker=this.GetComponent(Seeker);
@@ -43,14 +47,16 @@ function Start () {
 	
 	
 	
-	controller.Move(Vector3(0,0,0)*Time.fixedDeltaTime);
+	//controller.Move(Vector3(1,0,0)*Time.fixedDeltaTime);
+	Mover.move(Vector3(0,0,0)*Time.fixedDeltaTime);
 	
 	//lastPos=player.transform.position;
 }
 
 function Update () {
-	//lastPos=targetPosition;
+	lastPos=targetPosition;
 	targetPosition=player.transform.position;
+	
 	distance = Vector3.Distance(gameObject.transform.position, targetPosition);
 	transform.rotation.x = 0;
 	transform.rotation.z = 0;
@@ -86,13 +92,14 @@ function SmoothLookAt(target:Vector3,speed:float)
     var targetRotation:Quaternion = Quaternion.LookRotation(dir);
     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * speed);
 }
-
+/**
 function OnTriggerEnter (other : Collider) {
-	Debug.Log("collide1");
+	//Debug.Log("collide1");
+	//Debug.Log(other.transform.gameObject);
 	if (other.gameObject.CompareTag("enemy"))
 	{
+		//Debug.Log("collide2");
 		Physics.IgnoreCollision(gameObject.collider,other.gameObject.collider);
-		//CreateNewPlayerPath();
   		//isColliding=true;
 	}
 	else
@@ -102,11 +109,11 @@ function OnTriggerEnter (other : Collider) {
 }
 
 function OnCollisionEnter (other : Collision) {
-	Debug.Log("collide");
-	if (other.gameObject.CompareTag("enemy"))
+	//Debug.Log("collide");
+	if(other.gameObject.CompareTag("enemy")&&(other.gameObject!=gameObject))
 	{
+		//Debug.Log("collide");
 		Physics.IgnoreCollision(gameObject.collider,other.gameObject.collider);
-		//CreateNewPlayerPath();
   		//isColliding=true;
 	}
 	else
@@ -114,7 +121,7 @@ function OnCollisionEnter (other : Collision) {
 		//isColliding=false;
 	}
 }
-
+**/
 
 
 
@@ -127,16 +134,26 @@ function CheckValues(){
 	{
 		CreateNewWander();
 		return;
-	}else{
+	}else if(HasMoved()){
 		wanderstart=true;
-		CreateNewPlayerPath();
+		if(canRefresh){
+			yield StartCoroutine("CreateNewPlayerPath");
+		}
 		return;
 	}
+	
 }
 
-
+function CreateNewPlayerPath (){
+	canRefresh=false;
+	movePosition=targetPosition;
+	yield WaitForSeconds(.2);
+	seeker.StartPath(transform.position,movePosition, OnPathComplete);
+	canRefresh=true;
+}
 
 function CreateNewWander (){
+	
 	if(wanderstart){
 		wanderstart=false;
 		movePosition=targetPosition;
@@ -167,10 +184,7 @@ function CreateNewWander (){
 
 
 
-function CreateNewPlayerPath (){
-	movePosition=targetPosition;
-	seeker.StartPath (transform.position,movePosition, OnPathComplete);
-}
+
 
 
 function Move(){
@@ -181,7 +195,10 @@ function Move(){
 	if(currentWaypoint>=path.vectorPath.Count-1)
 	{
 		dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
-		controller.Move(dirToMove*Time.fixedDeltaTime);
+		
+		//controller.Move(dirToMove*Time.fixedDeltaTime);
+		
+		Mover.move(dirToMove*Time.fixedDeltaTime);
 		
 		movePosition=targetPosition;
 		if(distance<=engagerange){
@@ -204,7 +221,10 @@ function Move(){
 	}
 	
 	dirToMove*=Speed;
-	controller.Move(dirToMove*Time.fixedDeltaTime);
+	//controller.Move(dirToMove*Time.fixedDeltaTime);
+	
+	Mover.move(dirToMove*Time.fixedDeltaTime);
+	
 	SmoothLookAt(dir2,150.0);
 	
 	//Check if we are close enough to the next waypoint
@@ -217,10 +237,10 @@ function Move(){
 }
 
 function HasMoved(){
-	
-	//yield WaitForSeconds(1);
-	//Debug.Log("TIME!");
-	
-	
+	if(Vector3.Distance(lastPos,targetPosition)>.1){
+		//Debug.Log("TEST!");
+		return true;
+	}else{
+	return false;
+	}
 }
-

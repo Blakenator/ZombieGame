@@ -19,7 +19,7 @@ function setEnabled(val:boolean){
 function Update () {
 	if(isEnabled){
 		targetGUIText.text = "Ammo: " + currAmmo;
-		if (Input.GetMouseButton(0)){
+		if (Input.GetButton("Fire1")){
 			if(Time.time>lastTime-Time.deltaTime+reloadTime && currAmmo>0){
 				throwGrenade();
 				currAmmo-=1;

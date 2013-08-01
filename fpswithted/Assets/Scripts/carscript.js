@@ -20,7 +20,7 @@ function FixedUpdate () {
 		wheelRL.motorTorque = maxTorque * Input.GetAxis("Vertical");
 		wheelFL.steerAngle = 10 * Input.GetAxis("Horizontal");
 		wheelFR.steerAngle = 10 * Input.GetAxis("Horizontal");
-		if (Input.GetKey ("x"))
+		if (Input.GetButton ("Brake"))
 		{
         	
 			wheelFR.brakeTorque = 90;
@@ -30,7 +30,7 @@ function FixedUpdate () {
 			wheelRL.steerAngle = -10 * Input.GetAxis("Horizontal");
 			
     	}
-    	if (Input.GetKeyUp ("x"))
+    	if (Input.GetButtonUp ("Brake"))
 		{
 			wheelFR.brakeTorque = 0;
 			wheelFL.brakeTorque = 0;

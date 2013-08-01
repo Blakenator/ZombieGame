@@ -1,6 +1,5 @@
 #pragma strict
 var health:double=100.0;
-var gun1:Gunshot;
 var gunSwitcherObject:GameObject;
 var runSpeed:float=20;
 var walkSpeed:float=10;
@@ -32,13 +31,10 @@ function Update () {
 		gunSwitcherObject.SendMessage("switchDown",SendMessageOptions.RequireReceiver);
 	}
 	
-	if (Input.GetKeyDown("escape")){
-		//do work
-	}
 	
 	Debug.DrawRay(cam.position, cam.forward*6,Color.red);
 	
-	if (Input.GetKeyDown("e")){
+	if (Input.GetButtonDown("Pick Up")){
 		if(Physics.Raycast (cam.position, cam.forward, hit, 6)){
 			if(hit.transform.gameObject.CompareTag("Pickup")){
 				Debug.Log("HIT AN OBJECT!");
@@ -52,7 +48,7 @@ function Update () {
 			}
 		}
 	}
-	if (Input.GetKeyUp("e")){
+	if (Input.GetButtonUp("Pick Up")){
 		if(isHolding){
 			holdPoint.connectedBody=null;
 			isHolding=false;
@@ -62,14 +58,14 @@ function Update () {
 	
 	
 	
-	if (Input.GetKeyDown("q")){
+	if (Input.GetButtonDown("Drop")){
 		Debug.Log("drop");
 		gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
 	}
 	
 	
     
-    if (ch.isGrounded && Input.GetKey("left shift") || Input.GetKey("right shift")){
+    if (ch.isGrounded && Input.GetButton("Sprint")){
         speed = runSpeed;
 		stats.updateStamina(-0.1);
     }else if(ch.isGrounded&&stats.getStamina()<=100){

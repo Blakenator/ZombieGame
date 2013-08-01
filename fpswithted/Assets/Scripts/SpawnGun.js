@@ -16,7 +16,7 @@ function Start () {
 
 function Update () {
 	if(isEnabled){
-		if(Input.GetKey("z")){
+		if(Input.GetButton("Undo Spawn")){
 			if(Time.time>=lastTime+removeTime){
 				if(lastObj.length>0&&lastObj[lastObj.length-1]){
 					Destroy(lastObj[lastObj.length-1]);
@@ -27,7 +27,7 @@ function Update () {
 			}
 		}
 		targetGUI.text="Object: "+objectToSpawn.name;
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetButtonDown("Fire1")){
 			spawnObject();
 			Debug.Log("spawn");
 		}

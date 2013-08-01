@@ -9,7 +9,7 @@ function Start () {
 
 function Update () {
 	if(isEnabled){
-		if(Input.GetMouseButtonDown(0)&&!swinging){
+		if(Input.GetButton("Fire1")&&!swinging){
 			swing();
 		}
 		swinging=animation.IsPlaying("sledge");
