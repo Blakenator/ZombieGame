@@ -8,7 +8,9 @@ var staminaRegenRate:double=0.05;
 private var chMotor: CharacterMotor;
 private var ch: CharacterController;
 private var stats:StatsController;
-
+var holdPoint:HingeJoint;
+var Strength:float=20;
+private var isHolding:boolean=false;
 //var gun2:Gunshot;
 function Start () {
 	chMotor = GetComponent(CharacterMotor);
@@ -43,7 +45,17 @@ function Update () {
 				
 				hit.transform.gameObject.SendMessage("pickUp",SendMessageOptions.RequireReceiver);
 				
+			}else if((isHolding==false)&&(hit.transform.gameObject.CompareTag("Grab"))&&(hit.transform.rigidbody.mass<Strength)){
+				Debug.Log("GRAB ON!");
+				isHolding=true;
+				holdPoint.connectedBody=hit.transform.gameObject.rigidbody;
 			}
+		}
+	}
+	if (Input.GetKeyUp("e")){
+		if(isHolding){
+			holdPoint.connectedBody=null;
+			isHolding=false;
 		}
 	}
 	
