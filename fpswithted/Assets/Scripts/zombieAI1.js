@@ -2,16 +2,14 @@
 import Pathfinding;
 
 var targetPosition : Vector3;
-//private var wandertargetPosition : Vector3;
 var movePosition : Vector3;
 private var seeker:Seeker;
-private var controller:CharacterController;
+//private var controller:CharacterController;
 
 private var path:Path;
 var Speed : float = 2.0;
 private var player:Transform;
 var engagerange:int;
-private var minDistance:float=1.0;
 
 var nextWaypointDistance:float=5.0;
 private var currentWaypoint:int=0;
@@ -20,12 +18,10 @@ private var distance:float;
 
 private var dirToMove:Vector3;
 
-private var isInRange:boolean;
-private var isColliding:boolean=false;
-private var isWandering:boolean=true;
+//private var isColliding:boolean=false;
 private var wanderstart:boolean=true;
 
-private var playerHasMoved:boolean=false;
+//private var playerHasMoved:boolean=false;
 
 var canRefresh:boolean=true;
 var Mover:ZMover;
@@ -40,7 +36,7 @@ function Start () {
 	
 	targetPosition=player.transform.position;
 	distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
-	controller=this.GetComponent(CharacterController);
+	//controller=this.GetComponent(CharacterController);
 	
 	
 	movePosition=targetPosition;
@@ -52,22 +48,22 @@ function Start () {
 	
 	ForceWander();
 	wanderstart=false;
-	//CreateNewWander();
 	
 	//lastPos=player.transform.position;
 }
 
 function Update () {
+
 	lastPos=targetPosition;
 	targetPosition=player.transform.position;
-	
-	distance = Vector3.Distance(gameObject.transform.position, targetPosition);
-	transform.rotation.x = 0;
-	transform.rotation.z = 0;
+	distance=Vector3.Distance(gameObject.transform.position, targetPosition);
+	if(renderer.isVisible){
+		transform.rotation.x = 0;
+		transform.rotation.z = 0;
+	}
 	
 	CheckValues();
 	Move();
-	//isColliding=false;
 }
 
 function OnPathComplete(newPath:Path)
@@ -80,11 +76,11 @@ function OnPathComplete(newPath:Path)
 }
 
 
-function FixedUpdate()
-{
-	transform.rotation.x = 0;
-	transform.rotation.z = 0;
-}
+//function FixedUpdate()
+//{
+	//transform.rotation.x = 0;
+	//transform.rotation.z = 0;
+//}
 
 
 function SmoothLookAt(target:Vector3,speed:float)
@@ -93,9 +89,6 @@ function SmoothLookAt(target:Vector3,speed:float)
     var targetRotation:Quaternion = Quaternion.LookRotation(dir);
     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * speed);
 }
-
-
-
 
 function CheckValues(){
 	if(path==null)
@@ -109,12 +102,12 @@ function CheckValues(){
 	}else if(HasMoved()){
 		wanderstart=true;
 		if(canRefresh){
-			yield StartCoroutine("CreateNewPlayerPath");
+			StartCoroutine("CreateNewPlayerPath");
 		}
 		return;
 	}
-	
 }
+
 
 function CreateNewPlayerPath (){
 	canRefresh=false;
@@ -160,9 +153,7 @@ function CreateNewWander (){
 			movePosition.y=0;
 		}
 		
-		
 		seeker.StartPath(transform.position,movePosition,OnPathComplete);
-
 		
 		return;
 	}
@@ -178,18 +169,21 @@ function Move(){
 	{
 		return; //path is null!
 	}
+	
+	
 	if(currentWaypoint>=path.vectorPath.Count-1)
 	{
-		dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
+		//dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
 		
 		//controller.Move(dirToMove*Time.fixedDeltaTime);
 		
-		Mover.move(dirToMove*Time.fixedDeltaTime);
+		//Mover.move(dirToMove*Time.fixedDeltaTime);
 		
-		movePosition=targetPosition;
-		if(distance<=engagerange){
-			seeker.StartPath (transform.position,movePosition, OnPathComplete);
-		}
+		//movePosition=targetPosition;
+		
+		//if(distance<=engagerange){
+			//seeker.StartPath (transform.position,movePosition, OnPathComplete);
+		//}
 		return; //do something... nothing for now.
 	}
 	
@@ -207,12 +201,19 @@ function Move(){
 	}
 	
 	dirToMove*=Speed;
+	
+	
 	//controller.Move(dirToMove*Time.fixedDeltaTime);
 	
+	
+	
 	Mover.move(dirToMove*Time.fixedDeltaTime);
+
+	if((renderer.isVisible)&&(distance<50)){
+		SmoothLookAt(dir2,150.0);
+	}
 	
-	SmoothLookAt(dir2,150.0);
-	
+    
 	//Check if we are close enough to the next waypoint
     //If we are, proceed to follow the next waypoint
 	if(Vector3.Distance(transform.position,path.vectorPath[currentWaypoint])<nextWaypointDistance)
@@ -224,7 +225,6 @@ function Move(){
 
 function HasMoved(){
 	if(Vector3.Distance(lastPos,targetPosition)>.1){
-		//Debug.Log("TEST!");
 		return true;
 	}else{
 		return false;

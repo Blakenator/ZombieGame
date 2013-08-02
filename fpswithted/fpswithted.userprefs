@@ -2,11 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\zombieAI1.js">
     <Files>
-      <File FileName="Assets\Scripts\pauseGUI.js" Line="17" Column="16" />
-      <File FileName="Assets\Scripts\GuiScript.js" Line="9" Column="77" />
-      <File FileName="Assets\Scripts\GunSwitcher.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\zombieAI1.js" Line="51" Column="11" />
-      <File FileName="Assets\Scripts\ZMover.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\zombieAI1.js" Line="60" Column="25" />
+      <File FileName="Assets\Scripts\stayOnGround.js" Line="7" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
