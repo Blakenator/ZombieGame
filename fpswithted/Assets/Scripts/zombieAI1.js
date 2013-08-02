@@ -36,7 +36,7 @@ function Start () {
 	seeker=this.GetComponent(Seeker);
 	player=GameObject.Find("player").transform;
 	
-	seeker.StartPath(transform.position,player.transform.position,OnPathComplete);
+	//seeker.StartPath(transform.position,player.transform.position,OnPathComplete);
 	
 	targetPosition=player.transform.position;
 	distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
@@ -50,6 +50,10 @@ function Start () {
 	//controller.Move(Vector3(1,0,0)*Time.fixedDeltaTime);
 	Mover.move(Vector3(0,0,0)*Time.fixedDeltaTime);
 	
+	ForceWander();
+	wanderstart=false;
+	//CreateNewWander();
+	
 	//lastPos=player.transform.position;
 }
 
@@ -60,6 +64,9 @@ function Update () {
 	distance = Vector3.Distance(gameObject.transform.position, targetPosition);
 	transform.rotation.x = 0;
 	transform.rotation.z = 0;
+	
+	CheckValues();
+	Move();
 	//isColliding=false;
 }
 
@@ -75,15 +82,9 @@ function OnPathComplete(newPath:Path)
 
 function FixedUpdate()
 {
-	targetPosition=player.transform.position;
-	distance = Vector3.Distance(gameObject.transform.position, targetPosition);
 	transform.rotation.x = 0;
 	transform.rotation.z = 0;
-	
-	CheckValues();
-	Move();
-}   
-
+}
 
 
 function SmoothLookAt(target:Vector3,speed:float)
@@ -122,6 +123,20 @@ function CreateNewPlayerPath (){
 	seeker.StartPath(transform.position,movePosition, OnPathComplete);
 	canRefresh=true;
 }
+
+function ForceWander(){
+	movePosition=Vector3(Random.Range(-15,15),-1,Random.Range(-15,15));
+	var plusminus:int=Random.Range(1,3);
+	if(plusminus==1){
+		movePosition=transform.position-movePosition;
+		movePosition.y=0;
+	}else{
+		movePosition=transform.position+movePosition;
+		movePosition.y=0;
+	}
+	seeker.StartPath(transform.position,movePosition,OnPathComplete);
+}
+
 
 function CreateNewWander (){
 	
