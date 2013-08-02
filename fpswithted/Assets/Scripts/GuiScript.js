@@ -1,7 +1,7 @@
 #pragma strict
 var menu:String="main";
 function Start(){
-	volumeSlider=AudioListener.volume;
+	volumeSlider=AudioListener.volume*10;
 }
 
 function OnGUI(){

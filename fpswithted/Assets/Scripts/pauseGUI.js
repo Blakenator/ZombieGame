@@ -6,7 +6,7 @@ var MainCamera:MouseLook;
 var volumeSlider:float;
 
 function Start () {
-	volumeSlider=AudioListener.volume;
+	volumeSlider=AudioListener.volume*10;
 }
 
 function Update(){
