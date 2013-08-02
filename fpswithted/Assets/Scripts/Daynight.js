@@ -9,6 +9,8 @@ var rotationAxis:String;
 private var origRot:Transform;
 private var origInt:double;
 
+var dayCount:int=0;
+
 function Start () {
 	currTime=startTime;
 	origRot=lightobj.transform;
@@ -45,7 +47,7 @@ function Update () {
 		if(currTime>lengthOfNight){
 			currTime=0;
 			isDaytime=true;
-			
+			dayCount++;
 		}else if(currTime>lengthOfNight-animation["sunset"].length){
 				animation["sunset"].speed=-1.0;
 				animation.Play();
