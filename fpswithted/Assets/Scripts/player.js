@@ -1,9 +1,9 @@
 #pragma strict
 var health:double=100.0;
 var gunSwitcherObject:GameObject;
-var runSpeed:float=15;
+var runSpeed:float=20;
 var walkSpeed:float=10;
-var staminaRegenRate:double=0.5;
+var staminaRegenRate:double=0.05;
 private var chMotor: CharacterMotor;
 private var ch: CharacterController;
 private var stats:StatsController;
@@ -54,31 +54,24 @@ function Update () {
 			isHolding=false;
 		}
 	}
+	
+	
+	
+	
 	if (Input.GetButtonDown("Drop")){
 		Debug.Log("drop");
 		gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
 	}
+	
+	
     
+    if (ch.isGrounded && Input.GetButton("Sprint")){
+        speed = runSpeed;
+		stats.updateStamina(-0.1);
+    }else if(ch.isGrounded&&stats.getStamina()<=100){
+    	stats.updateStamina(staminaRegenRate*Time.deltaTime);
+    }
 	
-	
-	
-	 if (ch.isGrounded && Input.GetButton("Sprint")){
-
-	   	 stats.updateStamina(-0.1);
-	     if(stats.getStamina()>0){
-	         speed = runSpeed;
-	         audio.pitch=runSpeed/walkSpeed;
-	     }else{
-	      	 speed=walkSpeed;
-	         audio.pitch=1;
-	     }
-	     }else if(ch.isGrounded&&stats.getStamina()<=100){
-	      	stats.updateStamina(staminaRegenRate*Time.deltaTime);
-	      	audio.pitch=1;
-     }
-     
-     
-     
 	chMotor.movement.maxForwardSpeed = speed;
 }
 
@@ -97,10 +90,4 @@ function subhealth(num:double)
 function gethealth()
 {
 	return health;
-}
-function OnTriggerEnter (other : Collider) {
-	if(other.gameObject.CompareTag("Trigger")){
-		Debug.Log("ENTER!");
-		other.gameObject.GetComponent(Trigger).activateTrigger();
-	}
 }

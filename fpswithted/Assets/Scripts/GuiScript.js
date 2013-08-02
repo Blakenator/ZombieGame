@@ -17,7 +17,11 @@ function OnGUI(){
 				}
 			
 				if(GUILayout.Button("Quit!",GUILayout.ExpandHeight(true))){
-					Application.Quit();
+					if(Application.isEditor||Application.isWebPlayer){
+						Application.Quit();
+					}else{
+						System.Diagnostics.Process.GetCurrentProcess().Kill();
+					}
 				}
 			GUILayout.EndVertical();
 		GUILayout.EndArea();

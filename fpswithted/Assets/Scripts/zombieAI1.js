@@ -42,6 +42,7 @@ function Start () {
 	movePosition=targetPosition;
 	
 	
+	
 	//controller.Move(Vector3(1,0,0)*Time.fixedDeltaTime);
 	Mover.move(Vector3(0,0,0)*Time.fixedDeltaTime);
 	
@@ -52,18 +53,17 @@ function Start () {
 }
 
 function Update () {
-	if(Time.timeScale>=1){
-		lastPos=targetPosition;
-		targetPosition=player.transform.position;
-		distance=Vector3.Distance(gameObject.transform.position, targetPosition);
-		if(renderer.isVisible){
-			transform.rotation.x = 0;
-			transform.rotation.z = 0;
-		}
-		
-		CheckValues();
-		Move();
+
+	lastPos=targetPosition;
+	targetPosition=player.transform.position;
+	distance=Vector3.Distance(gameObject.transform.position, targetPosition);
+	if(renderer.isVisible){
+		transform.rotation.x = 0;
+		transform.rotation.z = 0;
 	}
+	
+	CheckValues();
+	Move();
 }
 
 function OnPathComplete(newPath:Path)
@@ -74,6 +74,7 @@ function OnPathComplete(newPath:Path)
 		currentWaypoint=0;
 	}
 }
+
 
 //function FixedUpdate()
 //{
@@ -172,13 +173,14 @@ function Move(){
 	
 	if(currentWaypoint>=path.vectorPath.Count-1)
 	{
-		dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
+		//dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
 		
 		//controller.Move(dirToMove*Time.fixedDeltaTime);
 		
-		Mover.move(dirToMove*Time.fixedDeltaTime);
+		//Mover.move(dirToMove*Time.fixedDeltaTime);
 		
 		//movePosition=targetPosition;
+		
 		//if(distance<=engagerange){
 			//seeker.StartPath (transform.position,movePosition, OnPathComplete);
 		//}
