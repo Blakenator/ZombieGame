@@ -92,36 +92,7 @@ function SmoothLookAt(target:Vector3,speed:float)
     var targetRotation:Quaternion = Quaternion.LookRotation(dir);
     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * speed);
 }
-/**
-function OnTriggerEnter (other : Collider) {
-	//Debug.Log("collide1");
-	//Debug.Log(other.transform.gameObject);
-	if (other.gameObject.CompareTag("enemy"))
-	{
-		//Debug.Log("collide2");
-		Physics.IgnoreCollision(gameObject.collider,other.gameObject.collider);
-  		//isColliding=true;
-	}
-	else
-	{
-		//isColliding=false;
-	}
-}
 
-function OnCollisionEnter (other : Collision) {
-	//Debug.Log("collide");
-	if(other.gameObject.CompareTag("enemy")&&(other.gameObject!=gameObject))
-	{
-		//Debug.Log("collide");
-		Physics.IgnoreCollision(gameObject.collider,other.gameObject.collider);
-  		//isColliding=true;
-	}
-	else
-	{
-		//isColliding=false;
-	}
-}
-**/
 
 
 
@@ -241,6 +212,6 @@ function HasMoved(){
 		//Debug.Log("TEST!");
 		return true;
 	}else{
-	return false;
+		return false;
 	}
 }
