@@ -26,15 +26,12 @@ private var lastup:double;
 var outOfRangeRefreshRate:double;
 function Update () {
 	if(optimization){
-		if(replaceDupe.renderer.enabled&&!replaceDupe.renderer.isVisible){
-			return;
-		}
 		if(inRange||Time.time>=lastup+outOfRangeRefreshRate){
 			player = GameObject.Find("player").transform;
 			if(Vector3.Distance(transform.position,player.position)>sightDist){
 				setVis(false);
 				inRange=false;
-				if(repObjs.length<140){
+				if(repObjs.length<20){
 					replaceDupe.renderer.enabled=true;
 				}
 			}else{
@@ -44,7 +41,6 @@ function Update () {
 			}
 			lastup=Time.time;
 		}
-		
 	}
 }
 

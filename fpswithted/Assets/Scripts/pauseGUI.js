@@ -4,12 +4,9 @@ var menu:String="main";
 var player:Transform;
 var MainCamera:MouseLook;
 var volumeSlider:float;
-var showFPS:boolean;
-var FPSText:GUIText;
 
 function Start () {
 	volumeSlider=AudioListener.volume*10;
-	showFPS=FPSText.active;
 }
 
 function Update(){
@@ -54,11 +51,7 @@ function OnGUI () {
 					menu="options";
 				}
 				if(GUILayout.Button("Exit")){
-					if(Application.isEditor||Application.isWebPlayer){
-						Application.Quit();
-					}else{
-						System.Diagnostics.Process.GetCurrentProcess().Kill();
-					}
+					Application.Quit();
 				}
 				GUILayout.EndVertical();
 			GUILayout.EndArea();
@@ -66,13 +59,6 @@ function OnGUI () {
 		}else if(menu=="options"){
 			GUILayout.BeginArea(new Rect(Screen.width/2-115,Screen.height/2-200,230,100),GUI.skin.GetStyle("Box"));
 				GUILayout.BeginVertical();
-					var tmp=showFPS;
-					showFPS=GUILayout.Toggle(showFPS,"Show FPS");
-					if(showFPS&&tmp!=showFPS){
-						FPSText.active=true;
-					}else if(!showFPS&&tmp!=showFPS){
-						FPSText.active=false;
-					}
 					GUILayout.Box("Volume: "+volumeSlider);
 					volumeSlider=Mathf.Round(GUILayout.HorizontalSlider(volumeSlider,0,11));
 					AudioListener.volume=volumeSlider/10;

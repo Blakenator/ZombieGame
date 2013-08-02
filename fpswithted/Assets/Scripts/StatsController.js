@@ -24,9 +24,6 @@ function Update(){
 
 function updateStamina (ammount:float){
 	stamina+=ammount;
-	if(stamina<0){
-		stamina=0;
-	}
 	staminaGUI.text="Stamina: "+Mathf.Round(stamina*10)/10;
 }
 
