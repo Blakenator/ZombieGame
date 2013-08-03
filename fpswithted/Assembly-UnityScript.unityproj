@@ -47,10 +47,10 @@
      <Compile Include="Assets\Scripts\AIGunshot.js" />
      <Compile Include="Assets\Scripts\AiScript.js" />
      <Compile Include="Assets\Scripts\BarrelRotation.js" />
-     <Compile Include="Assets\Scripts\BulletScript.js" />
      <Compile Include="Assets\Scripts\Daynight.js" />
      <Compile Include="Assets\Scripts\DestrOptimizer.js" />
      <Compile Include="Assets\Scripts\DestructibleObject.js" />
+     <Compile Include="Assets\Scripts\FPSText.js" />
      <Compile Include="Assets\Scripts\Flash.js" />
      <Compile Include="Assets\Scripts\Flashlight.js" />
      <Compile Include="Assets\Scripts\Ghosts.js" />
@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\SpawnGun.js" />
      <Compile Include="Assets\Scripts\StatsController.js" />
      <Compile Include="Assets\Scripts\Torch.js" />
+     <Compile Include="Assets\Scripts\Trigger.js" />
      <Compile Include="Assets\Scripts\TurretBase.js" />
      <Compile Include="Assets\Scripts\WeaponPosData.js" />
      <Compile Include="Assets\Scripts\WoodResource.js" />

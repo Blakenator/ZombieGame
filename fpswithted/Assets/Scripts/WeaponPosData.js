@@ -3,7 +3,7 @@ var gunSwitch:GunSwitcher;
 private var posArray = new Hashtable();
 private var rotArray = new Hashtable();
 private var modName:String;
-function Awake () {
+function Start () {
 	var gunArr:GameObject[]=gunSwitch.GetStartingInventory();
 	
 	for(var I in gunArr){

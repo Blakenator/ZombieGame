@@ -8,7 +8,7 @@ function pickUp(){
 	transform.localRotation=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 	rigidbody.isKinematic=true;
 	gameObject.collider.enabled=false;
-	
+	//gameObject.tag="Pickup";
 	gameObject.GetComponent(weaponBase).setEnabled(true);
 	
 	this.enabled=false;

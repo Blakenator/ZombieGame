@@ -20,8 +20,8 @@ function Start () {
 
 function Update () {
 	
-	var speed = walkSpeed;
 	
+	var speed = walkSpeed;
 	var cam : Transform = Camera.main.transform;
 	var hit:RaycastHit;
 	

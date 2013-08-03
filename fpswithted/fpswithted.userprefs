@@ -1,17 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\zombieAI1.js">
-    <Files>
-      <File FileName="Assets\Scripts\zombieAI1.js" Line="60" Column="25" />
-      <File FileName="Assets\Scripts\stayOnGround.js" Line="7" Column="2" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="zombieAI1.js" selected="True" />
+                <Node name="pauseGUI.js" selected="True" />
               </Node>
             </Node>
           </Node>

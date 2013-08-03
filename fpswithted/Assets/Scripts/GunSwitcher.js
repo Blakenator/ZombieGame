@@ -71,19 +71,24 @@ function dropCurrent(){
 	}
 	if(!tmp.collider){
 		//inventoryArray[currentGunIndex].AddComponent("Rigidbody");
-		clone.AddComponent("MeshCollider");
-		var temp:MeshCollider=clone.GetComponent(MeshCollider);
-		try{
-			temp.convex=true;
-		}catch(err){
+		clone.AddComponent("BoxCollider");
+		//var temp:MeshCollider=clone.GetComponent(BoxCollider);
+		//try{
+			//temp.convex=true;
+		//}catch(err){
 			
-		}
+		//}
 	}
+	clone.rigidbody.isKinematic=true;
 	clone.rigidbody.isKinematic=false;
 	clone.gameObject.collider.enabled=true;
-	clone.rigidbody.AddForce(Vector3.forward*10);
+	//clone.rigidbody.AddForce(Vector3.forward*10);
 	
 	clone.SendMessage("setEnabled",false,SendMessageOptions.RequireReceiver);
+	
+	clone.AddComponent("PickUp");
+	clone.tag="Pickup";
+	
 	
 	clone.name=tmp.gameObject.name;
 	
@@ -91,7 +96,7 @@ function dropCurrent(){
 	inventoryArray.RemoveAt(currentGunIndex);
 	switchUp();
 	
-	Debug.Log(inventoryArray.length-1);
+	//Debug.Log(inventoryArray.length-1);
 }
 
 function addObject(obj:GameObject){
@@ -120,7 +125,12 @@ function switchUp(){
 		}
 	}
 }
-
+function ClearInventory(){
+	for(var lcv=0;lcv<inventoryArray.length;lcv++){
+		Destroy(inventoryArray[lcv]);
+		inventoryArray.RemoveAt(lcv);
+	}
+}
 function switchDown(){
 	if(Time.timeScale>0){
 		if(currentGunIndex<=0){
