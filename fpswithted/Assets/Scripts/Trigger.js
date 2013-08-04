@@ -1,24 +1,42 @@
 #pragma strict
 
 //universal vars start
-private var Activated:boolean=false;
+
 var repeatable:boolean=false;
 var willPause:boolean=false;
 var canSkip:boolean=false;
+var allowMove:boolean=false;
+
+private var player:player;
+private var isDone:boolean=false;
+private var playerLeft:boolean=false;
+private var Activated:boolean=false;
 private var skipping:boolean=false;
-private var player:MouseLook;
-private var mainCam:MouseLook;
+private var playerLook:MouseLook;
+
+private var mainCamLook:MouseLook;
 private var playerInTrigger=false;
+private var firstActivate:boolean=false;
+private var playerCam:Camera;
+private var currentCamera:Camera;
 //universal vars end
 
 //Text specific start
 var textPopup:boolean=true;
+var textDelay:float;
 var textArray:String[];
 var textArraySounds:AudioClip[];
-var textDelay:float;
+var textCameraSequence:Camera[];
+
 var textColor:Color;
+
 var textFade:boolean;
 var textFadeSpeed:float;
+
+var textFont:Font;
+var textFontSize:int=10;
+
+
 private var textcenteredStyle:GUIStyle;
 private var textlabelRect:Rect;
 private var textToShow:String;
@@ -38,39 +56,47 @@ private var textArrayLcv:int=0;
 
 function Start () {
 	this.tag=("Trigger");
-	player=GameObject.Find("player").GetComponent(MouseLook);
-	mainCam=GameObject.Find("Main Camera").GetComponent(MouseLook);
-	Debug.Log(textColor.a);
-	Debug.Log(canSkip);
+	playerLook=GameObject.Find("player").GetComponent(MouseLook);
+	player=GameObject.Find("player").GetComponent("player");
+	mainCamLook=GameObject.Find("Main Camera").GetComponent(MouseLook);
+	playerCam=GameObject.Find("Main Camera").GetComponent(Camera);
+	currentCamera=playerCam;
 }
 
 function Update () {
-	if(Activated&&playerInTrigger&&canSkip){
-		if (Input.GetButton("Fire1")&&skipping==false){
-			skipping=true;
-			Skip();
-		}
-		
-		if (Input.GetButtonUp("Fire1")){
-			skipping=false;
+	if((firstActivate&&repeatable==false)||isDone==true){
+	return;
+	}else{
+		if(Activated==true&&playerInTrigger==true&&canSkip==true){
+			if (Input.GetButton("Fire1")&&skipping==false){
+				skipping=true;
+				Skip();
+			}
+			
+			if (Input.GetButtonUp("Fire1")){
+				skipping=false;
+			}
 		}
 	}
 }
 
-function activateTrigger(){//Return true if activated
-	if(Activated==false){
+function activateTrigger(){
+	if((firstActivate&&repeatable==false)||isDone==true){
+		return;
+	}else if(Activated==false||repeatable){
+		Debug.Log("Activated");
 		Activated=true;
-		
+		if(!allowMove){
+			player.CanMove=false;
+		}
 		if(willPause){
 			Time.timeScale = 0.0001;
-			player.isPaused=true;
-			mainCam.isPaused=true;
+			playerLook.isPaused=true;
+			mainCamLook.isPaused=true;
 		}
 		
 		if(textPopup){
 			yield StartCoroutine("textOption");
-		}else{
-		
 		}
 		
 		
@@ -79,37 +105,50 @@ function activateTrigger(){//Return true if activated
 		if(repeatable){
 			Activated=false;
 		}
-		
 	}
+	yield;
 }
 
 
 
 function OnGUI () {
-	if(Activated==true&&textPopup==true){
-    	textcenteredStyle = GUI.skin.GetStyle("Label");
+	if(firstActivate&&repeatable==false)
+	{
+	return;
+	}
+	else if(Activated==true&&textPopup==true)
+	{
+		textcenteredStyle = GUI.skin.GetStyle("Label");
 		textcenteredStyle.alignment = TextAnchor.MiddleCenter;
 		textcenteredStyle.normal.textColor=textColor;
+		textcenteredStyle.fontSize=textFontSize;
 		textlabelRect = GUILayoutUtility.GetRect(new GUIContent(textToShow), "label");
 		textlabelRect.height=Screen.height;
 		textlabelRect.width=Screen.width;
 		textlabelRect.center=Vector2 (Screen.width/2, Screen.height/2-20);
 		GUI.backgroundColor=Color.black;
-    	GUI.Label(textlabelRect,textToShow,textcenteredStyle);
-    }
+		GUI.Label(textlabelRect,textToShow,textcenteredStyle);
+	}
 }
 
 
 function textOption(){
-	Debug.Log("Start Text");
-	
+	currentCamera=textCameraSequence[textArrayLcv];
+	currentCamera.enabled=true;
 	for(textArrayLcv=textArrayLcv;textArrayLcv<textArray.length;textArrayLcv++){
 		yield;
 		if(textArray[textArrayLcv]==null){
 			Skip();
 		}
+		if(willPause){
+			Time.timeScale = 0.0001;
+		}
+		if(textArrayLcv>1&&textCameraSequence.Length>0&&!(textArrayLcv>textCameraSequence.Length-1)){
+			currentCamera.enabled=false;
+			currentCamera=textCameraSequence[textArrayLcv];
+			currentCamera.enabled=true;
+		}
 		
-		Time.timeScale = 0.0001;
 		textToShow=textArray[textArrayLcv];
 		
 		if(textFade){
@@ -127,20 +166,43 @@ function textOption(){
 	Reset();
 }
 function Reset(){
-	player.isPaused=false;
-	mainCam.isPaused=false;
+	playerLook.isPaused=false;
+	mainCamLook.isPaused=false;
+	currentCamera.enabled=false;
+	playerCam.enabled=true;
 	
-	textArrayLcv=0;
     Time.timeScale = 1.0;
+    if(textArrayLcv>=textArray.length){
+    	
+    	isDone=true;
+    }
+    if(isDone){
+    	//GameObject.Find("player").GetComponent(player).CanMove=true;
+    	player.CanMove=true;
+    }
+    
+    if(repeatable){
+		Activated=false;
+		isDone=false;
+		textArrayLcv=0;
+	}
 }
+
 function OnTriggerEnter (other : Collider) {
 	if(other.CompareTag("Player")){
 		playerInTrigger=true;
+		yield WaitForSeconds(0.01);
 	}
 }
 function OnTriggerExit (other : Collider) {
 	if(other.CompareTag("Player")){
 		playerInTrigger=false;
+		if(isDone==true){
+			firstActivate=true;
+		}else{
+		
+		}
+		
 	}
 }
 function Skip(){
@@ -148,15 +210,12 @@ function Skip(){
 	textArrayLcv++;
 	if(textArrayLcv<textArray.Length){
 		textColor.a=1;
-		StopCoroutine("FadeOut");
-		StopCoroutine("FadeIn");
-		StopCoroutine("textOption");
-		StartCoroutine("textOption");
+		StopAllCoroutines();
+		Activated=false;
+		activateTrigger();
 	}else{
 		textColor.a=0;
-		StopCoroutine("FadeOut");
-		StopCoroutine("FadeIn");
-		StopCoroutine("textOption");
+		StopAllCoroutines();
 		Reset();
 	}
 }

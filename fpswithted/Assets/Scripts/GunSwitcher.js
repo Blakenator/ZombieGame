@@ -5,13 +5,16 @@ private var inventoryArray:Array;
 private var last:int;
 var hands:GameObject;
 
-function Start () {
+function Awake () {
 	inventoryArray=startingInventory.Clone();
 	allButCurrent();
+	
 }
 function getCurrGunIndex(){
 	return currentGunIndex;
 }
+
+
 function allButCurrent(){
 	if(inventoryArray.length>0){
 		hands.active=false;
@@ -85,8 +88,10 @@ function dropCurrent(){
 	//clone.rigidbody.AddForce(Vector3.forward*10);
 	
 	clone.SendMessage("setEnabled",false,SendMessageOptions.RequireReceiver);
+	if(!tmp.GetComponent("PickUp")){
+		clone.AddComponent("PickUp");
+	}
 	
-	clone.AddComponent("PickUp");
 	clone.tag="Pickup";
 	
 	
@@ -101,6 +106,7 @@ function dropCurrent(){
 
 function addObject(obj:GameObject){
 	inventoryArray.push(obj);
+	switchUp();
 }
 function FixedUpdate () {
 	if(!last==currentGunIndex){
@@ -128,9 +134,11 @@ function switchUp(){
 function ClearInventory(){
 	for(var lcv=0;lcv<inventoryArray.length;lcv++){
 		Destroy(inventoryArray[lcv]);
-		inventoryArray.RemoveAt(lcv);
 	}
+	
+	inventoryArray.clear();
 }
+
 function switchDown(){
 	if(Time.timeScale>0){
 		if(currentGunIndex<=0){

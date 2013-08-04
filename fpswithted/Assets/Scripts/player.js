@@ -1,9 +1,13 @@
 #pragma strict
+public static var CanMove:boolean=true;
+
 var health:double=100.0;
 var gunSwitcherObject:GameObject;
 var runSpeed:float=15;
 var walkSpeed:float=10;
 var staminaRegenRate:double=0.5;
+var cam:Camera;
+
 private var chMotor: CharacterMotor;
 private var ch: CharacterController;
 private var stats:StatsController;
@@ -19,10 +23,14 @@ function Start () {
 
 
 function Update () {
-	
+	if(!CanMove){
+		chMotor.canControl=false;
+	}else{
+		chMotor.canControl=true;
+	}
 	
 	var speed = walkSpeed;
-	var cam : Transform = Camera.main.transform;
+	//var cam : Transform = Camera.main.transform;
 	var hit:RaycastHit;
 	
 	if(Input.GetAxis("Mouse ScrollWheel")>0){
@@ -32,10 +40,10 @@ function Update () {
 	}
 	
 	
-	Debug.DrawRay(cam.position, cam.forward*6,Color.red);
+	Debug.DrawRay(cam.transform.position, cam.transform.forward*6,Color.red);
 	
 	if (Input.GetButtonDown("Pick Up")){
-		if(Physics.Raycast (cam.position, cam.forward, hit, 6)){
+		if(Physics.Raycast (cam.transform.position, cam.transform.forward, hit, 6)){
 			if(hit.transform.gameObject.CompareTag("Pickup")){
 				Debug.Log("HIT AN OBJECT!");
 				
