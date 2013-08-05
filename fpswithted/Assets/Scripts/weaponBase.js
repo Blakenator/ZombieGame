@@ -112,7 +112,9 @@ function spawnBullet(){
   			if(hit.collider.CompareTag("enemy"))
 	  		{
 	    		Debug.Log("HIT");
-	            GameObject.Destroy(hit.collider.gameObject);
+	    		Debug.Log(hit.transform.gameObject);
+	            //GameObject.Destroy(hit.collider.gameObject);
+	            hit.transform.gameObject.GetComponent("zombieAI1").RagdollEnemy();
 	    	}
 	    	//Debug.Log(hit.collider.tag);
 	    	if(hit.collider.CompareTag("destructible")&&!hit.rigidbody){

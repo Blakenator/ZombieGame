@@ -3,6 +3,8 @@ import Pathfinding;
 
 var targetPosition : Vector3;
 var movePosition : Vector3;
+
+
 private var seeker:Seeker;
 //private var controller:CharacterController;
 
@@ -26,6 +28,7 @@ private var wanderstart:boolean=true;
 var canRefresh:boolean=true;
 var Mover:ZMover;
 var animator:Animation;
+var ragdoll:GameObject;
 
 private var lastPos:Vector3;
 
@@ -57,10 +60,10 @@ function Update () {
 		lastPos=targetPosition;
 		targetPosition=player.transform.position;
 		distance=Vector3.Distance(gameObject.transform.position, targetPosition);
-		//if(renderer.isVisible){
+		if(renderer.isVisible){
 			transform.rotation.x = 0;
 			transform.rotation.z = 0;
-		//}
+		}
 		
 		CheckValues();
 		Move();
@@ -177,7 +180,7 @@ function Move(){
 	
 	
 	var dir2:Vector3;
-	if(currentWaypoint>path.vectorPath.Count-1)
+	if(currentWaypoint>=path.vectorPath.Count-1)
 	{
 		dirToMove=(movePosition-transform.position).normalized;
 		dirToMove*=Speed;
@@ -209,7 +212,6 @@ function Move(){
 	
 	
 	if((renderer.isVisible)&&(distance<50)){
-		Debug.Log("I SEE YOU!");
 		SmoothLookAt(dir2,200.0);
 	}
 	
@@ -235,4 +237,9 @@ function Attack(){
 	animator.animation.Play("Attack",PlayMode.StopAll);
 	yield WaitForSeconds(0.25);
 	yield;
+}
+
+function RagdollEnemy(){
+	var clone:GameObject =Instantiate(ragdoll,transform.position,transform.rotation);
+	Destroy(gameObject);
 }
