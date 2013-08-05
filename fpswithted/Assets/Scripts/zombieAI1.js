@@ -12,7 +12,7 @@ private var player:Transform;
 var engagerange:int;
 
 var nextWaypointDistance:float=5.0;
-private var currentWaypoint:int=0;
+var currentWaypoint:int=0;
 
 private var distance:float;
 
@@ -25,6 +25,7 @@ private var wanderstart:boolean=true;
 
 var canRefresh:boolean=true;
 var Mover:ZMover;
+var animator:Animation;
 
 private var lastPos:Vector3;
 
@@ -43,7 +44,7 @@ function Start () {
 	
 	
 	//controller.Move(Vector3(1,0,0)*Time.fixedDeltaTime);
-	Mover.move(Vector3(0,0,0)*Time.fixedDeltaTime);
+	Mover.move(Vector3(0,0,0)*Time.deltaTime);
 	
 	ForceWander();
 	wanderstart=false;
@@ -56,10 +57,10 @@ function Update () {
 		lastPos=targetPosition;
 		targetPosition=player.transform.position;
 		distance=Vector3.Distance(gameObject.transform.position, targetPosition);
-		if(renderer.isVisible){
+		//if(renderer.isVisible){
 			transform.rotation.x = 0;
 			transform.rotation.z = 0;
-		}
+		//}
 		
 		CheckValues();
 		Move();
@@ -85,7 +86,7 @@ function OnPathComplete(newPath:Path)
 function SmoothLookAt(target:Vector3,speed:float)
 {
     var dir:Vector3 = target - transform.position;
-    var targetRotation:Quaternion = Quaternion.LookRotation(dir);
+    var targetRotation:Quaternion = Quaternion.LookRotation(dir,Vector3.up);
     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * speed);
 }
 
@@ -106,7 +107,6 @@ function CheckValues(){
 		return;
 	}
 }
-
 
 function CreateNewPlayerPath (){
 	canRefresh=false;
@@ -129,7 +129,6 @@ function ForceWander(){
 	seeker.StartPath(transform.position,movePosition,OnPathComplete);
 }
 
-
 function CreateNewWander (){
 	
 	if(wanderstart){
@@ -140,7 +139,6 @@ function CreateNewWander (){
 	}
 	if(currentWaypoint>=path.vectorPath.Count-1)
 	{
-		
 		movePosition=Vector3(Random.Range(-15,15),-1,Random.Range(-15,15));
 		
 		var plusminus:int=Random.Range(1,3);
@@ -168,28 +166,34 @@ function Move(){
 	{
 		return; //path is null!
 	}
+	if(distance<2){
+		SmoothLookAt(player.position,300.0);
+		yield StartCoroutine("Attack");
+		return;
+	}
+	
+	animator.Play("run",PlayMode.StopAll);
 	
 	
-	if(currentWaypoint>=path.vectorPath.Count-1)
+	
+	var dir2:Vector3;
+	if(currentWaypoint>path.vectorPath.Count-1)
 	{
-		dirToMove=(path.vectorPath[path.vectorPath.Count-1]-transform.position).normalized;
-		
-		//controller.Move(dirToMove*Time.fixedDeltaTime);
-		
-		Mover.move(dirToMove*Time.fixedDeltaTime);
-		
-		//movePosition=targetPosition;
-		//if(distance<=engagerange){
-			//seeker.StartPath (transform.position,movePosition, OnPathComplete);
-		//}
-		return; //do something... nothing for now.
+		dirToMove=(movePosition-transform.position).normalized;
+		dirToMove*=Speed;
+		Mover.move(dirToMove*Time.deltaTime);
+		dir2=movePosition;
+		if((renderer.isVisible)&&(distance<50)){
+			SmoothLookAt(dir2,200.0);
+		}
+		return; 	//do something... nothing for now.
 	}
 	
 	
 	dirToMove=(path.vectorPath[currentWaypoint]-transform.position).normalized;
 	
-	var dir2:Vector3;
-	if(currentWaypoint+1>=path.vectorPath.Count-1)
+	
+	if(currentWaypoint+1>=path.vectorPath.Count)
 	{
 		dir2=movePosition;
 	}
@@ -198,17 +202,15 @@ function Move(){
 		dir2=(path.vectorPath[currentWaypoint+1]);
 	}
 	
-	dirToMove*=Speed;
-	
-	
 	//controller.Move(dirToMove*Time.fixedDeltaTime);
 	
+	dirToMove*=Speed;
+	Mover.move(dirToMove*Time.deltaTime);
 	
 	
-	Mover.move(dirToMove*Time.fixedDeltaTime);
-
 	if((renderer.isVisible)&&(distance<50)){
-		SmoothLookAt(dir2,150.0);
+		Debug.Log("I SEE YOU!");
+		SmoothLookAt(dir2,200.0);
 	}
 	
     
@@ -227,4 +229,10 @@ function HasMoved(){
 	}else{
 		return false;
 	}
+}
+
+function Attack(){
+	animator.animation.Play("Attack",PlayMode.StopAll);
+	yield WaitForSeconds(0.25);
+	yield;
 }

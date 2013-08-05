@@ -1,9 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Trigger.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\zombieAI1.js">
     <Files>
-      <File FileName="Assets\Scripts\Trigger.js" Line="146" Column="96" />
-      <File FileName="Assets\Scripts\player.js" Line="2" Column="8" />
+      <File FileName="Assets\Scripts\zombieAI1.js" Line="187" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,7 +21,7 @@
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Trigger.js" selected="True" />
+                <Node name="zombieAI1.js" selected="True" />
               </Node>
             </Node>
           </Node>

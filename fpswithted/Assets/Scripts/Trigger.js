@@ -67,7 +67,7 @@ function Update () {
 	if((firstActivate&&repeatable==false)||isDone==true){
 	return;
 	}else{
-		if(Activated==true&&playerInTrigger==true&&canSkip==true){
+		if(Activated==true&&canSkip==true){//&&playerInTrigger==true&&canSkip==true){
 			if (Input.GetButton("Fire1")&&skipping==false){
 				skipping=true;
 				Skip();
