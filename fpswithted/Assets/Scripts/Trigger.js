@@ -112,7 +112,7 @@ function activateTrigger(){
 
 
 function OnGUI () {
-	if(firstActivate&&repeatable==false)
+	if((firstActivate&&repeatable==false)||isDone)
 	{
 	return;
 	}
@@ -133,8 +133,8 @@ function OnGUI () {
 
 
 function textOption(){
-	currentCamera=textCameraSequence[textArrayLcv];
-	currentCamera.enabled=true;
+	//currentCamera=textCameraSequence[textArrayLcv];
+	//currentCamera.enabled=true;
 	for(textArrayLcv=textArrayLcv;textArrayLcv<textArray.length;textArrayLcv++){
 		yield;
 		if(textArray[textArrayLcv]==null){
@@ -143,13 +143,15 @@ function textOption(){
 		if(willPause){
 			Time.timeScale = 0.0001;
 		}
-		if(textArrayLcv>1&&textCameraSequence.Length>0&&!(textArrayLcv>textCameraSequence.Length-1)){
+		if(textArrayLcv>1&&textCameraSequence.Length>0&&!(textArrayLcv>textCameraSequence.Length-1)&&!(textCameraSequence[textArrayLcv]==null)){
 			currentCamera.enabled=false;
 			currentCamera=textCameraSequence[textArrayLcv];
 			currentCamera.enabled=true;
 		}
+		if(!(textArray[textArrayLcv]==null)){
+			textToShow=textArray[textArrayLcv];
+		}
 		
-		textToShow=textArray[textArrayLcv];
 		
 		if(textFade){
 			yield StartCoroutine("FadeIn");
@@ -162,6 +164,7 @@ function textOption(){
 			yield StartCoroutine("FadeOut");
 		}
 	}
+	isDone=true;
 	
 	Reset();
 }

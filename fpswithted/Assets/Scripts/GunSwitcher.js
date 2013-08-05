@@ -74,18 +74,18 @@ function dropCurrent(){
 	}
 	if(!tmp.collider){
 		//inventoryArray[currentGunIndex].AddComponent("Rigidbody");
-		clone.AddComponent("BoxCollider");
-		//var temp:MeshCollider=clone.GetComponent(BoxCollider);
-		//try{
-			//temp.convex=true;
-		//}catch(err){
+		//clone.AddComponent("BoxCollider");
+		clone.AddComponent("MeshCollider");
+		var temp:MeshCollider=clone.GetComponent(MeshCollider);
+		try{
+			temp.convex=true;
+		}catch(err){
 			
-		//}
+		}
 	}
-	clone.rigidbody.isKinematic=true;
 	clone.rigidbody.isKinematic=false;
 	clone.gameObject.collider.enabled=true;
-	//clone.rigidbody.AddForce(Vector3.forward*10);
+	clone.rigidbody.AddForce(clone.transform.forward*20);
 	
 	clone.SendMessage("setEnabled",false,SendMessageOptions.RequireReceiver);
 	if(!tmp.GetComponent("PickUp")){

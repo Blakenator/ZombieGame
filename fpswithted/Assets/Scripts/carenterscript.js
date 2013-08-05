@@ -36,9 +36,7 @@ function Start(){
 	
 	 
 	
-	//Car.GetComponent(AlinCAR).enabled = false;
 	
-	//Car.GetComponent(AudioSource).enabled = false;
 	
 	PlayerCamera.enabled = true;
 	

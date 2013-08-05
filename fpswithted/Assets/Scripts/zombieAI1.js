@@ -60,7 +60,7 @@ function Update () {
 		lastPos=targetPosition;
 		targetPosition=player.transform.position;
 		distance=Vector3.Distance(gameObject.transform.position, targetPosition);
-		if(renderer.isVisible){
+		if(renderer.isVisible&&distance<75){
 			transform.rotation.x = 0;
 			transform.rotation.z = 0;
 		}
@@ -102,7 +102,7 @@ function CheckValues(){
 	{
 		CreateNewWander();
 		return;
-	}else if(HasMoved()){
+	}else if(HasMoved()||distance<engagerange){
 		wanderstart=true;
 		if(canRefresh){
 			StartCoroutine("CreateNewPlayerPath");
@@ -171,12 +171,15 @@ function Move(){
 	}
 	if(distance<2){
 		SmoothLookAt(player.position,300.0);
-		yield StartCoroutine("Attack");
+		//yield StartCoroutine("Attack");
+		Attack();
 		return;
 	}
-	
-	animator.Play("run",PlayMode.StopAll);
-	
+	if(renderer.isVisible&&distance<75){
+		animator.Play("run",PlayMode.StopAll);
+	}else{
+		animator.Stop();
+	}
 	
 	
 	var dir2:Vector3;

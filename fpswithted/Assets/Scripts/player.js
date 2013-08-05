@@ -90,6 +90,8 @@ function Update () {
 	chMotor.movement.maxForwardSpeed = speed;
 }
 
+//Change to fit new stats
+
 function addhealth(num:double)
 {
 	health=health+num;

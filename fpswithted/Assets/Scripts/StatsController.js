@@ -1,25 +1,38 @@
 #pragma strict
 
 //in the updates a negative value lowers the stat
-private var stamina:float=100.0;
-private var health;
+private var stamina:double=100.0;
+private var health:float =100.0;
 private var hunger:float=100.0;
 private var thirst:float=100.0;
 
-var staminaGUI:GUIText;
-var healthGUI:GUIText;
-var hungerGUI:GUIText;
-var thirstGUI:GUIText;
+var size:Vector2;
 
-function Start(){	
-	staminaGUI.text="Stamina: "+stamina;
-	hungerGUI.text="Hunger: "+hunger;
-	thirstGUI.text="Thirst: "+thirst;
-}
+var healthpos:Vector2;
+var healthBarFull:Texture2D;
+var healthBarEmpty:Texture2D;
+
+var stampos:Vector2;
+var stamBarFull:Texture2D;
+var stamBarEmpty:Texture2D;
+
+var hungerpos:Vector2;
+var hungerBarFull:Texture2D;
+var hungerBarEmpty:Texture2D;
+
+var thirstpos:Vector2;
+var thirstBarFull:Texture2D;
+var thirstBarEmpty:Texture2D;
+
 function getStamina(){
 	return stamina;
 }
 function Update(){
+	updateHunger(-0.1*Time.deltaTime);
+	updateThirst(-0.1*Time.deltaTime);
+	if(hunger<=0||thirst<=0){
+		updateHealth(-0.1*Time.deltaTime);
+	}
 }
 
 function updateStamina (ammount:float){
@@ -27,20 +40,77 @@ function updateStamina (ammount:float){
 	if(stamina<0){
 		stamina=0;
 	}
-	staminaGUI.text="Stamina: "+Mathf.Round(stamina*10)/10;
+	//staminaGUI.text="Stamina: "+Mathf.Round(stamina*10)/10;
 }
 
 function updateHealth (ammount:float){
-	//health+=ammount;
-	//healthGUI.text="Stamina: "+stamina;
+	health+=ammount;
+	if(health<0){
+		health=0;
+	}
 }
 
 function updateHunger (ammount:float){
 	hunger+=ammount;
-	hungerGUI.text="Hunger: "+hunger;
+	if(hunger<0){
+		hunger=0;
+		
+	}
 }
 
 function updateThirst (ammount:float){
 	thirst+=ammount;
-	thirstGUI.text="Thirst: "+thirst;
+	if(thirst<0){
+		thirst=0;
+	}
 }
+
+
+function OnGUI()
+{
+	//Health
+	// draw the background:
+    GUI.BeginGroup (new Rect (healthpos.x, healthpos.y, size.x, size.y));
+        GUI.Box (Rect (0,0, size.x, size.y),healthBarEmpty);
+    	// draw the filled-in part:
+        GUI.BeginGroup (new Rect (0, 0, size.x * (health/100), size.y));
+            GUI.Box (Rect (0,0, size.x, size.y),healthBarFull);
+        GUI.EndGroup ();
+    GUI.EndGroup ();
+ 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),healthBarEmpty);
+	//end health
+	
+	//staminia
+	GUI.BeginGroup (new Rect (stampos.x, stampos.y, size.x, size.y));
+        GUI.Box (Rect (0,0, size.x, size.y),stamBarEmpty);
+        // draw the filled-in part:
+        GUI.BeginGroup (new Rect (0, 0, size.x * (stamina/100), size.y));
+            GUI.Box (Rect (0,0, size.x, size.y),stamBarFull);
+        GUI.EndGroup ();
+    GUI.EndGroup ();
+ 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),stamBarEmpty);
+	//end staminia
+	
+	//hunger
+	GUI.BeginGroup (new Rect (hungerpos.x, hungerpos.y, size.x, size.y));
+        GUI.Box (Rect (0,0, size.x, size.y),hungerBarEmpty);
+        // draw the filled-in part:
+        GUI.BeginGroup (new Rect (0, 0, size.x * (hunger/100), size.y));
+            GUI.Box (Rect (0,0, size.x, size.y),hungerBarFull);
+        GUI.EndGroup ();
+    GUI.EndGroup ();
+ 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),hungerBarEmpty);
+	//end hunger
+	
+	
+	//thirst
+	GUI.BeginGroup (new Rect (thirstpos.x, thirstpos.y, size.x, size.y));
+        GUI.Box (Rect (0,0, size.x, size.y),thirstBarEmpty);
+        // draw the filled-in part:
+        GUI.BeginGroup (new Rect (0, 0, size.x * (thirst/100), size.y));
+            GUI.Box (Rect (0,0, size.x, size.y),thirstBarFull);
+        GUI.EndGroup ();
+    GUI.EndGroup ();
+ 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),thirstBarEmpty);
+	//end thirst
+} 

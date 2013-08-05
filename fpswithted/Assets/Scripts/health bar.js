@@ -6,7 +6,7 @@ var progressBarFull : Texture2D;
 var player:player;
 
 
-private var barDisplay : double ;
+private var barDisplay : double;
 
 //barDisplay=player.gethealth();
 
@@ -38,5 +38,5 @@ function Update()
     // however you would set this value based on your desired display
     // eg, the loading progress, the player's health, or whatever.
     
-    barDisplay = player.gethealth()/100;
+    barDisplay = player.gethealth();///100;
 }

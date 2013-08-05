@@ -2,8 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\zombieAI1.js">
     <Files>
-      <File FileName="Assets\Scripts\weaponBase.js" Line="117" Column="78" />
-      <File FileName="Assets\Scripts\zombieAI1.js" Line="242" Column="25" />
+      <File FileName="Assets\Scripts\zombieAI1.js" Line="181" Column="19" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
