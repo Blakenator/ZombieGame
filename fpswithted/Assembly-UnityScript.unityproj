@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Torch.js" />
      <Compile Include="Assets\Scripts\Trigger.js" />
      <Compile Include="Assets\Scripts\TurretBase.js" />
+     <Compile Include="Assets\Scripts\TutorialFinish.js" />
      <Compile Include="Assets\Scripts\TutorialStart.js" />
      <Compile Include="Assets\Scripts\WeaponPosData.js" />
      <Compile Include="Assets\Scripts\WoodResource.js" />

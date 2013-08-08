@@ -1,9 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\zombieAI1.js">
-    <Files>
-      <File FileName="Assets\Scripts\zombieAI1.js" Line="181" Column="19" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -21,7 +18,14 @@
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="zombieAI1.js" selected="True" />
+                <Node name="Torch.js" selected="True" />
+              </Node>
+              <Node name="Standard Assets" expanded="True">
+                <Node name="Projectors" expanded="True">
+                  <Node name="Sources" expanded="True">
+                    <Node name="Shaders" expanded="True" />
+                  </Node>
+                </Node>
               </Node>
             </Node>
           </Node>

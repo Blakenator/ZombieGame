@@ -24,3 +24,8 @@ function setEnabled(val:boolean){
 function swing(){
 	animation.Play("sledge");
 }
+function OnCollisionEnter(coll:Collision){
+	if(coll.gameObject.CompareTag("enemy")&&swinging){
+		coll.gameObject.GetComponent(zombieAI1).RagdollEnemy();
+	}
+}

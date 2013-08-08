@@ -29,14 +29,19 @@ function FixedUpdate () {
 	        if (!hit){
 	            continue;
 	        }
+	        if(hit.CompareTag("enemy")){
+	        	hit.GetComponent(zombieAI1).RagdollEnemy();
+		        if (hit.rigidbody&&hit.name!=name){
+		            hit.rigidbody.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 0);
+		        }
+		        return;
+	        }
 	        if(hit.collider.CompareTag("destructible")&&!hit.rigidbody&&hit.collider.transform.childCount==0){
 	    		hit.collider.gameObject.SendMessage("addHealth",-damageToDestructibles,SendMessageOptions.RequireReceiver);
 	    		explosionForce=origForce*3;
 	    		
-	    		//Debug.Log(colliders.Length);
 	    	}
 	        if (hit.rigidbody&&hit.name!=name){
-	        	//Debug.Log(explosionForce);
 	            hit.rigidbody.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 0);
 	        }
 	    }

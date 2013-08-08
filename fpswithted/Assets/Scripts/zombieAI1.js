@@ -100,6 +100,11 @@ function CheckValues(){
 	}
 	if(distance>=engagerange)//if out of range
 	{
+		rigidbody.isKinematic=false;
+		
+		if(distance>engagerange*2){
+			rigidbody.isKinematic=true;
+		}
 		CreateNewWander();
 		return;
 	}else if(HasMoved()||distance<engagerange){
@@ -245,4 +250,5 @@ function Attack(){
 function RagdollEnemy(){
 	var clone:GameObject =Instantiate(ragdoll,transform.position,transform.rotation);
 	Destroy(gameObject);
+	Destroy(clone,15);
 }

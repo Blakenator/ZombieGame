@@ -9,7 +9,7 @@ function OnGUI(){
 		GUILayout.BeginArea(new Rect(Screen.width/2-115,Screen.height/2+150,230,150));
 			GUILayout.BeginVertical("box",GUILayout.ExpandHeight(true));
 				if(GUILayout.Button("Let's Go Kill Some Zombies!",GUILayout.ExpandHeight(true))){
-					Application.LoadLevel(1);
+					Application.LoadLevel(Application.loadedLevel+1);
 				}
 			
 				if(GUILayout.Button("Options",GUILayout.ExpandHeight(true))){

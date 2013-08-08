@@ -7,12 +7,12 @@ var startingPos:Transform;
 var resourceMargin:Vector2;
 var spacing:Vector3;
 var resourceClusterAmount:int;
-var probabilityOfBuilding:double;
+var probabilityOfBuilding:int;
 var maxBuildingHeight:int;
 var targetGUI:GUIText;
 private var curr:double;
 private var tot:double;
-private var realprob:Vector2;
+//private var realprob:Vector2;
 private var done:boolean;
 private var x:int;
 private var y:int;
@@ -30,21 +30,22 @@ function FixedUpdate () {
 		//for(var f:GameObject in arr){
 		//	f.active=true;
 		//}
-		Application.LoadLevel(1);
+		Application.LoadLevel(Application.loadedLevel+1);
 	}
 	//create a map
 	if(waitr>1){
 		tot=size.x*size.y;
-		//get prob range
+		/*//get prob range
 		var s=probabilityOfBuilding.ToString().Split(".".ToCharArray()[0])[1];
 		realprob.x=int.Parse(s);
-		realprob.y=10^s.ToCharArray().length;
+		realprob.y=10^s.ToCharArray().length;*/
 		//Debug.Log(x+"|"+y);
 		if(x<size.x){
 			if(y<size.y){
-				if(Random.Range(0,realprob.y)<=realprob.y){
+				if(Random.Range(0,10)<=probabilityOfBuilding){
+				//if(Random.Range(0,realprob.y)<=realprob.y){
 					//make a building
-					var buildHeight=Random.Range(0,maxBuildingHeight);
+					var buildHeight=Random.Range(1,maxBuildingHeight);
 					var buildType=Random.Range(0,buildingPrefab.length-1);
 					for(var i=0;i<buildHeight;i++){
 						var floor:GameObject =Instantiate(buildingPrefab[buildType],Vector3(spacing.x*x+startingPos.position.x,startingPos.position.y+i*spacing.z,startingPos.position.z+spacing.y*y),buildingPrefab[buildType].transform.rotation);
@@ -65,9 +66,11 @@ function FixedUpdate () {
 						pos.y+=Random.Range(-spacing.y/2+resourceMargin.y,spacing.y/2-resourceMargin.y);
 						var resourceType=Random.Range(0,resourcePrefab.Length-1);
 						
-						var clone:GameObject=Instantiate(resourcePrefab[resourceType],pos,resourcePrefab[buildType].transform.rotation);
+						var clone:GameObject=Instantiate(resourcePrefab[resourceType],Vector3(pos.x,startingPos.position.y-1,pos.y),resourcePrefab[buildType].transform.rotation);
 						clone.transform.Rotate(Vector3(0,Random.Range(0,360),0));
 						Debug.Log("made it");
+						
+						DontDestroyOnLoad(clone);
 						i2++;
 					}
 				}

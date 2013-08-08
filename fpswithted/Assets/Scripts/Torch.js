@@ -18,9 +18,6 @@ function setEnabled(val:boolean){
 	isEnabled=val;
 }
 
-function Start () {
-
-}
 
 function Update () {
 	if(isEnabled){

@@ -5,6 +5,9 @@ var woodValue:double;
 var pickupRange:double;
 var player:GameObject;
 
+function Start(){
+	player=GameObject.Find("player");
+}
 function separate(){
 	var clone:GameObject=Instantiate(gameObject,gameObject.transform.position,gameObject.transform.rotation);
 	clone.AddComponent("Rigidbody");
