@@ -4,39 +4,15 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Assembly-CSharp-firstpass" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Plugins" expanded="True">
-                <Node name="AstarPathfindingProject" expanded="True">
-                  <Node name="Core" expanded="True">
-                    <Node name="AI" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Torch.js" selected="True" />
-              </Node>
-              <Node name="Standard Assets" expanded="True">
-                <Node name="Projectors" expanded="True">
-                  <Node name="Sources" expanded="True">
-                    <Node name="Shaders" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
+              <Node name="Scripts" expanded="True" />
             </Node>
           </Node>
-          <Node name="Assembly-UnityScript-firstpass" expanded="True">
+          <Node name="Assembly-UnityScript-Editor" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Standard Assets" expanded="True">
-                <Node name="Character Controllers" expanded="True">
-                  <Node name="Sources" expanded="True">
-                    <Node name="Scripts" expanded="True" />
-                  </Node>
-                </Node>
+              <Node name="Editor" expanded="True">
+                <Node name="Builder.js" selected="True" />
               </Node>
             </Node>
           </Node>

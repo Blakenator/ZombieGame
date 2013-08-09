@@ -18,6 +18,7 @@ function Update () {
 	text.text="Tutorial Progress: "+Mathf.Round(progress/total*100)+"%";
 	if(progress/total>=0.75){
 		finish();
+		
 	}
 }
 
