@@ -1,0 +1,241 @@
+Initialize engine version: 4.1.5f1 (ed5ea3281df6)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.2641]
+    Renderer: NVIDIA GeForce GT 630M  
+    Vendor:   NVIDIA
+    VRAM:     978 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Ionic.Zip.Reduced.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\JsonFx.Json.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\JsonFx.Json.dll into Unity Child Domain
+- Completed reload, in  0.060 seconds
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\UnityScript.Lang.dll (this message is harmless)
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\Boo.Lang.dll (this message is harmless)
+System memory in use before: 10.2 MB.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 10.1 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1593.
+Total: 1.190065 ms (FindLiveObjects: 0.032127 ms CreateObjectMapping: 0.017402 ms MarkObjects: 0.448895 ms  DeleteObjects: 0.013386 ms)
+
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-5\build_x86-5_Data\Managed\System.Core.dll (this message is harmless)
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 99.5 MB.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 104.1 MB.
+
+Unloading 1193 unused Assets to reduce memory usage. Loaded Objects now: 225242.
+Total: 80.412163 ms (FindLiveObjects: 11.015352 ms CreateObjectMapping: 0.360990 ms MarkObjects: 67.019356 ms  DeleteObjects: 1.330623 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 98.8 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 104.0 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 225235.
+Total: 78.480927 ms (FindLiveObjects: 10.852929 ms CreateObjectMapping: 0.331094 ms MarkObjects: 66.229553 ms  DeleteObjects: 0.368576 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 98.8 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 104.1 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 225235.
+Total: 78.590698 ms (FindLiveObjects: 11.238461 ms CreateObjectMapping: 0.287811 ms MarkObjects: 66.031876 ms  DeleteObjects: 0.360544 ms)
+
+switchdown
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GunSwitcher:switchDown() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\GunSwitcher.js:129)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, SendMessageOptions)
+player:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:31)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:87)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:87)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+yes
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+SpawnGun:spawnObject() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\SpawnGun.js:47)
+SpawnGun:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\SpawnGun.js:31)
+ 
+(Filename: C Line: 0)
+
+yes
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+SpawnGun:spawnObject() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\SpawnGun.js:49)
+SpawnGun:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\SpawnGun.js:31)
+ 
+(Filename: C Line: 0)
+
+spawn
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+SpawnGun:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\SpawnGun.js:32)
+ 
+(Filename: C Line: 0)
+
+9.638584
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:87)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+3.380088
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:87)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+

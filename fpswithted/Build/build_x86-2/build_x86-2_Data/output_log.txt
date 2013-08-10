@@ -1,0 +1,732 @@
+Initialize engine version: 4.1.5f1 (ed5ea3281df6)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.2641]
+    Renderer: NVIDIA GeForce GT 630M  
+    Vendor:   NVIDIA
+    VRAM:     978 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Ionic.Zip.Reduced.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\JsonFx.Json.dll (this message is harmless)
+Loading C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\JsonFx.Json.dll into Unity Child Domain
+- Completed reload, in  0.062 seconds
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\UnityScript.Lang.dll (this message is harmless)
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\Boo.Lang.dll (this message is harmless)
+Script error: OnCollisionEnter
+This message parameter has to be of type: Collision
+The message will be ignored.
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Mono/MonoScriptCache.cpp Line: 275)
+
+System memory in use before: 10.2 MB.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 10.1 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1595.
+Total: 1.178017 ms (FindLiveObjects: 0.039267 ms CreateObjectMapping: 0.022310 ms MarkObjects: 0.425692 ms  DeleteObjects: 0.012494 ms)
+
+Platform assembly: C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Build\build_x86-2\build_x86-2_Data\Managed\System.Core.dll (this message is harmless)
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.6 MB.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 69.8 MB.
+
+Unloading 1193 unused Assets to reduce memory usage. Loaded Objects now: 211169.
+Total: 88.192879 ms (FindLiveObjects: 10.923878 ms CreateObjectMapping: 0.449788 ms MarkObjects: 74.869675 ms  DeleteObjects: 1.268153 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.0 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 69.9 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 87.551659 ms (FindLiveObjects: 10.224207 ms CreateObjectMapping: 0.263268 ms MarkObjects: 76.019585 ms  DeleteObjects: 0.331094 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.3 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.2 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 86.644951 ms (FindLiveObjects: 10.052412 ms CreateObjectMapping: 0.303874 ms MarkObjects: 75.236031 ms  DeleteObjects: 0.373484 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.3 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.2 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 88.514160 ms (FindLiveObjects: 10.673102 ms CreateObjectMapping: 0.294950 ms MarkObjects: 76.447960 ms  DeleteObjects: 0.331540 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.3 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.2 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 87.579323 ms (FindLiveObjects: 9.983248 ms CreateObjectMapping: 0.302089 ms MarkObjects: 76.246269 ms  DeleteObjects: 0.373038 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.8 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.7 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 89.989799 ms (FindLiveObjects: 11.204995 ms CreateObjectMapping: 0.392672 ms MarkObjects: 77.357796 ms  DeleteObjects: 0.328863 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.8 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.7 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 87.713638 ms (FindLiveObjects: 10.019838 ms CreateObjectMapping: 0.305213 ms MarkObjects: 76.309181 ms  DeleteObjects: 0.389102 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.8 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.8 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 87.906853 ms (FindLiveObjects: 10.690505 ms CreateObjectMapping: 0.309675 ms MarkObjects: 75.880363 ms  DeleteObjects: 0.340911 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.8 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.8 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 86.925621 ms (FindLiveObjects: 10.027869 ms CreateObjectMapping: 0.309229 ms MarkObjects: 75.541245 ms  DeleteObjects: 0.357421 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.9 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.8 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 88.732353 ms (FindLiveObjects: 10.729326 ms CreateObjectMapping: 0.302089 ms MarkObjects: 76.663925 ms  DeleteObjects: 0.348496 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 65.9 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 70.8 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 87.392357 ms (FindLiveObjects: 10.154595 ms CreateObjectMapping: 0.303874 ms MarkObjects: 75.839310 ms  DeleteObjects: 0.362775 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 66.9 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 71.8 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 87.900604 ms (FindLiveObjects: 10.433929 ms CreateObjectMapping: 0.303428 ms MarkObjects: 76.142296 ms  DeleteObjects: 0.331540 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 66.9 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 71.8 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 86.880997 ms (FindLiveObjects: 9.880618 ms CreateObjectMapping: 0.304767 ms MarkObjects: 75.603706 ms  DeleteObjects: 0.355636 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 66.9 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 71.9 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 88.116570 ms (FindLiveObjects: 10.571365 ms CreateObjectMapping: 0.306105 ms MarkObjects: 76.220383 ms  DeleteObjects: 0.331986 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 66.9 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 71.9 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 86.950607 ms (FindLiveObjects: 9.997974 ms CreateObjectMapping: 0.308783 ms MarkObjects: 75.572479 ms  DeleteObjects: 0.377500 ms)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'bolt'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+[mecanim]: BindSkeleton: cannot find Transform 'mag'
+ 
+(Filename: C:/BuildAgent/work/7535de4ca26c26ac/Runtime/Animation/Animator.cpp Line: 1447)
+
+System memory in use before: 66.9 MB.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+System memory in use after: 71.9 MB.
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 211163.
+Total: 88.124603 ms (FindLiveObjects: 10.534776 ms CreateObjectMapping: 0.302536 ms MarkObjects: 76.207893 ms  DeleteObjects: 0.389102 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at zombieAI1.CreateNewWander () [0x00023] in C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:133 
+  at zombieAI1.Start () [0x000ff] in C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:41 
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+Scene::setShapePairFlags: The two shape references must not reference the same shape.
+UnityEngine.Physics:IgnoreCollision(Collider, Collider, Boolean)
+UnityEngine.Physics:IgnoreCollision(Collider, Collider)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:82)
+
+[..\..\Physics\src\NpScene.cpp line 1916] 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+Scene::setShapePairFlags: The two shape references must not reference the same shape.
+UnityEngine.Physics:IgnoreCollision(Collider, Collider, Boolean)
+UnityEngine.Physics:IgnoreCollision(Collider, Collider)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:82)
+
+[..\..\Physics\src\NpScene.cpp line 1916] 
+(Filename: C Line: 0)
+
+switchdown
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GunSwitcher:switchDown() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\GunSwitcher.js:121)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, SendMessageOptions)
+player:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:32)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+switchup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GunSwitcher:switchUp() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\GunSwitcher.js:110)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, SendMessageOptions)
+player:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:30)
+ 
+(Filename: C Line: 0)
+
+switchdown
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GunSwitcher:switchDown() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\GunSwitcher.js:121)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, SendMessageOptions)
+player:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:32)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+198.1829
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:91)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+12.31512
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:91)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+63.51918
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:91)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+switchdown
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GunSwitcher:switchDown() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\GunSwitcher.js:121)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, SendMessageOptions)
+player:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:32)
+ 
+(Filename: C Line: 0)
+
+switchup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GunSwitcher:switchUp() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\GunSwitcher.js:110)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, SendMessageOptions)
+player:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:30)
+ 
+(Filename: C Line: 0)
+
+switchdown
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GunSwitcher:switchDown() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\GunSwitcher.js:121)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, SendMessageOptions)
+player:Update() (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:32)
+ 
+(Filename: C Line: 0)
+
+46.06889
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:91)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+0.1875
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:4)
+ 
+(Filename: C Line: 0)
+
+dead
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+player:subhealth(Double) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\player.js:91)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.GameObject:SendMessage(String, Object)
+fallListener:OnCollisionEnter(Collision) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\fallListener.js:5)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+collide1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+zombieAI1:OnTriggerEnter(Collider) (at C:\Users\Blake\Documents\GitHub\ZombieGame\fpswithted\Assets\Scripts\zombieAI1.js:79)
+ 
+(Filename: C Line: 0)
+
+Waiting for finish
