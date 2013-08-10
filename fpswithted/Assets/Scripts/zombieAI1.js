@@ -100,11 +100,14 @@ function CheckValues(){
 	}
 	if(distance>=engagerange)//if out of range
 	{
-		rigidbody.isKinematic=false;
 		
-		if(distance>engagerange*2){
+		
+		if(distance>=engagerange*2){
 			rigidbody.isKinematic=true;
+		}else{
+			rigidbody.isKinematic=false;
 		}
+		
 		CreateNewWander();
 		return;
 	}else if(HasMoved()||distance<engagerange){

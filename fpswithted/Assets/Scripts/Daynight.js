@@ -6,10 +6,11 @@ var currTime:double;
 var startTime:double;
 var isDaytime:boolean;
 var rotationAxis:String;
+
 private var origRot:Transform;
 private var origInt:double;
 
-var dayCount:int=0;
+//private var Completion:CompletionTester;
 
 function Start () {
 	currTime=startTime;
@@ -47,7 +48,9 @@ function Update () {
 		if(currTime>lengthOfNight){
 			currTime=0;
 			isDaytime=true;
-			dayCount++;
+			
+			//Completion.addDays();
+			
 		}else if(currTime>lengthOfNight-animation["sunset"].length){
 				animation["sunset"].speed=-1.0;
 				animation.Play();

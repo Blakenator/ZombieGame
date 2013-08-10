@@ -9,10 +9,10 @@ function Awake () {
 	for(var I in gunArr){
 		posArray[I.gameObject.name]=I.transform.localPosition;
 		rotArray[I.gameObject.name]=I.transform.localRotation;
-		Debug.LogWarning(I.gameObject.name);
+		//Debug.LogWarning(I.gameObject.name);
 	}
 	
-	Debug.Log("done!");
+	//Debug.Log("done!");
 	
 	//Debug.Log(myArray["EBR"]);
 	//var test:Transform=myArray["G36C"];
@@ -22,7 +22,7 @@ function Awake () {
 }
 
 function split(str:String){
-	Debug.Log("Found!");
+	//Debug.Log("Found!");
 	var start:int=str.IndexOf("(Clone)");
 	modName=str.Substring(0,start);
 	

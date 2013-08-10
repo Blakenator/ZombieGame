@@ -47,7 +47,7 @@ function Update () {
 			if(hit.transform.gameObject.CompareTag("Pickup")){
 				Debug.Log("HIT AN OBJECT!");
 				
-				hit.transform.gameObject.SendMessage("pickUp",SendMessageOptions.RequireReceiver);
+				hit.transform.gameObject.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);
 				
 			}else if((isHolding==false)&&(hit.transform.gameObject.CompareTag("Grab"))&&(hit.transform.rigidbody.mass<Strength)){
 				Debug.Log("GRAB ON!");

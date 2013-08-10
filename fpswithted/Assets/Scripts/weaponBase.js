@@ -11,7 +11,7 @@ var damageTodestructibles:int;
 var maxAmmo:int;
 var currAmmo:int;
 var maxClips:int;
-var currClips:int;
+//var currClips:int;
 
 var bulletSpawn:Transform;
 var fireAudio:AudioClip;
@@ -20,15 +20,23 @@ var hitFlash:ParticleSystem;
 
 private var lastFireTime=0.0;
 var targetGuiText : GUIText;
+private var clipCount:AmmoCounter;
+private var GunName:String;
+
+public var clipsOnPickUp:int=1;
+
 
 function Start(){
 	originalAccuracy=accuracy;
+	//clipCount=GameObject.Find("_AmmoCounter").GetComponent(AmmoCounter);
+	GunName=gameObject.name;
 }
 
 function Update(){
 	if(isEnabled){
-	
-		targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + currClips;
+		
+		
+		targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + AmmoCounter.getClips(GunName);
 	
 		if (Input.GetButton("Fire3")){
 			accuracy=originalAccuracy*ADS_Multiplier;
@@ -38,14 +46,15 @@ function Update(){
 		if (Input.GetButton("Fire1")){
 			fireGun();
 		}
-		if (Input.GetButtonDown("Reload") && currClips > 0){
+		if (Input.GetButtonDown("Reload") && AmmoCounter.getClips(GunName) > 0){
 			reload();
 		}
 	}
 }
 function reload(){
 	currAmmo=maxAmmo;
-	currClips-=1;
+	AmmoCounter.addClips(GunName,-1);
+	
 }
 
 function setEnabled(enabled:boolean){
@@ -63,6 +72,7 @@ function getCurrAmmo()
 {
 	return currAmmo;
 }
+/*
 function getCurrClips()
 {
 	return currClips;
@@ -70,7 +80,7 @@ function getCurrClips()
 function addClips(ammount:int){
 	currClips+=ammount;
 }
-
+*/
 
 function fireGun(){
 	if(isEnabled){
@@ -128,5 +138,37 @@ function spawnBullet(){
 			}
       	}
     }
+}
+
+function OnPickup(){
+
+
+	GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).addObject(gameObject);
+	
+	transform.parent=GameObject.Find("WeaponAnchor").transform;
+	
+	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
+	transform.localRotation=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
+	rigidbody.isKinematic=true;
+	gameObject.collider.enabled=false;
+	
+	
+	//gameObject.tag="Pickup";
+	
+	//var script = gameObject.GetComponent(weaponBase);
+	//if (script != null){
+		//gameObject.GetComponent(weaponBase).setEnabled(true);
+	//}
+	//Debug.Log(gameObject.GetComponent(weaponBase).clipsOnPickUp);
+	
+	if(gameObject.GetComponent(weaponBase).clipsOnPickUp>0){
+		AmmoCounter.addClips(gameObject.name,clipsOnPickUp);
+		//gameObject.GetComponent(weaponBase).clipsOnPickUp=0;
+		clipsOnPickUp=0;
+	}
+	//this.enabled=false;
+	
+	
+	
 }
 
