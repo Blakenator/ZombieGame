@@ -1,18 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LootTable.js">
+    <Files>
+      <File FileName="Assets\Scripts\LootTable.js" Line="24" Column="2" />
+      <File FileName="Assets\Scripts\LootSpawn.js" Line="12" Column="2" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
-            </Node>
-          </Node>
-          <Node name="Assembly-UnityScript-Editor" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Editor" expanded="True">
-                <Node name="Builder.js" selected="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="LootTable.js" selected="True" />
               </Node>
             </Node>
           </Node>

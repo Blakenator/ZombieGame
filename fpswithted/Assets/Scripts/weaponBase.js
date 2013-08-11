@@ -26,16 +26,17 @@ private var GunName:String;
 public var clipsOnPickUp:int=1;
 
 
+
+private var originalRot:Vector3;
 function Start(){
 	originalAccuracy=accuracy;
 	//clipCount=GameObject.Find("_AmmoCounter").GetComponent(AmmoCounter);
 	GunName=gameObject.name;
+	originalRot=transform.forward;
 }
 
 function Update(){
 	if(isEnabled){
-		
-		
 		targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + AmmoCounter.getClips(GunName);
 	
 		if (Input.GetButton("Fire3")){
@@ -171,4 +172,5 @@ function OnPickup(){
 	
 	
 }
+
 

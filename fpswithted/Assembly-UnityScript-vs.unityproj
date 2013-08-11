@@ -46,13 +46,17 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AIGunshot.js" />
      <Compile Include="Assets\Scripts\AiScript.js" />
+     <Compile Include="Assets\Scripts\AmmoCounter.js" />
+     <Compile Include="Assets\Scripts\AmmoObject.js" />
      <Compile Include="Assets\Scripts\BarrelRotation.js" />
      <Compile Include="Assets\Scripts\Daynight.js" />
      <Compile Include="Assets\Scripts\DestrOptimizer.js" />
      <Compile Include="Assets\Scripts\DestructibleObject.js" />
+     <Compile Include="Assets\Scripts\Door.js" />
      <Compile Include="Assets\Scripts\FPSText.js" />
      <Compile Include="Assets\Scripts\Flash.js" />
      <Compile Include="Assets\Scripts\Flashlight.js" />
+     <Compile Include="Assets\Scripts\FoodItem.js" />
      <Compile Include="Assets\Scripts\Ghosts.js" />
      <Compile Include="Assets\Scripts\GrenadeBase.js" />
      <Compile Include="Assets\Scripts\GuiScript.js" />
@@ -60,6 +64,9 @@
      <Compile Include="Assets\Scripts\Hammer.js" />
      <Compile Include="Assets\Scripts\Knife.js" />
      <Compile Include="Assets\Scripts\LevelGenerator.js" />
+     <Compile Include="Assets\Scripts\LevelSaver.js" />
+     <Compile Include="Assets\Scripts\LootSpawn.js" />
+     <Compile Include="Assets\Scripts\LootTable.js" />
      <Compile Include="Assets\Scripts\MetalResource.js" />
      <Compile Include="Assets\Scripts\MovingGraph.js" />
      <Compile Include="Assets\Scripts\PickUp.js" />
@@ -72,6 +79,7 @@
      <Compile Include="Assets\Scripts\TurretBase.js" />
      <Compile Include="Assets\Scripts\TutorialFinish.js" />
      <Compile Include="Assets\Scripts\TutorialStart.js" />
+     <Compile Include="Assets\Scripts\WaterItem.js" />
      <Compile Include="Assets\Scripts\WeaponPosData.js" />
      <Compile Include="Assets\Scripts\WoodResource.js" />
      <Compile Include="Assets\Scripts\ZMover.js" />

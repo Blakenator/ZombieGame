@@ -18,8 +18,6 @@ function Start(){
 	//var buildings:DestrOptimizer[] = FindObjectsOfType(DestrOptimizer);
     //Directory.CreateDirectory("Saves/");
     
-    
-    
     //var sr = File.CreateText(fileName);
     
 	//sw.WriteLine ("//This is my file.");

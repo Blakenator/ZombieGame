@@ -1,10 +1,10 @@
 #pragma strict
 
 //in the updates a negative value lowers the stat
-private var stamina:double=100.0;
-private var health:float =100.0;
-private var hunger:float=100.0;
-private var thirst:float=100.0;
+private static var stamina:double=100.0;
+private static var health:float =100.0;
+private static var hunger:float=100.0;
+private static var thirst:float=100.0;
 
 var size:Vector2;
 
@@ -35,7 +35,7 @@ function Update(){
 	}
 }
 
-function updateStamina (ammount:float){
+public static function updateStamina (ammount:float){
 	stamina+=ammount;
 	if(stamina<0){
 		stamina=0;
@@ -43,14 +43,14 @@ function updateStamina (ammount:float){
 	//staminaGUI.text="Stamina: "+Mathf.Round(stamina*10)/10;
 }
 
-function updateHealth (ammount:float){
+public static function updateHealth (ammount:float){
 	health+=ammount;
 	if(health<0){
 		health=0;
 	}
 }
 
-function updateHunger (ammount:float){
+public static function updateHunger (ammount:float){
 	hunger+=ammount;
 	if(hunger<0){
 		hunger=0;
@@ -58,7 +58,7 @@ function updateHunger (ammount:float){
 	}
 }
 
-function updateThirst (ammount:float){
+public static function updateThirst (ammount:float){
 	thirst+=ammount;
 	if(thirst<0){
 		thirst=0;
