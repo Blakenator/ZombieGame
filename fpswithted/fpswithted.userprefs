@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LootTable.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TutorialFinish.js">
     <Files>
-      <File FileName="Assets\Scripts\LootTable.js" Line="24" Column="2" />
-      <File FileName="Assets\Scripts\LootSpawn.js" Line="12" Column="2" />
+      <File FileName="Assets\Scripts\LootTable.js" Line="96" Column="5" />
+      <File FileName="Assets\Scripts\LootSpawn.js" Line="50" Column="4" />
+      <File FileName="Assets\Scripts\TutorialFinish.js" Line="17" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +12,7 @@
           <Node name="Assembly-UnityScript" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="LootTable.js" selected="True" />
+                <Node name="TutorialFinish.js" selected="True" />
               </Node>
             </Node>
           </Node>

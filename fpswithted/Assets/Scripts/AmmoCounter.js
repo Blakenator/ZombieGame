@@ -12,7 +12,7 @@ function Awake () {
 	var script = I.GetComponent(weaponBase);
 		if (script != null){
 			clipArray[I.gameObject.name]=1;
-			Debug.Log(I.gameObject.name);
+			//Debug.Log(I.gameObject.name);
 		}
 	}
 	Debug.Log("done2!");

@@ -10,11 +10,11 @@ function Start(){
 function Update () {
 	progress=total-GameObject.FindGameObjectsWithTag("enemy").Length-1;
 	progress*=2;
-	Debug.Log(progress/total);/*
+	//Debug.Log(progress/total);/*
 	if(total<=0){
 		progress=0;
 		total=-1;
-	}*/
+	}
 	text.text="Tutorial Progress: "+Mathf.Round(progress/total*100)+"%";
 	if(progress/total>=0.75){
 		finish();

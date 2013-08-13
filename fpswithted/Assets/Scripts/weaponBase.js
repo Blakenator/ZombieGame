@@ -19,7 +19,9 @@ var muzzleFlash:ParticleSystem;
 var hitFlash:ParticleSystem;
 
 private var lastFireTime=0.0;
-var targetGuiText : GUIText;
+
+static var targetGuiText : GUIText;
+
 private var clipCount:AmmoCounter;
 private var GunName:String;
 
@@ -33,6 +35,7 @@ function Start(){
 	//clipCount=GameObject.Find("_AmmoCounter").GetComponent(AmmoCounter);
 	GunName=gameObject.name;
 	originalRot=transform.forward;
+	targetGuiText=GameObject.Find("GUI Text").GetComponent(GUIText);
 }
 
 function Update(){
