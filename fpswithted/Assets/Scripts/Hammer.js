@@ -8,7 +8,7 @@ function Start () {
 }
 
 function Update () {
-	if(isEnabled){
+	if(isEnabled&&Time.timeScale>0){
 		if(Input.GetButton("Fire1")&&!swinging){
 			swing();
 		}

@@ -10,7 +10,7 @@ function Start () {
 }
 
 function Update () {
-	if(isEnabled){
+	if(isEnabled&&Time.timeScale>0){
 		targetGUI.text="Remover";
 		if(Input.GetButtonDown("Fire1")){
 			spawnObject();

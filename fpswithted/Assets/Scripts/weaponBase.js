@@ -39,15 +39,15 @@ function Update(){
 	if(isEnabled){
 		targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + AmmoCounter.getClips(GunName);
 	
-		if (Input.GetButton("Fire3")){
+		if (Input.GetButton("Fire2")){
 			accuracy=originalAccuracy*ADS_Multiplier;
 		}else{
 			accuracy=originalAccuracy;
 		}
-		if (Input.GetButton("Fire1")){
+		if (Input.GetButton("Fire1")&&Time.timeScale>0){
 			fireGun();
 		}
-		if (Input.GetButtonDown("Reload") && AmmoCounter.getClips(GunName) > 0){
+		if (Input.GetButtonDown("Reload") && AmmoCounter.getClips(GunName) > 0&&Time.timeScale>0){
 			reload();
 		}
 	}

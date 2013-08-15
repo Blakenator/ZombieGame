@@ -6,9 +6,11 @@ var margin:Vector2=Vector2(15,15);
 var gunSwitcher:GunSwitcher;
 private var inventoryArray:Array;
 var defaultImage:Texture;
+private var selectedInt:int=0;
+var numberWide:int=3;
 
 function Start () {
-	gameState="running";
+	//gameState="running";
 }
 
 function Update(){
@@ -36,10 +38,25 @@ private var scrollPos=Vector2.zero;
 function OnGUI(){
 	if(gameState=="paused"){
 		var box:Rect=Rect(margin.x,margin.y,Screen.width-margin.x*2,Screen.height-margin.y*2);
-		GUI.Box(box,GUIContent.none);
-		GUILayout.BeginArea(box);
-			scrollPos=GUILayout.BeginScrollView(scrollPos,GUILayout.Width(box.width),GUILayout.Height(box.height));
-			for(var i2=0;i2<inventoryArray.length/3;i2++){
+		//GUI.Box(box,GUIContent.none);
+		GUILayout.BeginVertical();
+		GUILayout.BeginArea(box,GUI.skin.GetStyle("box"));
+			scrollPos=GUILayout.BeginScrollView(scrollPos);//,GUILayout.Width(box.width),GUILayout.Height(box.height));
+				//GUILayout.SelectionGrid()
+				var imgs:Texture[]=new Texture[inventoryArray.length-1];
+				for (var i=0;i<imgs.Length;i++){
+					var tmp:GameObject=inventoryArray[i];
+					if(tmp.GetComponent(inventoryItem).getImage()){
+						imgs[i]=tmp.GetComponent(inventoryItem).getImage();
+					}else{
+						imgs[i]=defaultImage;
+					}
+				}
+				selectedInt=GUILayout.SelectionGrid(selectedInt,imgs,numberWide);
+				if(selectedInt!=gunSwitcher.getCurrGunIndex()){
+					gunSwitcher.setCurrentIndex(selectedInt);
+				}
+			/*for(var i2=0;i2<inventoryArray.length/3;i2++){
 				GUILayout.BeginHorizontal();
 				for(var i=0;i<inventoryArray.length/2;i++){
 					if(i+i2*4>=inventoryArray.length){
@@ -52,8 +69,16 @@ function OnGUI(){
 					}
 				}
 				GUILayout.EndHorizontal();
-			}
+			}*/
 			GUILayout.EndScrollView();
+				if(GUILayout.Button("Return")){
+					gameState="running";
+					Time.timeScale=1;
+					var temp:MouseLook=player.GetComponent("MouseLook");
+					temp.isPaused=false;
+					MainCamera.isPaused=false;
+				}
+			GUILayout.EndVertical();
 		GUILayout.EndArea();
 	}
 }

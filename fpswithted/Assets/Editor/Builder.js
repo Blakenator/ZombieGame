@@ -13,6 +13,9 @@ class Builder extends EditorWindow{
 	function Start () {
 	//System.IO.Directory.CreateDirectory(build)
 		//path;
+		if(System.IO.File.Exists(path+"version.txt")){
+			readInfo();
+		}
 	
 	}
 	
@@ -46,20 +49,9 @@ class Builder extends EditorWindow{
 	    			GUI.enabled=true;
 	    		}
     		}else{
-    			var reader=System.IO.StreamReader(path+"version.txt");
-    			myName=reader.ReadLine();
-    			versionMajor=reader.ReadLine();
-    			versionMinor=reader.ReadLine();
-    			versionSub=reader.ReadLine();
-    			if(versionSub==""){
-    				versionSub="1";
-    			}else{
-    				versionSub=""+(int.Parse(versionSub)+1);
-    			}
-    			//Debug.Log(versionSub);
-    			reader.Close();
 	    		if(versionMajor!=""||versionMinor!=""||myName!=""){
 	    			if(GUILayout.Button("Build")){
+	    			//Debug.Log(versionMajor+"|"+versionMinor+"|"+myName);
 	    				writeInfo();
 	    				
 	    				var currPath:String=path+myName+"-"+versionMajor+"."+versionMinor+"."+versionSub;
@@ -80,12 +72,26 @@ class Builder extends EditorWindow{
 		    				zip.AddDirectory(currPath);
 		    				zip.Save(currPath+myName+".zip");
 		    			}
-		    			
+		    			readInfo();
 		    		}
 	    		}
     		}
     	//GUILayout.EndVertical();
     }
+}
+function readInfo(){
+	var reader=System.IO.StreamReader(path+"version.txt");
+	myName=reader.ReadLine();
+	versionMajor=reader.ReadLine();
+	versionMinor=reader.ReadLine();
+	versionSub=reader.ReadLine();
+	if(versionSub==""){
+		versionSub="1";
+	}else{
+		versionSub=""+(int.Parse(versionSub)+1);
+	}
+	//Debug.Log(versionSub);
+	reader.Close();
 }
 function writeInfo(){
 	var writer=System.IO.StreamWriter(path+"version.txt");

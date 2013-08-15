@@ -17,7 +17,7 @@ function setEnabled(val:boolean){
 }
 
 function Update () {
-	if(isEnabled){
+	if(isEnabled&&Time.timeScale>0){
 		targetGUIText.text = "Ammo: " + currAmmo;
 		if (Input.GetButton("Fire1")){
 			if(Time.time>lastTime-Time.deltaTime+reloadTime && currAmmo>0){
