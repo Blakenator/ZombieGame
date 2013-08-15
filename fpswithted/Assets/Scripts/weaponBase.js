@@ -1,5 +1,4 @@
 
-@script SerializeAll
 var isEnabled:boolean;
 
 var fireRate:double;

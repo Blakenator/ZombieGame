@@ -1,5 +1,4 @@
 #pragma strict
-@script SerializeAll
 public static var CanMove:boolean=true;
 
 var health:double=100.0;

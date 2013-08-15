@@ -79,7 +79,6 @@
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
-     <None Include="Assets\UnitySerializer\readme.txt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\link.xml" />
  <Reference Include="Ionic.Zip.Reduced">
  <HintPath>Assets\Plugins\AstarPathfindingProject\Plugins\DotNetZip\Ionic.Zip.Reduced.dll</HintPath>

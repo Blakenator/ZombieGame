@@ -100,10 +100,6 @@
      <Compile Include="Assets\Scripts\weaponBase.js" />
      <Compile Include="Assets\Scripts\zSpawnerRandom.js" />
      <Compile Include="Assets\Scripts\zombieAI1.js" />
-     <Compile Include="Assets\UnitySerializer\Scripts\JSONPauseMenu.js" />
-     <Compile Include="Assets\UnitySerializer\Scripts\Movement.js" />
-     <Compile Include="Assets\UnitySerializer\Scripts\PauseMenu.js" />
-     <Compile Include="Assets\UnitySerializer\Scripts\Spawner.js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingEditor\Editor\EditorAssets\Materials\Navmesh2.shader" />
@@ -129,7 +125,6 @@
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
-     <None Include="Assets\UnitySerializer\readme.txt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\link.xml" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>

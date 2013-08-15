@@ -1,5 +1,4 @@
 #pragma strict
-@script SerializeAll
 
 var currentGunIndex:int;
 var startingInventory:GameObject[];

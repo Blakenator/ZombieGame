@@ -1,5 +1,4 @@
 #pragma strict
-@script SerializeAll
 
 //in the updates a negative value lowers the stat
 private static var stamina:double=100.0;

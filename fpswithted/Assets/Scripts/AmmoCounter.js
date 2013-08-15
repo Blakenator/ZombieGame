@@ -1,5 +1,4 @@
 #pragma strict
-@script SerializeAll
 
 private static var clipArray = new Hashtable();
 

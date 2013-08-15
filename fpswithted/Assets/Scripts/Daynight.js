@@ -1,5 +1,4 @@
 #pragma strict
-@script SerializeAll
 var lengthOfDaylight:double;
 var lengthOfNight:double;
 var lightobj:Light;
