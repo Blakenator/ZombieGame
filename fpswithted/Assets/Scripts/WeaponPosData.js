@@ -1,4 +1,6 @@
 #pragma strict
+@script SerializeAll
+
 var gunSwitch:GunSwitcher;
 private var posArray = new Hashtable();
 private var rotArray = new Hashtable();

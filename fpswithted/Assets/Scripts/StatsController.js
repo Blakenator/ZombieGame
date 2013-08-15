@@ -1,4 +1,5 @@
 #pragma strict
+@script SerializeAll
 
 //in the updates a negative value lowers the stat
 private static var stamina:double=100.0;
@@ -77,7 +78,7 @@ function OnGUI()
             GUI.Box (Rect (0,0, size.x, size.y),healthBarFull);
         GUI.EndGroup ();
     GUI.EndGroup ();
- 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),healthBarEmpty);
+ 	
 	//end health
 	
 	//staminia
@@ -88,7 +89,7 @@ function OnGUI()
             GUI.Box (Rect (0,0, size.x, size.y),stamBarFull);
         GUI.EndGroup ();
     GUI.EndGroup ();
- 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),stamBarEmpty);
+ 	//GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),stamBarEmpty);
 	//end staminia
 	
 	//hunger
@@ -99,7 +100,7 @@ function OnGUI()
             GUI.Box (Rect (0,0, size.x, size.y),hungerBarFull);
         GUI.EndGroup ();
     GUI.EndGroup ();
- 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),hungerBarEmpty);
+ 	//GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),hungerBarEmpty);
 	//end hunger
 	
 	
@@ -111,6 +112,8 @@ function OnGUI()
             GUI.Box (Rect (0,0, size.x, size.y),thirstBarFull);
         GUI.EndGroup ();
     GUI.EndGroup ();
- 	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),thirstBarEmpty);
+ 	//GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),thirstBarEmpty);
 	//end thirst
+	
+	GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),healthBarEmpty);//CrossHair
 } 

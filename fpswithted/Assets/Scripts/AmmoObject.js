@@ -8,3 +8,6 @@ function OnPickup(){
 	AmmoCounter.addClips(wep.ToString(),AmmoVal);
 	Destroy(gameObject);
 }
+function getVal(){
+	return AmmoVal;
+}

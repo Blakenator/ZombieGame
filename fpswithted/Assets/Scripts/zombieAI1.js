@@ -1,4 +1,5 @@
 #pragma strict
+//@script SerializeAll
 import Pathfinding;
 
 var targetPosition : Vector3;

@@ -1,4 +1,5 @@
 
+@script SerializeAll
 var isEnabled:boolean;
 
 var fireRate:double;
@@ -170,6 +171,9 @@ function OnPickup(){
 		//gameObject.GetComponent(weaponBase).clipsOnPickUp=0;
 		clipsOnPickUp=0;
 	}
+	
+	Destroy(GetComponent(PrefabIdentifier));
+	gameObject.AddComponent(StoreInformation);
 	//this.enabled=false;
 	
 	
