@@ -9,7 +9,7 @@ function Awake () {
 	var gunArr:GameObject[]=gunSwitch.GetStartingInventory();
 	
 	for(var I in gunArr){
-	var script = I.GetComponent(weaponBase);
+		var script = I.GetComponent(weaponBase);
 		if (script != null){
 			clipArray[I.gameObject.name]=1;
 			//Debug.Log(I.gameObject.name);

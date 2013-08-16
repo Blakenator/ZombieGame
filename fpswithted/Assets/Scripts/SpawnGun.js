@@ -15,7 +15,7 @@ function Start () {
 }
 
 function Update () {
-	if(isEnabled){
+	if(isEnabled&&Time.timeScale>0){
 		if(Input.GetButton("Undo Spawn")){
 			if(Time.time>=lastTime+removeTime){
 				if(lastObj.length>0&&lastObj[lastObj.length-1]){
