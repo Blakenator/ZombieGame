@@ -25,7 +25,9 @@ function Start(){
 	sw.WriteLine ("Buildings");
     //sw.Flush();
     sw.Close();
-    saveGameObject2();
+    
+    
+    //saveGameObject2();
 }
 
 function Save(){

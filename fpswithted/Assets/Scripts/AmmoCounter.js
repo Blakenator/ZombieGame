@@ -28,5 +28,4 @@ static function addClips(str:String,num:int){
 	temp+=num;
 	
 	clipArray[str]=temp;
-	
 }

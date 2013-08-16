@@ -9,18 +9,25 @@ public static var LootLoc:GameObject[];
 
 public static var lines:String[];
 
-private var multiple:int=2;
-
+private var multiple:int=2;//All items be be a multiple of this!
 
 var milnames=new Array ();
 var civnames=new Array ();
+//add extra catagorys here
+
+
 
 var categorys=new Array ();
 var raritys=new Array ();
 var modlines=new Array ();
 
+
 var milItems=new Array ();
 var civItems=new Array ();
+//add extra catagorys here
+
+
+
 function Awake(){
 	
 	var reader=new System.IO.StreamReader("Assets/Resources/Book1.csv");
@@ -44,14 +51,9 @@ function Awake(){
 			var name:String=temp[0].ToString();
 			
 			
-			
 			var category:String=temp[1].ToString();
 			
 			var val:float=float.Parse(temp[2]);
-			
-			
-			
-			
 			
 			var timestoadd:int=val/multiple;
 			
@@ -67,16 +69,11 @@ function Awake(){
 					Debug.Log("MIL1!!!");
 					milItems.push(line);
 					milnames.push(name);
-					
 				}
-				
 				//names.push(name);
 				//categorys.push(category);
 				//raritys.push(val);
-				
 			}
-			
-			
 		}
 	}
 	Debug.Log(modlines.length);
@@ -93,7 +90,7 @@ function Awake(){
 		var clone:GameObject;
 		if(s.IsMil()){//Is mil
 			if(milItems.length!=0){
-				var randomnumber=Mathf.Floor(Random.value*(milItems.length+1));
+				var randomnumber=Mathf.Floor(Random.value*(milItems.length));
 				name = milnames[randomnumber].ToString();
 				
 				clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
@@ -103,7 +100,7 @@ function Awake(){
 		}
 		else{//is Civ
 			if(civItems.length!=0){
-				randomnumber=Mathf.Floor(Random.value*(civItems.length+1));
+				randomnumber=Mathf.Floor(Random.value*(civItems.length));
 				name = civnames[randomnumber].ToString();
 				
 				clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);

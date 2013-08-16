@@ -16,8 +16,6 @@ var Strength:float=20;
 private var isHolding:boolean=false;
 //var gun2:Gunshot;
 function Start () {
-	LevelSerializer.AddPrefabPath("Prefabs");
-	
 	chMotor = GetComponent(CharacterMotor);
     ch = GetComponent(CharacterController);
     stats=GameObject.Find("_StatsCounter").GetComponent(StatsController);
@@ -64,14 +62,6 @@ function Update () {
 			holdPoint.connectedBody=null;
 			isHolding=false;
 		}
-	}
-	if (Input.GetKeyDown("k")){
-		LevelSerializer.Checkpoint();
-   		Debug.Log("CheckPoint");
-	}
-	
-	if (Input.GetKeyDown("l")){
-		LevelSerializer.Resume();
 	}
 	
 	if (Input.GetButtonDown("Drop")){

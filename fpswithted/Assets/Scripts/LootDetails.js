@@ -11,17 +11,17 @@ private var cam:Camera;
 var rect = Rect(0,0,100,100);
 var offset =  Vector2(-10, 0);
 private var textcenteredStyle:GUIStyle;
-var background:Texture2D;
+//var background:Texture2D;
 
 function Start(){
 	cam =Camera.main;
 	rect.x=Screen.width/2;
 	rect.y=Screen.height/2;
-	Debug.Log(background instanceof GameObject);
+	//Debug.Log(background instanceof GameObject);
 	
-	var allComponents = gameObject.GetComponents (Component);
+	//var allComponents = gameObject.GetComponents (Component);
 	
-	Debug.Log(allComponents instanceof player);
+	//Debug.Log(allComponents instanceof player);
 	
 }
 function OnGUI(){
@@ -33,12 +33,11 @@ function OnGUI(){
 		if(hit.transform.gameObject.CompareTag("Pickup")){
 			var obj=hit.transform.gameObject;
 			Debug.Log("TEST!");
-			//GUI.Label(textlabelRect,textToShow,textcenteredStyle);
-			
-			//GUI.Label (Rect (screenPos.x, -screenPos.y, 100, 20), "Hello World!");
 			
 			textcenteredStyle = GUI.skin.GetStyle("Label");
 			textcenteredStyle.fontSize=15;
+			
+			
 			
 			//rect.x = screenPos.x;
     		//rect.y = screenPos.y - rect.height; 
@@ -74,7 +73,6 @@ function OnGUI(){
 		       
 		    GUI.EndGroup ();
 		 	//GUI.Box (Rect (Screen.width/2,Screen.height/2, 10, 10),healthBarEmpty);
-				
 		}
 	}
 }

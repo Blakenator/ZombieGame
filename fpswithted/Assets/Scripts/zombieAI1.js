@@ -22,6 +22,7 @@ private var dirToMove:Vector3;
 
 //private var isColliding:boolean=false;
 private var wanderstart:boolean=true;
+private var isDead:boolean=false;
 
 //private var playerHasMoved:boolean=false;
 
@@ -31,6 +32,7 @@ var animator:Animation;
 var ragdoll:GameObject;
 
 private var lastPos:Vector3;
+var Zspawn:zSpawnerRandom;
 
 function Start () {
 	seeker=this.GetComponent(Seeker);
@@ -179,12 +181,12 @@ function Move(){
 	}
 	if(distance<2){
 		SmoothLookAt(player.position,300.0);
-		//yield StartCoroutine("Attack");
-		Attack();
+		
+		//Attack();
 		return;
 	}
 	if(renderer.isVisible&&distance<75){
-		animator.Play("run",PlayMode.StopAll);
+		//animator.Play("run",PlayMode.StopAll);
 	}else{
 		animator.Stop();
 	}
@@ -248,6 +250,22 @@ function Attack(){
 	animator.animation.Play("Attack",PlayMode.StopAll);
 	yield WaitForSeconds(0.25);
 	yield;
+}
+function OnDeath(){
+	if(!isDead){
+		
+		Zspawn.Spawn();
+		RagdollEnemy();
+		
+		isDead=true;
+	}
+}
+
+function Kill(){
+	if(!isDead){
+		Zspawn.Spawn();
+		isDead=true;
+	}
 }
 
 function RagdollEnemy(){

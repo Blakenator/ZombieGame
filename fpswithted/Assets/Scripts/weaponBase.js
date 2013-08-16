@@ -25,16 +25,17 @@ static var targetGuiText : GUIText;
 private var clipCount:AmmoCounter;
 private var GunName:String;
 
+
+
 public var clipsOnPickUp:int=1;
 
+var recoil:float;
 
 
-private var originalRot:Vector3;
 function Start(){
 	originalAccuracy=accuracy;
 	//clipCount=GameObject.Find("_AmmoCounter").GetComponent(AmmoCounter);
 	GunName=gameObject.name;
-	originalRot=transform.forward;
 	targetGuiText=GameObject.Find("GUI Text").GetComponent(GUIText);
 }
 
@@ -49,7 +50,9 @@ function Update(){
 		}
 		if (Input.GetButton("Fire1")){
 			fireGun();
+			//applyrecoil();
 		}
+		
 		if (Input.GetButtonDown("Reload") && AmmoCounter.getClips(GunName) > 0){
 			reload();
 		}
@@ -101,18 +104,18 @@ function fireGun(){
 function spawnBullet(){
 	var direction = SprayDirection();
 	var hit : RaycastHit;
-	//Debug.Log(direction.ToString());
 
 	muzzleFlash.Emit(1);
-
+	
 
  	if (Physics.Raycast(bulletSpawn.transform.position, direction, hit,100))
  	{
+ 		
      	var delay = hit.distance / bulletSpeed; // calculate the flight time
       
   	 	yield WaitForSeconds(delay); // wait for the flight time
       	// then do the actual shooting:
-      	      
+      	
       	if (Physics.Raycast(bulletSpawn.transform.position, direction, hit))
       	{
       
@@ -128,12 +131,12 @@ function spawnBullet(){
 	    		Debug.Log("HIT");
 	    		Debug.Log(hit.transform.gameObject);
 	            //GameObject.Destroy(hit.collider.gameObject);
-	            hit.transform.gameObject.GetComponent("zombieAI1").RagdollEnemy();
+	            hit.transform.gameObject.GetComponent("zombieAI1").OnDeath();
 	    	}
+	    	
 	    	//Debug.Log(hit.collider.tag);
 	    	if(hit.collider.CompareTag("destructible")&&!hit.rigidbody){
 	    		hit.collider.gameObject.SendMessage("addHealth",-damageTodestructibles,SendMessageOptions.RequireReceiver);
-	    		
 	    		return;
 	    	}
 			if (hit.rigidbody)
@@ -174,9 +177,15 @@ function OnPickup(){
 	Destroy(GetComponent(PrefabIdentifier));
 	gameObject.AddComponent(StoreInformation);
 	//this.enabled=false;
-	
-	
-	
 }
 
-
+function applyrecoil(){
+	//Camera.main.transform.localEulerAngles.x+=recoil;
+	//transform.localEulerAngles.z-=recoil*Time.deltaTime;
+	if(transform.localEulerAngles.x>270){
+		transform.localEulerAngles.x+=10.0;
+	}else{
+	transform.localEulerAngles.x-=10.0;
+	}
+	Debug.Log("Recoil");
+}
