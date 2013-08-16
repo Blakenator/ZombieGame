@@ -1,17 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Editor\Builder.js">
     <Files>
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" Line="36" Column="17" />
-      <File FileName="Assets\Editor\Builder.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LootTable.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LootTable.js" Line="4" Column="5" />
       <File FileName="Assets\Scripts\LootSpawn.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\inventoryGUI.js" Line="78" Column="14" />
+      <File FileName="Assets\Scripts\inventoryGUI.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\inventoryItem.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AmmoCounter.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\StatsController.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\pauseGUI.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GunSwitcher.js" Line="1" Column="1" />
+      <File FileName="Assets\Editor\Builder.js" Line="205" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,9 +20,7 @@
               <Node name="Standard Assets" expanded="True">
                 <Node name="Character Controllers" expanded="True">
                   <Node name="Sources" expanded="True">
-                    <Node name="Scripts" expanded="True">
-                      <Node name="MouseLook.cs" selected="True" />
-                    </Node>
+                    <Node name="Scripts" expanded="True" />
                   </Node>
                 </Node>
               </Node>
@@ -36,7 +33,9 @@
           </Node>
           <Node name="Assembly-UnityScript-Editor" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Editor" expanded="True" />
+              <Node name="Editor" expanded="True">
+                <Node name="Builder.js" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

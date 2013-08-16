@@ -10,12 +10,21 @@ class Builder extends EditorWindow{
 	var autoRun:boolean;
 	var zipafter:boolean;
 	
+	var autoBackup:boolean;
+	var backupInterval:String="5";
+	var backupIntVal:double;
+	var currentBackupPath:String;
+	
 	function Start () {
 	//System.IO.Directory.CreateDirectory(build)
 		//path;
+		if(System.IO.File.Exists("Backup/prefs.txt")){
+			getBackupInfo();
+		}
 		if(System.IO.File.Exists(path+"version.txt")){
 			readInfo();
 		}
+		
 	
 	}
 	
@@ -76,9 +85,32 @@ class Builder extends EditorWindow{
 		    		}
 	    		}
     		}
+    		autoBackup=GUILayout.Toggle(autoBackup,"Auto-backup on Interval (m):");
+    		backupInterval=GUILayout.TextField(backupInterval,GUILayout.ExpandWidth(true));
+    		if(backupInterval.Length>0){
+    			try{
+    				backupIntVal=double.Parse(backupInterval);
+    			}catch(e){}
+    		}
+    		if(GUILayout.Button("Backup",GUILayout.ExpandWidth(true))&&myName.Length>0&&backupInterval.Length>0){
+				Debug.Log("Backup Started");
+    			backup();
+    		}
+    		if(perc!=""){
+    			GUILayout.Label(perc);
+    		}
+    		
+    		//auto backup
+			/*if(!backupIntVal&&autoBackup&&Time.time>=last+backupIntVal){
+				backup();
+				last=Time.time;
+			}*/
+    		
     	//GUILayout.EndVertical();
     }
 }
+var loopcntr:int;
+var isCopying:boolean;
 function readInfo(){
 	var reader=System.IO.StreamReader(path+"version.txt");
 	myName=reader.ReadLine();
@@ -103,4 +135,73 @@ function writeInfo(){
 	}
 	writer.WriteLine(versionSub);
 	writer.Close();
+}
+function getBackupInfo(){
+	var reader=System.IO.StreamReader("Backup/prefs.txt");
+	autoBackup=boolean.Parse(reader.ReadLine());
+	backupInterval=reader.ReadLine();
+	reader.Close();
+}
+var perc:String;
+function backup(){
+	if(System.IO.File.Exists("Backup/prefs.txt")){
+		System.IO.File.Delete("Backup/prefs.txt");
+	}
+	var writer=System.IO.StreamWriter("Backup/prefs.txt");
+	writer.WriteLine(autoBackup);
+	writer.WriteLine(backupInterval);
+	writer.Close();
+	var time:String[]=System.DateTime.Now.ToString().Split("/"[0]);
+	var time2:String=time[0]+"-"+time[1]+"-"+time[2];
+	var time3:String=time2.Split(":"[0])[0]+"."+time2.Split(":"[0])[1]+"."+time2.Split(":"[0])[2];
+	var timefull:String[]=time3.Split(" "[0]);
+	var dir="Backup/"+myName+"_Backup-"+timefull[0]+"_"+timefull[1]+"_"+timefull[2];
+	currentBackupPath=dir;
+	
+	System.IO.Directory.CreateDirectory(dir);
+	
+	//FileUtil.CopyFileOrDirectory("Assets",dir+"/Assets");
+	isCopying=true;
+	
+
+	
+}
+var last:double;
+function doBackup(val:int){
+	var files=System.IO.Directory.GetDirectories("Assets/");
+	if(val>=files.Length){
+		Debug.Log("Done");
+		isCopying=false;
+		done();
+		return 0;
+	}
+	try{
+		copyIt(val,files);
+	}catch(e){
+		Debug.Log("Error copying '"+files[val]+"' to '"+currentBackupPath+"/"+files[val].Split("/"[0])[files[val].Split("/"[0]).Length-1]+"'.");
+	}
+		
+	
+	perc=(val+1)+"/"+files.Length;
+	return val+1;
+}
+function done(){
+	var zip=new ZipFile(currentBackupPath+".zip");
+	zip.AddDirectory(currentBackupPath);
+	zip.Save();
+	System.IO.Directory.Delete(currentBackupPath,true);
+	System.IO.File.Delete(currentBackupPath);
+	perc="";
+	Debug.Log(currentBackupPath+".zip");
+}
+function copyIt(val:int,files:String[]){
+	FileUtil.CopyFileOrDirectory(files[val],currentBackupPath+"/"+files[val].Split("/"[0])[files[val].Split("/"[0]).Length-1]);
+}
+@script ExecuteInEditMode()
+function Update(){
+	if(isCopying){
+		loopcntr=doBackup(loopcntr);
+	}else if(autoBackup&&Time.time>=last+backupIntVal*60){
+		backup();
+	}
 }
