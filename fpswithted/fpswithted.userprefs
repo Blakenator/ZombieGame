@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TutorialStart.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\player.js">
     <Files>
+      <File FileName="Assets\Scripts\player.js" Line="126" Column="3" />
       <File FileName="Assets\Scripts\TutorialStart.js" Line="7" Column="5" />
       <File FileName="Assets\Scripts\Door.js" Line="54" Column="2" />
       <File FileName="Assets\Scripts\ComboLock.js" Line="81" Column="23" />
-      <File FileName="Assets\Scripts\player.js" Line="127" Column="3" />
       <File FileName="Assets\Scripts\Ladder.js" Line="12" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>

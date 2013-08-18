@@ -19,24 +19,22 @@ function Start () {
 	chMotor = GetComponent(CharacterMotor);
     ch = GetComponent(CharacterController);
     stats=GameObject.Find("_StatsCounter").GetComponent(StatsController);
-    
 }
 
 
-function Update () {
+function Update(){
 	if(Time.timeScale>0){
-	
+		Screen.lockCursor=true;
+		Screen.showCursor=false;
+	}else{
+		Screen.lockCursor=false;
+		Screen.showCursor=true;
+	}
+	if(Time.timeScale>0){
 		if(!CanMove){
 			chMotor.canControl=false;
 		}else{
 			chMotor.canControl=true;
-		}
-		if(Time.timeScale>0){
-			Screen.lockCursor=true;
-			Screen.showCursor=false;
-		}else{
-			Screen.lockCursor=false;
-			Screen.showCursor=true;
 		}
 		var speed = walkSpeed;
 		//var cam : Transform = Camera.main.transform;
@@ -52,7 +50,6 @@ function Update () {
 			gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
 		}
 		if (ch.isGrounded && Input.GetButton("Sprint")){
-	
 		   	stats.updateStamina(-0.1);
 		    if(stats.getStamina()>0){
 		        speed = runSpeed;
@@ -99,7 +96,6 @@ function Update () {
 }
 
 //Change to fit new stats
-
 function addhealth(num:double)
 {
 	health=health+num;
