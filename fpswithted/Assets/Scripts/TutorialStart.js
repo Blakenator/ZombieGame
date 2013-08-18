@@ -4,7 +4,7 @@ var showTut:int;
 function Start () {
 	switcher.ClearInventory();
 	if(PlayerPrefs.GetInt("playedBefore",0)==1){
-		GameObject.FindObjectOfType(TutorialFinish).finish();
+		//GameObject.FindObjectOfType(TutorialFinish).finish();
 	}else if(PlayerPrefs.GetInt("playedBefore",0)==0){
 		showTut=1;
 	}

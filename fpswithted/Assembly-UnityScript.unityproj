@@ -44,11 +44,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AIGunshot.js" />
-     <Compile Include="Assets\Scripts\AiScript.js" />
      <Compile Include="Assets\Scripts\AmmoCounter.js" />
      <Compile Include="Assets\Scripts\AmmoObject.js" />
      <Compile Include="Assets\Scripts\BarrelRotation.js" />
+     <Compile Include="Assets\Scripts\ComboLock.js" />
      <Compile Include="Assets\Scripts\Daynight.js" />
      <Compile Include="Assets\Scripts\DestrOptimizer.js" />
      <Compile Include="Assets\Scripts\DestructibleObject.js" />
@@ -63,6 +62,7 @@
      <Compile Include="Assets\Scripts\GunSwitcher.js" />
      <Compile Include="Assets\Scripts\Hammer.js" />
      <Compile Include="Assets\Scripts\Knife.js" />
+     <Compile Include="Assets\Scripts\Ladder.js" />
      <Compile Include="Assets\Scripts\LevelGenerator.js" />
      <Compile Include="Assets\Scripts\LevelSaver.js" />
      <Compile Include="Assets\Scripts\LootDetails.js" />
@@ -114,6 +114,7 @@
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\dependencies.txt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Shaders\3DText.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Readme_upgrading.txt" />

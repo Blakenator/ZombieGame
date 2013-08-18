@@ -18,14 +18,21 @@ function setEnabled(val:boolean){
 function Eat(){//add animation/sounds
 	stats.updateHunger(foodValue);
 	//yield WaitForSeconds(2);
-	Destroy(gameObject,2);
+	var c=GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).dropCurrent();
+	
+	Destroy(c);
+	
+	
+}
+function getVal(){
+	return foodValue;
 }
 
 function OnPickup(){
 	GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).addObject(gameObject);
 	
 	transform.parent=GameObject.Find("WeaponAnchor").transform;
-	transform.localPosition=Vector3(-0.2424172,-0.5481125,-0.9736624);//GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
+	transform.localPosition=Vector3(.1,-.5,-.65);//GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	transform.localRotation.x=0;//GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 	transform.localRotation.y=0;
 	transform.localRotation.z=0;
@@ -33,6 +40,3 @@ function OnPickup(){
 	gameObject.collider.enabled=false;
 }
 
-function getVal(){
-	return foodValue;
-}

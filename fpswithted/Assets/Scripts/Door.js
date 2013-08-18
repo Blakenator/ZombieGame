@@ -1,19 +1,93 @@
 #pragma strict
-var player:Transform;
+private var open:boolean=false;
+private var openAngle:float;
+private var closeAngle:float;
+private var isDone:boolean=false;
+var Locked:boolean=false;
+var IsSafe:boolean=false;
+var speed:float=1;
+private var isClosed:boolean=true;
+function Start(){
+	openAngle=transform.parent.localEulerAngles.y+90;
+	closeAngle=transform.parent.localEulerAngles.y;
+}
+
 function Update (){
-	//var tgt:Vector3=player.position-transform.position;
-	//Debug.Log(Vector3.Angle(tgt,transform.position));
+
+	if(open&&!Locked){
+		Open();
+	}else{
+		Close();
+	}
+}
+
+function Open(){
+	if(isDone&&transform.parent.localEulerAngles.y==openAngle){
+		return;
+	}
 	
-	var otherTransform : Transform;
- 
-//function Start () {
-    var relativePoint = transform.InverseTransformPoint(player.position);
-    if (relativePoint.x < 0.0){
-        //print ("Object is to the left");
-    }else if (relativePoint.x > 0.0){
-        //print ("Object is to the right");
-    }else{
-        //print ("Object is directly ahead");
+	isClosed=false;
+	
+	var target = Quaternion.Euler (0, openAngle, 0);
+    if(Mathf.Abs(transform.parent.localEulerAngles.y-90)<5){
+    	transform.parent.localRotation=target;
+    	isDone=true;
+    	isClosed=false;
+    	return;
     }
-//}
+    
+    
+    
+	transform.parent.localRotation = Quaternion.Slerp(transform.parent.localRotation, target,Time.deltaTime*speed);
+	
+	
+	if(transform.parent.localEulerAngles.y==openAngle){
+		isDone=true;
+		isClosed=false;
+	}
+}
+
+function Close(){
+	if(isDone&&transform.parent.localEulerAngles.y==closeAngle){
+		return;
+	}
+	
+	var target = Quaternion.Euler (0, closeAngle, 0);
+	
+	if(Mathf.Abs(transform.parent.localEulerAngles.y)<5){
+    	transform.parent.localRotation=target;
+		isClosed=true;
+		isDone=true;
+		if(IsSafe){
+			Locked=true;
+		}
+    	return;
+    }
+    
+    
+    
+	transform.parent.localRotation = Quaternion.Slerp(transform.parent.localRotation, target,Time.deltaTime*speed);
+	
+	if(transform.parent.localEulerAngles.y==closeAngle){
+		isDone=true;
+		isClosed=true;
+		if(IsSafe){
+			Locked=true;
+		}
+	}
+}
+
+function IsClosed(){
+	return isClosed;
+}
+
+function Unlock(){
+	Locked=false;
+}
+function Lock(){
+	Locked=false;
+}
+function Use(){
+	open=!open;
+	isDone=false;
 }

@@ -24,14 +24,19 @@ var thirstpos:Vector2;
 var thirstBarFull:Texture2D;
 var thirstBarEmpty:Texture2D;
 
+var hungerDegrade:float=-.1;
+var thirstDegrade:float=-.1;
+
+var healthDegrade:float=-.1;
+//var hungerDegrade:float=-.1;
 function getStamina(){
 	return stamina;
 }
 function Update(){
-	updateHunger(-0.1*Time.deltaTime);
-	updateThirst(-0.1*Time.deltaTime);
+	updateHunger(hungerDegrade*Time.deltaTime);
+	updateThirst(thirstDegrade*Time.deltaTime);
 	if(hunger<=0||thirst<=0){
-		updateHealth(-0.1*Time.deltaTime);
+		updateHealth(healthDegrade*Time.deltaTime);
 	}
 }
 
@@ -54,7 +59,6 @@ public static function updateHunger (ammount:float){
 	hunger+=ammount;
 	if(hunger<0){
 		hunger=0;
-		
 	}
 }
 

@@ -33,7 +33,8 @@ function Awake () {
 		dist=0;
 		i++;
 	}
-	AstarPath.active.Scan();
+	
+	//AstarPath.active.Scan();
 }
 
 function addToMaxNum(num:int){
@@ -42,7 +43,7 @@ function addToMaxNum(num:int){
 
 function Spawn(){
 	currentZNumber--;
-	if(currentZNumber<maxnumber){
+	if(currentZNumber<maxnumber&&currentZNumber>0){
 		var pos:Vector3=player.position;
 		var temp:Vector3;
 		

@@ -61,7 +61,7 @@ function dropIndex(index:int){
 }
 
 
-function dropCurrent(){
+function dropCurrent(){	//returns clone
 	if(inventoryArray.length==0){
 		return;
 	}
@@ -86,6 +86,7 @@ function dropCurrent(){
 	}
 	clone.rigidbody.isKinematic=false;
 	clone.gameObject.collider.enabled=true;
+	
 	clone.rigidbody.AddForce(clone.transform.forward*20);
 	
 	clone.SendMessage("setEnabled",false,SendMessageOptions.RequireReceiver);
@@ -102,6 +103,7 @@ function dropCurrent(){
 	inventoryArray.RemoveAt(currentGunIndex);
 	switchUp();
 	
+	return clone;
 	//Debug.Log(inventoryArray.length-1);
 }
 
