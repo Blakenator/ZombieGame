@@ -30,7 +30,7 @@ function OnGUI(){
 	if(Physics.Raycast (cam.transform.position, cam.transform.forward, hit, 6)){
 		var screenPos : Vector3 = cam.WorldToScreenPoint(hit.transform.gameObject.transform.position+offset);
 		
-		if(hit.transform.gameObject.CompareTag("Pickup")){
+		if(hit.transform.gameObject.CompareTag("Pickup")||hit.transform.gameObject.CompareTag("LootPickup")){
 			var obj=hit.transform.gameObject;
 			//Debug.Log("TEST!");
 			

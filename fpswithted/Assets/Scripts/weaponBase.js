@@ -133,6 +133,14 @@ function getCurrAmmo()
 {
 	return currAmmo;
 }
+function setCurrAmmo(num:int)
+{
+	currAmmo=num;
+}
+function getGunName(){
+	return GunName;
+}
+
 /*
 function getCurrClips()
 {
@@ -213,6 +221,7 @@ function OnPickup(){
 	
 	transform.parent=GameObject.Find("WeaponAnchor").transform;
 	
+	Debug.Log("in here");
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 	rigidbody.isKinematic=true;

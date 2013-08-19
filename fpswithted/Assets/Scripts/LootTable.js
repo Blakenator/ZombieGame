@@ -85,6 +85,7 @@ function Start(){
 				}else{
 					clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
 					clone.name=name;
+					clone.tag="LootPickup";
 				}
 			}
 		}else if(s.IsCiv()) {//is Civ
@@ -96,6 +97,7 @@ function Start(){
 				}else{
 					clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
 					clone.name=name;
+					clone.tag="LootPickup";
 				}
 			}
 		}else if(s.IsFood()){//is food
@@ -107,11 +109,13 @@ function Start(){
 				}else{
 					clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
 					clone.name=name;
+					clone.tag="LootPickup";
 				}
 			}
 		}
 		
 		
 	}
+	reader.Close();
 }
 

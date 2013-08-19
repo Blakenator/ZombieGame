@@ -29,3 +29,10 @@ static function addClips(str:String,num:int){
 	
 	clipArray[str]=temp;
 }
+
+static function setClips(str:String,num:int){
+	var temp:int=clipArray[str];
+	temp=num;
+	
+	clipArray[str]=temp;
+}

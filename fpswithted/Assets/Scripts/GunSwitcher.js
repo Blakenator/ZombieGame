@@ -109,14 +109,16 @@ function dropCurrent(){	//returns clone
 		clone.AddComponent("PickUp");
 	}
 	
-	clone.tag="Pickup";
-	
+	//clone.tag="Pickup";
+	clone.tag="LootPickup";
 	
 	clone.name=tmp.gameObject.name;
 	
 	Destroy(inventoryArray[currentGunIndex]);
 	inventoryArray.RemoveAt(currentGunIndex);
 	switchUp();
+	
+	
 	
 	return clone;
 	//Debug.Log(inventoryArray.length-1);

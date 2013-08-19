@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\PickUp.js" />
      <Compile Include="Assets\Scripts\Remover.js" />
      <Compile Include="Assets\Scripts\ResourceManager.js" />
+     <Compile Include="Assets\Scripts\SaveWeapons.js" />
      <Compile Include="Assets\Scripts\SpawnGun.js" />
      <Compile Include="Assets\Scripts\StatsController.js" />
      <Compile Include="Assets\Scripts\Torch.js" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Scripts\health bar.js" />
      <Compile Include="Assets\Scripts\inventoryGUI.js" />
      <Compile Include="Assets\Scripts\inventoryItem.js" />
+     <Compile Include="Assets\Scripts\loadWeapons.js" />
      <Compile Include="Assets\Scripts\pauseGUI.js" />
      <Compile Include="Assets\Scripts\player.js" />
      <Compile Include="Assets\Scripts\stayOnGround.js" />
@@ -115,6 +117,7 @@
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\dependencies.txt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\WeaponsSave.txt" />
      <None Include="Assets\Shaders\3DText.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />

@@ -76,7 +76,7 @@ function Update(){
 		var dir:Vector3=cam.transform.forward;
 		dir.Normalize();
 		if(Physics.Raycast (cam.transform.position, dir, hit, 6)){
-			if(hit.transform.gameObject.CompareTag("Pickup")){
+			if(hit.transform.gameObject.CompareTag("Pickup")||hit.transform.gameObject.CompareTag("LootPickup")){
 				Debug.Log("HIT AN OBJECT!");
 				hit.transform.gameObject.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);
 			}else if((isHolding==false)&&(hit.transform.gameObject.CompareTag("Grab"))&&(hit.transform.rigidbody.mass<Strength)){
