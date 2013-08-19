@@ -75,7 +75,7 @@ function OnGUI () {
 					}
 					GUILayout.Box("Volume: "+volumeSlider);
 					volumeSlider=Mathf.Round(GUILayout.HorizontalSlider(volumeSlider,0,11));
-					AudioListener.volume=volumeSlider/10;
+					AudioListener.volume=volumeSlider*10;
 					if(GUILayout.Button("Back")){
 						menu="main";
 					}

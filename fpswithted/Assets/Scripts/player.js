@@ -1,6 +1,7 @@
 #pragma strict
 public static var CanMove:boolean=true;
 
+private var lastPos:Vector3;
 var health:double=100.0;
 var gunSwitcherObject:GameObject;
 var runSpeed:float=15;
@@ -14,11 +15,14 @@ private var stats:StatsController;
 var holdPoint:HingeJoint;
 var Strength:float=20;
 private var isHolding:boolean=false;
+
+
 //var gun2:Gunshot;
 function Start () {
 	chMotor = GetComponent(CharacterMotor);
     ch = GetComponent(CharacterController);
     stats=GameObject.Find("_StatsCounter").GetComponent(StatsController);
+    lastPos = transform.position;
 }
 
 
@@ -49,7 +53,7 @@ function Update(){
 			Debug.Log("drop");
 			gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
 		}
-		if (ch.isGrounded && Input.GetButton("Sprint")){
+		if (ch.isGrounded && Input.GetButton("Sprint") && hasMoved()){
 		   	stats.updateStamina(-0.1);
 		    if(stats.getStamina()>0){
 		        speed = runSpeed;
@@ -66,9 +70,12 @@ function Update(){
 		
 	}
 	
-	Debug.DrawRay(cam.transform.position, cam.transform.forward*6,Color.red);
+	
+	//Debug.DrawRay(cam.transform.position, dir*6,Color.red);
 	if (Input.GetButtonDown("Pick Up")){
-		if(Physics.Raycast (cam.transform.position, cam.transform.forward, hit, 6)){
+		var dir:Vector3=cam.transform.forward;
+		dir.Normalize();
+		if(Physics.Raycast (cam.transform.position, dir, hit, 6)){
 			if(hit.transform.gameObject.CompareTag("Pickup")){
 				Debug.Log("HIT AN OBJECT!");
 				hit.transform.gameObject.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);
@@ -78,12 +85,7 @@ function Update(){
 				holdPoint.connectedBody=hit.transform.gameObject.rigidbody;
 			}
 			else{
-				try{
-					hit.transform.gameObject.SendMessage("Use",SendMessageOptions.RequireReceiver);
-				}
-				catch(err){
-				
-				}
+				hit.transform.gameObject.SendMessage("Use",SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
@@ -123,5 +125,20 @@ function toggleGravity(g:boolean){
 		chMotor.movement.gravity = 10;
 	}else{
 		chMotor.movement.gravity = 0;
+	}
+}
+function hasMoved() {
+  var newPos = transform.position - lastPos;
+  lastPos = transform.position;
+  if(newPos.magnitude > 0.01){
+  	return true;
+  }
+  return false;
+  //return newPos.magnitude > 0.01; // return true if char moved 1mm
+}
+function OnControllerColliderHit (hit : ControllerColliderHit) {
+	if(hit.gameObject.CompareTag("Pickup")){
+		Physics.IgnoreCollision(gameObject.collider,hit.gameObject.collider);
+		
 	}
 }

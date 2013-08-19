@@ -18,6 +18,7 @@ function setEnabled(val:boolean){
 function Drink(){//add animation/sounds
 	stats.updateThirst(thirstValue);
 	var c=GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).dropCurrent();
+	
 	Destroy(c);
 }
 function getVal(){

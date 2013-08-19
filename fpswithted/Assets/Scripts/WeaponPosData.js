@@ -9,7 +9,7 @@ function Awake () {
 	
 	for(var I in gunArr){
 		posArray[I.gameObject.name]=I.transform.localPosition;
-		rotArray[I.gameObject.name]=I.transform.localRotation;
+		rotArray[I.gameObject.name]=I.transform.localEulerAngles;
 		//Debug.LogWarning(I.gameObject.name);
 	}
 	
@@ -49,6 +49,6 @@ function getWepPos(str:String){
 }
 
 function getWepRot(str:String){
-	var wepRot:Quaternion=rotArray[modName];
+	var wepRot:Vector3=rotArray[modName];
 	return wepRot;
 }

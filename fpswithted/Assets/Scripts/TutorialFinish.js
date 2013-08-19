@@ -6,6 +6,7 @@ function Start(){
 	yield WaitForSeconds(0.5);
 	total=GameObject.FindGameObjectsWithTag("enemy").Length-1;
 	Debug.Log(total);
+	
 }
 function Update () {
 	progress=total-GameObject.FindGameObjectsWithTag("enemy").Length-1;
@@ -19,6 +20,11 @@ function Update () {
 	if(progress/total>=0.75){
 		finish();
 	}
+	
+	if(Input.GetKey("=")){
+		finish();
+		Debug.LogWarning("Finish");
+	}
 }
 
 function finish(){
@@ -28,5 +34,7 @@ function finish(){
 	PlayerPrefs.Save();
 	Time.timeScale=0.1;
 	yield WaitForSeconds(0.6);
-	Application.LoadLevel(Application.loadedLevel+1);
+	//Application.LoadLevel(Application.loadedLevel+1);
+	Application.LoadLevel(4);
+	
 }

@@ -1,7 +1,10 @@
 #pragma strict
 var menu:String="main";
+
+var qualitySlider:int;
 function Start(){
 	volumeSlider=AudioListener.volume*10;
+	qualitySlider=QualitySettings.GetQualityLevel();
 }
 
 function OnGUI(){
@@ -28,9 +31,18 @@ function OnGUI(){
 	}else if(menu=="options"){
 		GUILayout.BeginArea(new Rect(Screen.width/2-115,Screen.height/2+200,230,100));
 			GUILayout.BeginVertical();
+				GUILayout.Box("Quality: "+QualitySettings.names[QualitySettings.GetQualityLevel()]);
+				qualitySlider=Mathf.Round(GUILayout.HorizontalSlider(qualitySlider,0,5));
+				QualitySettings.SetQualityLevel(qualitySlider,true);
+				
 				GUILayout.Box("Volume: "+volumeSlider);
 				volumeSlider=Mathf.Round(GUILayout.HorizontalSlider(volumeSlider,0,11));
 				AudioListener.volume=volumeSlider/10;
+				
+				
+				//names[QualitySettings.GetQualityLevel].ToString());
+				
+				
 				if(GUILayout.Button("Back")){
 					menu="main";
 				}

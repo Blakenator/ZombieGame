@@ -1,10 +1,19 @@
 
 var isEnabled:boolean;
 
+var semiAuto:boolean=false;
+
 var fireRate:double;
 private var originalAccuracy:double;
+
+var resetToAcc:float;
+
 var accuracy:double;
+var accRecoveryTime:float;
+var accDecreasePerShot:float;
+var minAcc:float;
 var ADS_Multiplier:double;
+var isADS:boolean=false;
 var bulletSpeed:float;
 var damageTodestructibles:int;
 
@@ -29,33 +38,78 @@ private var GunName:String;
 
 public var clipsOnPickUp:int=1;
 
-var recoil:float;
+//var recoil:float;
+
+var force: float = 2.5; // controls recoil amplitude
+var upSpeed: float = 9; // controls smoothing speed
+var dnSpeed: float = 20; // how fast the weapon returns to original position
 
 
+private var startAng:Vector3;
+private var targetX: float; // unfiltered recoil angle
+private var ang = Vector3.zero; // smoothed angle
+
+private var startPos:Vector3;
+private var tgtRecoilPosZ:float;
+private var RecoilPos=Vector3.zero;
+var pushBackSpeed:float;
+var pushBackRecoverSpeed:float;
+var pushRecoilForce:float;
+
+public static var canShoot:boolean=true;
 function Start(){
 	originalAccuracy=accuracy;
 	//clipCount=GameObject.Find("_AmmoCounter").GetComponent(AmmoCounter);
 	GunName=gameObject.name;
 	targetGuiText=GameObject.Find("GUI Text").GetComponent(GUIText);
+	startAng=transform.localEulerAngles;
+	startPos=transform.localPosition;
+	//startPos.z=transform.localPosition.z;
+	//Debug.Log(startPos.z+"||"+transform.localPosition.z+"|"+gameObject);
+	RecoilPos.z=startPos.z;
+	resetToAcc=originalAccuracy;
+	if(semiAuto){
+		fireRate=.01;
+	}
 }
 
+
 function Update(){
-	if(isEnabled){
+	if(isEnabled&&canShoot){
 		targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + AmmoCounter.getClips(GunName);
-	
-		if (Input.GetButton("Fire3")){
-			accuracy=originalAccuracy*ADS_Multiplier;
-		}else{
-			accuracy=originalAccuracy;
+		
+		
+		
+		if (Input.GetButton("Fire3")&&!isADS){
+			isADS=true;
+			accuracy=accuracy*ADS_Multiplier;
+			resetToAcc=originalAccuracy*ADS_Multiplier;
 		}
-		if (Input.GetButton("Fire1")){
-			fireGun();
-			//applyrecoil();
+		
+		if (Input.GetButtonUp("Fire3")){
+			isADS=false;
+			resetToAcc=originalAccuracy;
+		}
+		
+		if(semiAuto){
+			if (Input.GetButtonDown("Fire1")){
+				fireGun();
+			}else{
+				resetAcc();
+			}
+		}else{
+			if (Input.GetButton("Fire1")){
+				fireGun();
+			}else{
+				resetAcc();
+			}
 		}
 		
 		if (Input.GetButtonDown("Reload") && AmmoCounter.getClips(GunName) > 0){
 			reload();
 		}
+		
+		applyrecoil();
 	}
 }
 function reload(){
@@ -107,7 +161,13 @@ function spawnBullet(){
 
 	muzzleFlash.Emit(1);
 	
-
+	
+	targetX+=force;
+	tgtRecoilPosZ-=pushRecoilForce;
+	
+	if(accuracy<=minAcc){
+		accuracy+=accDecreasePerShot;
+	}
  	if (Physics.Raycast(bulletSpawn.transform.position, direction, hit,100))
  	{
  		
@@ -128,9 +188,8 @@ function spawnBullet(){
       	
   			if(hit.collider.CompareTag("enemy"))
 	  		{
-	    		Debug.Log("HIT");
-	    		Debug.Log(hit.transform.gameObject);
-	            //GameObject.Destroy(hit.collider.gameObject);
+	    		//Debug.Log("HIT");
+	    		//Debug.Log(hit.transform.gameObject);
 	            hit.transform.gameObject.GetComponent("zombieAI1").OnDeath();
 	    	}
 	    	
@@ -149,17 +208,17 @@ function spawnBullet(){
 
 function OnPickup(){
 
-
+	yield;
 	GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).addObject(gameObject);
 	
 	transform.parent=GameObject.Find("WeaponAnchor").transform;
 	
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
-	transform.localRotation=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
+	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 	rigidbody.isKinematic=true;
 	gameObject.collider.enabled=false;
-	
-	
+	startAng=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
+	startPos=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	//gameObject.tag="Pickup";
 	
 	//var script = gameObject.GetComponent(weaponBase);
@@ -174,18 +233,37 @@ function OnPickup(){
 		clipsOnPickUp=0;
 	}
 	
-	Destroy(GetComponent(PrefabIdentifier));
-	gameObject.AddComponent(StoreInformation);
+	
 	//this.enabled=false;
+	yield WaitForSeconds(.2);
+	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
+	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
+}
+function OnSwitchTo(){
+	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
+	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
+	accuracy=originalAccuracy;
+	
+	tgtRecoilPosZ=0;
+	
+	startPos=transform.localPosition;
+	tgtRecoilPosZ=startPos.z;
+	
+	RecoilPos=transform.localPosition;
+	Debug.Log("switchto");
 }
 
-function applyrecoil(){
-	//Camera.main.transform.localEulerAngles.x+=recoil;
-	//transform.localEulerAngles.z-=recoil*Time.deltaTime;
-	if(transform.localEulerAngles.x>270){
-		transform.localEulerAngles.x+=10.0;
-	}else{
-	transform.localEulerAngles.x-=10.0;
-	}
-	Debug.Log("Recoil");
+function applyrecoil() {
+	
+	ang.x = Mathf.Lerp(ang.x, targetX, upSpeed * Time.deltaTime);
+	transform.localEulerAngles = startAng - ang; // move the camera or weapon
+	targetX = Mathf.Lerp(targetX, 0, dnSpeed * Time.deltaTime);
+	
+	
+	RecoilPos.z = Mathf.Lerp(RecoilPos.z, tgtRecoilPosZ, pushBackSpeed * Time.deltaTime);
+	transform.localPosition.z = RecoilPos.z;//startPos+RecoilPos;
+	tgtRecoilPosZ = Mathf.Lerp(tgtRecoilPosZ, startPos.z, pushBackRecoverSpeed); //* Time.deltaTime);
+}
+function resetAcc(){
+	accuracy=Mathf.Lerp(accuracy,resetToAcc,accRecoveryTime*Time.deltaTime); //reset accuracy
 }

@@ -52,18 +52,18 @@ function OnGUI(){
 		        GUI.Box(Rect (0,0, 150, 150),obj.name);//object picture?
 		        
 		    	
-		    	GUI.Label(Rect (0,-20, 150, 150), "Press 'use' to interact.");
+		    	GUI.Label(Rect (0,20, 150, 150), "Press 'use' to interact.");
 		    	
 		    	var Ammo:AmmoObject=obj.GetComponent(AmmoObject);
 		    	var Food:FoodItem=obj.GetComponent(FoodItem);
 		    	var Water:WaterItem=obj.GetComponent(WaterItem);
 		    	
 		    	if(Ammo!=null){
-		    		GUI.Label(Rect (0,0, 150, 150), "Ammo: "+Ammo.getVal().ToString());
+		    		GUI.Label(Rect (0,40, 150, 150), "Ammo: "+Ammo.getVal().ToString());
 		    	}else if(Food!=null){
-		    		GUI.Label(Rect (0,0, 150, 150), "Food value: "+Food.getVal().ToString());
+		    		GUI.Label(Rect (0,40, 150, 150), "Food value: "+Food.getVal().ToString());
 		    	}else if(Water!=null){
-		    		GUI.Label(Rect (0,0, 150, 150), "Water value: "+Water.getVal().ToString());
+		    		GUI.Label(Rect (0,40, 150, 150), "Water value: "+Water.getVal().ToString());
 		    	}
 		       
 		    GUI.EndGroup ();

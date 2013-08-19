@@ -17,12 +17,9 @@ function setEnabled(val:boolean){
 }
 function Eat(){//add animation/sounds
 	stats.updateHunger(foodValue);
-	//yield WaitForSeconds(2);
 	var c=GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).dropCurrent();
 	
 	Destroy(c);
-	
-	
 }
 function getVal(){
 	return foodValue;

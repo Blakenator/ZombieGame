@@ -1,5 +1,9 @@
-EBR,m,26
-G36C,m,26
-FAMAS,m,24
-Water Bottle,f,50
-Canned Food,f,50
+EBR,m,1
+G36C,m,2
+FAMAS,m,4
+empty,m,93
+Water Bottle,f,20
+Canned Food,f,20
+empty,f,60
+M9,c,50
+empty,c,50

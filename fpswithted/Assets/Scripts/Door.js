@@ -29,7 +29,7 @@ function Open(){
 	isClosed=false;
 	
 	var target = Quaternion.Euler (0, openAngle, 0);
-    if(Mathf.Abs(transform.parent.localEulerAngles.y-90)<5){
+    if(Mathf.Abs(transform.parent.localEulerAngles.y-openAngle)<5){
     	transform.parent.localRotation=target;
     	isDone=true;
     	isClosed=false;

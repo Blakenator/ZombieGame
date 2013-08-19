@@ -8,16 +8,19 @@ var hands:GameObject;
 
 function Awake () {
 	inventoryArray=startingInventory.Clone();
+}
+function Start () {
+	switchUp();
 	allButCurrent();
-	
 }
 function getCurrGunIndex(){
 	return currentGunIndex;
 }
 
-
 function allButCurrent(){
 	if(inventoryArray.length>0){
+		
+		
 		hands.active=false;
 		for(var gun:GameObject in inventoryArray){
 			gun.renderer.enabled=false;
@@ -29,8 +32,20 @@ function allButCurrent(){
 		}
 		var tmp:GameObject=inventoryArray[currentGunIndex];
 		setChildrenVisible(tmp,true);
+		
+		
 		tmp.renderer.enabled=true;
+		
+		if(tmp.GetComponent(weaponBase)!=null){
+			tmp.SendMessage("OnSwitchTo",SendMessageOptions.RequireReceiver);
+		}
+		
+		//Animation goes here
+		yield WaitForSeconds(.1);//Delay to fix double use bug should be set to animation length later.
+		
 		tmp.SendMessage("setEnabled",true,SendMessageOptions.RequireReceiver);
+		
+		
 	}else{
 		hands.active=true;
 	}
@@ -62,6 +77,7 @@ function dropIndex(index:int){
 
 
 function dropCurrent(){	//returns clone
+	
 	if(inventoryArray.length==0){
 		return;
 	}
@@ -71,7 +87,6 @@ function dropCurrent(){	//returns clone
 	if(!tmp.rigidbody){
 		//inventoryArray[currentGunIndex].AddComponent("Rigidbody");
 		clone.AddComponent("Rigidbody");
-		
 	}
 	if(!tmp.collider){
 		//inventoryArray[currentGunIndex].AddComponent("Rigidbody");
@@ -128,6 +143,7 @@ function switchUp(){
 			currentGunIndex=0;
 			allButCurrent();
 			Debug.Log("switchup");
+			
 		}else{
 			currentGunIndex+=1;
 			allButCurrent();
@@ -165,3 +181,4 @@ function setCurrentIndex(val:int){
 	currentGunIndex=val;
 	allButCurrent();
 }
+

@@ -1,15 +1,9 @@
 #pragma strict
 import System.IO;
 
-    
-
-public static var LootName:GameObject[];
-public static var LootRarity:GameObject[];
-public static var LootLoc:GameObject[];
-
 public static var lines:String[];
 
-private var multiple:int=2;//All items be be a multiple of this!
+private var multiple:float=.5;//All items be be a multiple of this!
 
 var milnames=new Array ();
 var civnames=new Array ();
@@ -30,7 +24,7 @@ var foodItems=new Array ();
 
 
 
-function Awake(){
+function Start(){
 	
 	var reader=new System.IO.StreamReader(Application.dataPath+"/Resources/Book1.csv");
 	
@@ -50,73 +44,74 @@ function Awake(){
 			
 			var timestoadd:int=val/multiple;
 			
+			
 			for(var lcv=0;lcv<timestoadd;lcv++){
 				
 				modlines.Add(line);
 				
 				if(category.Equals("c")){
-					//Debug.Log("CIVILIAN");
 					civItems.push(line);
 					civnames.push(name);
 				}else if(category.Equals("m")){
-					//Debug.Log("MIL");
 					milItems.push(line);
 					milnames.push(name);
 				}else if(category.Equals("f")){
-					//Debug.Log("FOOD");
 					foodItems.push(line);
 					foodnames.push(name);
 				}
-				//names.push(name);
-				//categorys.push(category);
-				//raritys.push(val);
 			}
 		}
 	}
-	Debug.Log(modlines.length);
 	
 	
 	
 	
+	var spawns:Array=GameObject.FindGameObjectsWithTag("ObjSpawn");
 	
-	var spawns:Array=GameObject.FindGameObjectsWithTag ("ObjSpawn");
-	//Debug.Log
+	
+	
 	for(var spawn in spawns){
-		var temp2:GameObject=spawn;
-		var s:LootSpawn=temp2.GetComponent(LootSpawn);
+		var tempobj:GameObject=spawn;
+		//Debug.Log(tempobj.gameObject);
+		var s:LootSpawn=tempobj.GetComponent(LootSpawn);
 		var clone:GameObject;
+		
 		if(s.IsMil()){//Is mil
 			if(milItems.length!=0){
 				var randomnumber=Mathf.Floor(Random.value*(milItems.length));
 				name = milnames[randomnumber].ToString();
-				
-				var fpath:String="prefabs/"+name;
-				
-				clone=GameObject.Instantiate(Resources.Load(fpath),s.transform.position,s.transform.rotation);
-				clone.name=name;
+				if(name.Equals("empty")){
+					//return;
+				}else{
+					clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
+					clone.name=name;
+				}
 			}
-		}
-		else if(s.IsCiv()) {//is Civ
+		}else if(s.IsCiv()) {//is Civ
 			if(civItems.length!=0){
 				randomnumber=Mathf.Floor(Random.value*(civItems.length));
 				name = civnames[randomnumber].ToString();
-				
-				fpath="prefabs/"+name;
-				 
-				clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
-				clone.name=name;
+				if(name.Equals("empty")){
+					//return;
+				}else{
+					clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
+					clone.name=name;
+				}
 			}
-		}else if(s.IsFood()){//isfood
+		}else if(s.IsFood()){//is food
 			if(foodItems.length!=0){
 				randomnumber=Mathf.Floor(Random.value*(foodItems.length));
 				name = foodnames[randomnumber].ToString();
-				
-				fpath="prefabs/"+name;
-				
-				clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
-				clone.name=name;
+				if(name.Equals("empty")){
+					//return;
+				}else{
+					clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),s.transform.position,s.transform.rotation);
+					clone.name=name;
+				}
 			}
 		}
+		
+		
 	}
 }
 
