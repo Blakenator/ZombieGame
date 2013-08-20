@@ -1,15 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LootTable.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LootDetails.js">
     <Files>
-      <File FileName="Assets\Scripts\SaveWeapons.js" Line="29" Column="1" />
-      <File FileName="Assets\Scripts\loadWeapons.js" Line="13" Column="10" />
-      <File FileName="Assets\Scripts\LootTable.js" Line="119" Column="17" />
-      <File FileName="Assets\Scripts\player.js" Line="80" Column="33" />
-      <File FileName="Assets\Scripts\WaterItem.js" Line="38" Column="2" />
-      <File FileName="Assets\Scripts\FoodItem.js" Line="38" Column="2" />
-      <File FileName="Assets\Scripts\GunSwitcher.js" Line="85" Column="1" />
-      <File FileName="Assets\Scripts\LootDetails.js" Line="33" Column="94" />
+      <File FileName="Assets\Scripts\pauseGUI.js" Line="56" Column="1" />
+      <File FileName="Assets\Scripts\SaveWeapons.js" Line="30" Column="2" />
+      <File FileName="Assets\Scripts\loadWeapons.js" Line="19" Column="28" />
+      <File FileName="Assets\Scripts\Door.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LootDetails.js" Line="70" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

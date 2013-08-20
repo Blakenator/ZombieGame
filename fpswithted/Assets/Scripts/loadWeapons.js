@@ -3,19 +3,29 @@
 var gunSwitch:GunSwitcher;
 
 private var wscript:weaponBase;
-
+var player:Transform;
 function Start () {
 
 }
+/*
 function Update(){
 	if(Input.GetKeyDown("-")){
 		gunSwitch.ClearInventory();
 		load();
 	}
 }
-
+*/
 function load () {
-
+	gameObject.tag="Untagged";
+	gunSwitch.ClearInventory();
+	var lootarr:Array=GameObject.FindGameObjectsWithTag("LootPickup");
+	for(var i in lootarr){
+		Destroy(i);
+	}
+	
+	
+	
+	
 	var reader=new System.IO.StreamReader(Application.dataPath+"/WeaponsSave.txt");
 	var lines=reader.ReadToEnd().Split("\n"[0]);
 	
@@ -28,6 +38,15 @@ function load () {
 			var type:String=temp[0].ToString();
 			
 			var name:String;
+			
+			if(type.Equals("p")){
+				var x1:float=float.Parse(temp[1]);
+				var y1:float=float.Parse(temp[2]);
+				var z1:float=float.Parse(temp[3]);
+				player.position=Vector3(x1,y1,z1);
+				
+			}
+			
 			
 			if(type.Equals("w")){
 				

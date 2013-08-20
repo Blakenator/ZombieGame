@@ -6,7 +6,8 @@ var MainCamera:MouseLook;
 var volumeSlider:float;
 var showFPS:boolean;
 var FPSText:GUIText;
-
+var saver:SaveWeapons;
+var loader:loadWeapons;
 function Start () {
 	volumeSlider=AudioListener.volume*10;
 	showFPS=FPSText.active;
@@ -36,7 +37,7 @@ function OnGUI () {
 	if(gameState=="paused"){
 		if(menu=="main"){
 			var middle:Vector2=Vector2(Screen.width/2,Screen.height/2);
-			var box=Rect(middle.x-85,middle.y-100,170,130);
+			var box=Rect(middle.x-85,middle.y-100,170,170);
 			GUILayout.BeginArea(box,"Paused...",GUI.skin.GetStyle("Box"));
 				GUILayout.BeginVertical(GUILayout.ExpandHeight(true));
 				GUILayout.Space(20);
@@ -47,8 +48,16 @@ function OnGUI () {
 					temp.isPaused=false;
 					MainCamera.isPaused=false;
 				}
+				
 				if(GUILayout.Button("Main Menu")){
 					Application.LoadLevel(0);
+				}
+				if(GUILayout.Button("Save")){
+					saver.Save();
+				}
+				if(GUILayout.Button("Load")){
+					//Application.LoadLevel(0);
+					loader.load();
 				}
 				if(GUILayout.Button("Options")){
 					menu="options";

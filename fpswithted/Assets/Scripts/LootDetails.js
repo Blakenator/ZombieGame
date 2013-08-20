@@ -37,8 +37,6 @@ function OnGUI(){
 			textcenteredStyle = GUI.skin.GetStyle("Label");
 			textcenteredStyle.fontSize=15;
 			
-			
-			
 			//rect.x = screenPos.x;
     		//rect.y = screenPos.y - rect.height; 
     		

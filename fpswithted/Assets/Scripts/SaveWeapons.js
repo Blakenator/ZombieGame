@@ -1,8 +1,7 @@
 #pragma strict
-//private static var WeaponArray = new Hashtable();
 var gunSwitch:GunSwitcher;
 private var wscript:weaponBase;
-
+var player:Transform;
 var fileName:String;
 function Start(){
 	fileName = Application.dataPath+"/WeaponsSave.txt";
@@ -18,14 +17,17 @@ function Start(){
     //sw.Close();
 }
 
-
+/*
 function Update () {
 	if(Input.GetKeyDown("0")){
 		
 		Save();
 	}
 }
+*/
+
 function Save(){
+	gameObject.tag="Untagged";
 	var sw : StreamWriter = new StreamWriter(fileName,false);
 	sw.Write("");
 	sw.Close();
@@ -41,6 +43,8 @@ function SaveWeapons(){
 	gunSwitch=GameObject.Find("GunSwitcher").GetComponent(GunSwitcher);
 	var gunArr:Array=gunSwitch.GetInventory();
 	var sw : StreamWriter = new StreamWriter(fileName,true);//false means it will overwrite ALL data! true is append to end!
+	
+	sw.WriteLine("p"+","+player.position.x+","+player.position.y+","+player.position.z);
 	//sw.Flush();
 	sw.WriteLine ("Weapons");
 	for(var I in gunArr){
