@@ -1,41 +1,52 @@
-var wheelFL : WheelCollider;
-var wheelFR : WheelCollider;
-var wheelRL : WheelCollider;
-var wheelRR : WheelCollider;
-var maxTorque : float  = 50;
-var enterexit:carenterscript;
+﻿#pragma strict
 
-private var IsPlayerInCar : boolean = false;
+private var Enabled:boolean=false;
+
+
+var fl:WheelCollider;
+var fr:WheelCollider;
+var bl:WheelCollider;
+var br:WheelCollider;
+var carCam:Camera;
+var playerCam:Camera;
+var playerLookx:MouseLook;
+var playerLooky:MouseLook;
+
+
+var power:float;
+var maxSteerAng:float;
+
 
 function Start () {
-rigidbody.centerOfMass.y = -0.9;
+	carCam.enabled=false;
+	playerCam=Camera.main;
+	playerLookx=playerCam.GetComponent(MouseLook);
+	playerLookx=GameObject.Find("player").GetComponent(MouseLook);
 }
- 
-function FixedUpdate () {
 
-	IsPlayerInCar=enterexit.getisincar();
-	if(IsPlayerInCar)
-	{
-		wheelRR.motorTorque = maxTorque * Input.GetAxis("Vertical");
-		wheelRL.motorTorque = maxTorque * Input.GetAxis("Vertical");
-		wheelFL.steerAngle = 10 * Input.GetAxis("Horizontal");
-		wheelFR.steerAngle = 10 * Input.GetAxis("Horizontal");
-		if (Input.GetButton ("Brake"))
-		{
-        	
-			wheelFR.brakeTorque = 90;
-			wheelFL.brakeTorque = 90;
-			
-			wheelRR.steerAngle = -10 * Input.GetAxis("Horizontal");
-			wheelRL.steerAngle = -10 * Input.GetAxis("Horizontal");
-			
-    	}
-    	if (Input.GetButtonUp ("Brake"))
-		{
-			wheelFR.brakeTorque = 0;
-			wheelFL.brakeTorque = 0;
-			
-    	}
-    	
-    }
+function Update () {
+	if(Enabled){
+		var accel = Input.GetAxis("Vertical");
+		var steerAngle=Input.GetAxis("Horizontal")*maxSteerAng;
+		
+		fl.motorTorque = accel * power;
+		fr.motorTorque = accel * power;
+		bl.motorTorque = accel * power;
+		br.motorTorque = accel * power;
+		
+		fl.steerAngle=steerAngle;
+		fr.steerAngle=steerAngle;
+	}
+}
+
+function Use(){
+	Enabled=!Enabled;
+	player.CanMove=!Enabled;
+	
+	playerCam.enabled=!Enabled;
+	playerLookx.isPaused=Enabled;
+	playerLooky.isPaused=Enabled;
+	
+	carCam.enabled=Enabled;
+	carCam.GetComponent(MouseLook).isPaused=!Enabled;
 }

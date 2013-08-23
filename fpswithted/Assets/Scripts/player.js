@@ -6,23 +6,32 @@ var health:double=100.0;
 var gunSwitcherObject:GameObject;
 var runSpeed:float=15;
 var walkSpeed:float=10;
+var crouchSpeed:float=5;
+
 var staminaRegenRate:double=0.5;
 var cam:Camera;
-
+private var camHeight:float;
 private var chMotor: CharacterMotor;
+private var chHeight:float;
+
+var extraCollider:Collider;
+
 private var ch: CharacterController;
 private var stats:StatsController;
 var holdPoint:HingeJoint;
 var Strength:float=20;
 private var isHolding:boolean=false;
 
-
+public var crouchToggle:boolean=true;
+private var isCrouching:boolean=false;
 //var gun2:Gunshot;
 function Start () {
 	chMotor = GetComponent(CharacterMotor);
     ch = GetComponent(CharacterController);
     stats=GameObject.Find("_StatsCounter").GetComponent(StatsController);
     lastPos = transform.position;
+    chHeight=ch.height;
+    camHeight=cam.transform.localPosition.y;
 }
 
 
@@ -53,7 +62,7 @@ function Update(){
 			Debug.Log("drop");
 			gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
 		}
-		if (ch.isGrounded && Input.GetButton("Sprint") && hasMoved()){
+		if (ch.isGrounded && Input.GetButton("Sprint") && hasMoved()&&!isCrouching){
 		   	stats.updateStamina(-0.1);
 		    if(stats.getStamina()>0){
 		        speed = runSpeed;
@@ -62,11 +71,14 @@ function Update(){
 		      	speed=walkSpeed;
 		        audio.pitch=1;
 		    }
-		    }else if(ch.isGrounded&&stats.getStamina()<=100){
+	    }else if(ch.isGrounded&&stats.getStamina()<=100){
 		      	stats.updateStamina(staminaRegenRate*Time.deltaTime);
 		      	audio.pitch=1;
 	    }
-		chMotor.movement.maxForwardSpeed = speed;
+	    
+	    if(!isCrouching){
+			chMotor.movement.maxForwardSpeed = speed;
+		}
 		
 	}
 	
@@ -89,6 +101,45 @@ function Update(){
 			}
 		}
 	}
+	
+	if(crouchToggle&&Input.GetButtonDown("Crouch")){
+		isCrouching=!isCrouching;
+		//canSprint=!canSprint;
+		if(isCrouching){
+			ch.height=chHeight/2;
+			cam.transform.localPosition.y=camHeight/2;
+			extraCollider.bounds.size.y=extraCollider.bounds.size.y/2;
+			chMotor.movement.maxForwardSpeed = crouchSpeed;
+		}else{
+			transform.position.y+=.7;//chHeight/2;
+			
+			
+			ch.height=chHeight;
+			cam.transform.localPosition.y=camHeight;
+			extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
+			chMotor.movement.maxForwardSpeed = walkSpeed;
+		}
+	}
+	
+	if(!crouchToggle&&Input.GetButton("Crouch")){
+		isCrouching=true;
+		ch.height=chHeight/2;
+		cam.transform.localPosition.y=camHeight/2;
+		extraCollider.bounds.size.y=extraCollider.bounds.size.y/2;
+		chMotor.movement.maxForwardSpeed = crouchSpeed;
+	}
+	if(!crouchToggle&&Input.GetButtonUp("Crouch")){
+		isCrouching=false;
+		transform.position.y+=.7;
+		
+		ch.height=chHeight;
+		cam.transform.localPosition.y=camHeight;
+		extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
+		chMotor.movement.maxForwardSpeed = walkSpeed;
+	}
+	
+	
+	
 	if (Input.GetButtonUp("Pick Up")){
 		if(isHolding){
 			holdPoint.connectedBody=null;

@@ -13,7 +13,6 @@ function Start(){
 }
 
 function Update (){
-
 	if(open&&!Locked){
 		Open();
 	}else{
@@ -35,7 +34,6 @@ function Open(){
     	isClosed=false;
     	return;
     }
-    
     
     
 	transform.parent.localRotation = Quaternion.Slerp(transform.parent.localRotation, target,Time.deltaTime*speed);

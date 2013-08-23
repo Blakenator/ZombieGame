@@ -2,13 +2,18 @@
 private var Enabled:boolean;
 private var stats:StatsController;
 var thirstValue:float=10;
+private var targetGuiText:GUIText;
 function Start () {
 	stats=GameObject.Find("_StatsCounter").GetComponent(StatsController);
+	targetGuiText=GameObject.Find("GUI Text").GetComponent(GUIText);
 }
 function Update () {
-	if(Enabled){
-		if(Input.GetButton("Fire1")){
-			Drink();
+	if(Time.timeScale>0){
+		if(Enabled){
+			targetGuiText.text = gameObject.name;
+			if(Input.GetButton("Fire1")){
+				Drink();
+			}
 		}
 	}
 }

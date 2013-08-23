@@ -26,9 +26,14 @@ function Start(){
 }
 function OnGUI(){
 	
+	var dir:Vector3=cam.transform.forward;
+	dir.Normalize();
+	
 	var hit:RaycastHit;
-	if(Physics.Raycast (cam.transform.position, cam.transform.forward, hit, 6)){
+	if(Physics.Raycast (cam.transform.position, dir, hit, 6)){
+		
 		var screenPos : Vector3 = cam.WorldToScreenPoint(hit.transform.gameObject.transform.position+offset);
+		
 		
 		if(hit.transform.gameObject.CompareTag("Pickup")||hit.transform.gameObject.CompareTag("LootPickup")){
 			var obj=hit.transform.gameObject;

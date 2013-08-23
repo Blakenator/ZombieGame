@@ -24,8 +24,6 @@ function load () {
 	}
 	
 	
-	
-	
 	var reader=new System.IO.StreamReader(Application.dataPath+"/WeaponsSave.txt");
 	var lines=reader.ReadToEnd().Split("\n"[0]);
 	
@@ -49,46 +47,67 @@ function load () {
 			
 			
 			if(type.Equals("w")){
-				
-				
 				name=temp[1].ToString();
+				name=TrimAll(name);
 				
-				
-				clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),Vector3.zero,Quaternion(0,0,0,0));
+				clone=GameObject.Instantiate(Resources.Load("Prefabs/"+name),Vector3.zero,Quaternion(0,0,0,0));
 				clone.name=name;
 				wscript=clone.GetComponent(weaponBase);
 				
 				
 				var currAmmo:int=int.Parse(temp[2]);
 				
-				var currClips:float=float.Parse(temp[3]);
+				var currClips:int=int.Parse(temp[3]);
 				clone.GetComponent(weaponBase).setCurrAmmo(currAmmo);
 				AmmoCounter.setClips(name,currClips);
 				clone.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);
 			}else if(type.Equals("i")){
-				//var name:String=temp[1].ToString();
 				name=temp[1].ToString();
-				clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),Vector3.zero,Quaternion(0,0,0,0));
+				name=TrimAll(name);
+				
+				
+				
+				clone=GameObject.Instantiate(Resources.Load("Prefabs/"+name));
+				
 				
 				clone.name=name;
-				
 				clone.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);
+				
 				
 			}else if(type.Equals("l")){
 				name=temp[1].ToString();
-				clone=GameObject.Instantiate(Resources.Load("prefabs/"+name),Vector3.zero,Quaternion(0,0,0,0));
+				name=TrimAll(name);
+				
+				clone=GameObject.Instantiate(Resources.Load("Prefabs/"+name),Vector3.zero,Quaternion(0,0,0,0));
 				clone.name=name;
+				
+				wscript=clone.GetComponent(weaponBase);
 				
 				name=temp[1].ToString();
 				
-				var x:float=float.Parse(temp[2]);
-				var y:float=float.Parse(temp[3]);
-				var z:float=float.Parse(temp[4]);
-				
-				clone.transform.position=Vector3(x,y,z);
-				gameObject.tag="LootPickup";
+				if(wscript!=null){
+					var ammo:int=int.Parse(temp[2]);
+					var x:float=float.Parse(temp[3]);
+					var y:float=float.Parse(temp[4]);
+					var z:float=float.Parse(temp[5]);
+					
+					clone.GetComponent(weaponBase).setCurrAmmo(ammo);
+					clone.transform.position=Vector3(x,y,z);
+					gameObject.tag="LootPickup";
+				}else{
+					var x2:float=float.Parse(temp[2]);
+					var y2:float=float.Parse(temp[3]);
+					var z2:float=float.Parse(temp[4]);
+					clone.transform.position=Vector3(x2,y2,z2);
+					gameObject.tag="LootPickup";
+				}
 			}
 		}
 	}
 	reader.Close();
+}
+function TrimAll(name:String){
+	name=name.TrimStart();
+	name=name.TrimEnd();
+	return name;
 }

@@ -152,13 +152,15 @@ function addClips(ammount:int){
 */
 
 function fireGun(){
-	if(isEnabled){
-		if(Time.time>lastFireTime+fireRate && currAmmo>0){
-			lastFireTime = Time.time - Time.deltaTime;
-			audio.PlayOneShot(fireAudio,1);
-			currAmmo-=1;
-			lastFireTime=Time.time;
-			spawnBullet();
+	if(Time.timeScale>0){
+		if(isEnabled){
+			if(Time.time>lastFireTime+fireRate && currAmmo>0){
+				lastFireTime = Time.time - Time.deltaTime;
+				audio.PlayOneShot(fireAudio,1);
+				currAmmo-=1;
+				lastFireTime=Time.time;
+				spawnBullet();
+			}
 		}
 	}
 }
@@ -242,11 +244,15 @@ function OnPickup(){
 		clipsOnPickUp=0;
 	}
 	
+	targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + AmmoCounter.getClips(GunName);
 	
+	gameObject.tag="Pickup";
 	//this.enabled=false;
 	yield WaitForSeconds(.2);
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
+	
+	
 }
 function OnSwitchTo(){
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);

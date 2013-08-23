@@ -64,7 +64,7 @@ function SaveWeapons(){
 			name = RemoveExtra(name);
 			
 			//var val:String=fscript.getVal().ToString();
-			sw.WriteLine ("i"+","+name+","+temp.transform.position.x+","+temp.transform.position.y+","+temp.transform.position.z);
+			sw.WriteLine ("i"+","+name);//+","+temp.transform.position.x+","+temp.transform.position.y+","+temp.transform.position.z);
 		}
 	}
 	Debug.Log("FINISHED1!");
@@ -76,15 +76,26 @@ function SaveItems(){
 	
 	var sw : StreamWriter = new StreamWriter(fileName,true);
 	
+	
 	sw.WriteLine ("Loot");
 	var lootarr:Array=GameObject.FindGameObjectsWithTag("LootPickup");
 	Debug.Log(lootarr.length);
 	for(var I in lootarr){
 		var temp:GameObject=I;
+		
+		wscript = temp.gameObject.GetComponent(weaponBase);
 		var name:String=temp.gameObject.ToString();
 		name = RemoveExtra(name);
 		
-		sw.WriteLine ("l"+","+name+","+temp.transform.position.x+","+temp.transform.position.y+","+temp.transform.position.z);
+		if(wscript!=null){
+			var ammo:String=wscript.getCurrAmmo().ToString();
+			sw.WriteLine ("l"+","+name+","+ammo.ToString()+","+temp.transform.position.x+","+temp.transform.position.y+","+temp.transform.position.z);
+		}else{
+			sw.WriteLine ("l"+","+name+","+temp.transform.position.x+","+temp.transform.position.y+","+temp.transform.position.z);
+		}
+		
+		//var ammo:String=wscript.getCurrAmmo().ToString();
+		//sw.WriteLine ("l"+","+name+","+ammo.ToString()+","+temp.transform.position.x+","+temp.transform.position.y+","+temp.transform.position.z);
 	}
 	
 	Debug.Log("FINISHED 2!");
@@ -92,8 +103,6 @@ function SaveItems(){
 }
 
 function RemoveExtra(name:String){
-
-
 	if(name.Contains(" (UnityEngine.GameObject)")){
 		//Debug.Log(name);
 		name=name.Substring(0,name.IndexOf(" (UnityEngine.GameObject)"));
