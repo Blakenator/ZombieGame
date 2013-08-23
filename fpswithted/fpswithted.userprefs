@@ -1,17 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SaveWeapons.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Carscript.js">
     <Files>
-      <File FileName="Assets\Scripts\Carscript.js" Line="24" Column="64" />
-      <File FileName="Assets\Scripts\LootDetails.js" Line="42" Column="4" />
-      <File FileName="Assets\Scripts\loadWeapons.js" Line="51" Column="22" />
-      <File FileName="Assets\Scripts\SaveWeapons.js" Line="37" Column="2" />
-      <File FileName="Assets\Scripts\GunSwitcher.js" Line="85" Column="53" />
-      <File FileName="Assets\Scripts\FoodItem.js" Line="8" Column="2" />
-      <File FileName="Assets\Scripts\WaterItem.js" Line="34" Column="81" />
-      <File FileName="Assets\Scripts\LootTable.js" Line="110" Column="1" />
-      <File FileName="Assets\Scripts\player.js" Line="2" Column="22" />
-      <File FileName="Assets\Scripts\AntiCarRoll.js" Line="40" Column="5" />
+      <File FileName="Assets\Scripts\Carscript.js" Line="73" Column="3" />
+      <File FileName="Assets\Scripts\player.js" Line="144" Column="1" />
+      <File FileName="Assets\Scripts\zombieAI1.js" Line="67" Column="32" />
+      <File FileName="Assets\Scripts\pauseGUI.js" Line="28" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

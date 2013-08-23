@@ -7,10 +7,12 @@ var fl:WheelCollider;
 var fr:WheelCollider;
 var bl:WheelCollider;
 var br:WheelCollider;
+
 var carCam:Camera;
-var playerCam:Camera;
-var playerLookx:MouseLook;
-var playerLooky:MouseLook;
+private var player:player;
+private var playerCam:Camera;
+private var playerLookx:MouseLook;
+private var playerLooky:MouseLook;
 
 
 var power:float;
@@ -20,12 +22,16 @@ var maxSteerAng:float;
 function Start () {
 	carCam.enabled=false;
 	playerCam=Camera.main;
-	playerLookx=playerCam.GetComponent(MouseLook);
+	playerLooky=playerCam.GetComponent(MouseLook);
 	playerLookx=GameObject.Find("player").GetComponent(MouseLook);
+	Debug.Log(rigidbody.centerOfMass);
+	rigidbody.centerOfMass = Vector3 (0, -.5, 0);
+	player=GameObject.Find("player").GetComponent("player");
 }
 
 function Update () {
 	if(Enabled){
+		player.gameObject.transform.localPosition=Vector3(0,2,0);
 		var accel = Input.GetAxis("Vertical");
 		var steerAngle=Input.GetAxis("Horizontal")*maxSteerAng;
 		
@@ -49,4 +55,20 @@ function Use(){
 	
 	carCam.enabled=Enabled;
 	carCam.GetComponent(MouseLook).isPaused=!Enabled;
+	
+	
+	if(Enabled){
+		player.setCar(this);
+		player.gameObject.transform.position=Vector3(0,0,0);
+	}else{
+		player.setCar(null);
+		player.gameObject.transform.position=gameObject.transform.position+player.gameObject.transform.right+Vector3(0,1,0);
+	}
+}
+function OnCollisionEnter(other:Collision){
+	if(other.gameObject.CompareTag("enemy")){
+		if(other.relativeVelocity.magnitude>15){
+			other.gameObject.GetComponent(zombieAI1).OnDeath();
+		}
+	}
 }

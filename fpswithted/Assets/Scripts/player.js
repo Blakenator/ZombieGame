@@ -24,6 +24,9 @@ private var isHolding:boolean=false;
 
 public var crouchToggle:boolean=true;
 private var isCrouching:boolean=false;
+
+private var car:Carscript;
+
 //var gun2:Gunshot;
 function Start () {
 	chMotor = GetComponent(CharacterMotor);
@@ -85,6 +88,10 @@ function Update(){
 	
 	//Debug.DrawRay(cam.transform.position, dir*6,Color.red);
 	if (Input.GetButtonDown("Pick Up")){
+		if(car!=null){
+			car.Use();
+			return;
+		}
 		var dir:Vector3=cam.transform.forward;
 		dir.Normalize();
 		if(Physics.Raycast (cam.transform.position, dir, hit, 6)){
@@ -192,4 +199,17 @@ function OnControllerColliderHit (hit : ControllerColliderHit) {
 		Physics.IgnoreCollision(gameObject.collider,hit.gameObject.collider);
 		
 	}
+}
+function setCar(newCar : Carscript){
+	car=newCar;
+}
+function getIsInCar(){
+	if(car!=null){
+		return true;
+	}else{
+		return false;
+	}
+}
+function getCar(){
+	return car;
 }

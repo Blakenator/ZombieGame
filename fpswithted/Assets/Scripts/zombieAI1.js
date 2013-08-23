@@ -11,6 +11,7 @@ private var seeker:Seeker;
 private var path:Path;
 var Speed : float = 2.0;
 private var player:Transform;
+private var playerScript:player;
 var engagerange:int;
 
 var nextWaypointDistance:float=5.0;
@@ -38,6 +39,8 @@ function Start () {
 	seeker=this.GetComponent(Seeker);
 	player=GameObject.Find("player").transform;
 	
+	playerScript=player.GetComponent("player");
+	
 	//seeker.StartPath(transform.position,player.transform.position,OnPathComplete);
 	
 	targetPosition=player.transform.position;
@@ -60,7 +63,13 @@ function Start () {
 function Update () {
 	if(Time.timeScale>=1){
 		lastPos=targetPosition;
-		targetPosition=player.transform.position;
+		
+		if(!playerScript.getIsInCar()){
+			targetPosition=player.transform.position;
+		}else{
+			targetPosition=playerScript.getCar().gameObject.transform.position;
+		}
+		
 		distance=Vector3.Distance(gameObject.transform.position, targetPosition);
 		if(renderer.isVisible&&distance<75){
 			transform.rotation.x = 0;
