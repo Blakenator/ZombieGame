@@ -7,6 +7,8 @@ var fl:WheelCollider;
 var fr:WheelCollider;
 var bl:WheelCollider;
 var br:WheelCollider;
+var brakelightL:Light;
+var brakelightR:Light;
 
 var carCam:Camera;
 private var player:player;
@@ -31,17 +33,42 @@ function Start () {
 
 function Update () {
 	if(Enabled){
-		player.gameObject.transform.localPosition=Vector3(0,2,0);
+		rigidbody.centerOfMass = Vector3 (0, -.5, 0);
 		var accel = Input.GetAxis("Vertical");
 		var steerAngle=Input.GetAxis("Horizontal")*maxSteerAng;
 		
-		fl.motorTorque = accel * power;
-		fr.motorTorque = accel * power;
+		//fl.motorTorque = accel * power;
+		//fr.motorTorque = accel * power;
+		
 		bl.motorTorque = accel * power;
 		br.motorTorque = accel * power;
 		
+		bl.steerAngle=0;
+		br.steerAngle=0;
+		
 		fl.steerAngle=steerAngle;
 		fr.steerAngle=steerAngle;
+		
+		if(Input.GetButton("Brake")){
+			fr.brakeTorque=100;
+			fl.brakeTorque=100;
+			
+			//br.brakeTorque=100;
+			//bl.brakeTorque=100;
+			
+			brakelightL.intensity=1;
+			brakelightR.intensity=1;
+		}
+		else{
+			fr.brakeTorque=0;
+			fl.brakeTorque=0;
+			
+			//bl.brakeTorque=0;
+			//br.brakeTorque=0;
+			
+			brakelightL.intensity=0;
+			brakelightR.intensity=0;
+		}
 	}
 }
 
