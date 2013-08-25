@@ -52,7 +52,7 @@ function Close(){
 	
 	var target = Quaternion.Euler (0, closeAngle, 0);
 	
-	if(Mathf.Abs(transform.parent.localEulerAngles.y)<5){
+	if(Mathf.Abs(transform.parent.localEulerAngles.y-closeAngle)<5){
     	transform.parent.localRotation=target;
 		isClosed=true;
 		isDone=true;
@@ -61,8 +61,6 @@ function Close(){
 		}
     	return;
     }
-    
-    
     
 	transform.parent.localRotation = Quaternion.Slerp(transform.parent.localRotation, target,Time.deltaTime*speed);
 	

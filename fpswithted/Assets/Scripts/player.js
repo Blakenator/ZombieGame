@@ -1,6 +1,8 @@
 #pragma strict
 public static var CanMove:boolean=true;
 
+var LayersToCheck:LayerMask;
+
 private var lastPos:Vector3;
 var health:double=100.0;
 var gunSwitcherObject:GameObject;
@@ -26,6 +28,8 @@ public var crouchToggle:boolean=true;
 private var isCrouching:boolean=false;
 
 private var car:Carscript;
+
+var zSpawn:zSpawnerRandom;
 
 //var gun2:Gunshot;
 function Start () {
@@ -61,6 +65,28 @@ function Update(){
 		}else if(Input.GetAxis("Mouse ScrollWheel")<0){
 			gunSwitcherObject.SendMessage("switchDown",SendMessageOptions.RequireReceiver);
 		}
+		
+		
+		/*
+		if (Input.GetKeyDown("j")){
+			//zombieAI1.alertToPosition(gameObject.transform.position);
+			var temparr=new Array();
+			temparr=zSpawn.getZombiesAroundPos(gameObject.transform.position,40);
+			
+			Debug.Log(temparr.length);
+			
+			if(temparr.length>0){
+				for(var z in temparr){
+					var tempobj:GameObject=z;
+					var tempZ:zombieAI1=tempobj.GetComponent(zombieAI1);
+					
+					tempZ.alertToPosition(gameObject.transform.position);
+				}
+			}
+		}
+		*/
+		
+		
 		if (Input.GetButtonDown("Drop")){
 			Debug.Log("drop");
 			gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
@@ -75,10 +101,9 @@ function Update(){
 		        audio.pitch=1;
 		    }
 	    }else if(ch.isGrounded&&stats.getStamina()<=100){
-		      	stats.updateStamina(staminaRegenRate*Time.deltaTime);
-		      	audio.pitch=1;
+	      	stats.updateStamina(staminaRegenRate*Time.deltaTime);
+	      	audio.pitch=1;
 	    }
-	    
 	    if(!isCrouching){
 			chMotor.movement.maxForwardSpeed = speed;
 		}
@@ -86,7 +111,11 @@ function Update(){
 	}
 	
 	
-	//Debug.DrawRay(cam.transform.position, dir*6,Color.red);
+	
+	
+	
+	
+ 	//Debug.DrawRay(cam.transform.position, dir*6,Color.red);
 	if (Input.GetButtonDown("Pick Up")){
 		if(car!=null){
 			car.Use();
@@ -94,7 +123,11 @@ function Update(){
 		}
 		var dir:Vector3=cam.transform.forward;
 		dir.Normalize();
-		if(Physics.Raycast (cam.transform.position, dir, hit, 6)){
+		
+		if(Physics.Raycast (cam.transform.position, dir, hit, 6,LayersToCheck)){
+		
+			Debug.Log(hit.transform.gameObject);
+			
 			if(hit.transform.gameObject.CompareTag("Pickup")||hit.transform.gameObject.CompareTag("LootPickup")){
 				Debug.Log("HIT AN OBJECT!");
 				hit.transform.gameObject.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);

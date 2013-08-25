@@ -7,10 +7,13 @@
 //function Update () {
 
 //}
+var LayersToCheck:LayerMask;
+
 private var cam:Camera;
 var rect = Rect(0,0,100,100);
 var offset =  Vector2(-10, 0);
 private var textcenteredStyle:GUIStyle;
+
 //var background:Texture2D;
 
 function Start(){
@@ -29,13 +32,18 @@ function OnGUI(){
 	var dir:Vector3=cam.transform.forward;
 	dir.Normalize();
 	
+	
+	//Debug.DrawRay(cam.transform.position, dir,Color.blue);
+	
 	var hit:RaycastHit;
-	if(Physics.Raycast (cam.transform.position, dir, hit, 6)){
+	if(Physics.Raycast (cam.transform.position, dir, hit, 6,LayersToCheck)){
 		
-		var screenPos : Vector3 = cam.WorldToScreenPoint(hit.transform.gameObject.transform.position+offset);
+		
 		
 		
 		if(hit.transform.gameObject.CompareTag("Pickup")||hit.transform.gameObject.CompareTag("LootPickup")){
+			var screenPos : Vector3 = cam.WorldToScreenPoint(hit.transform.gameObject.transform.position+offset);
+			
 			var obj=hit.transform.gameObject;
 			//Debug.Log("TEST!");
 			

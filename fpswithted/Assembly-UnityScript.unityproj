@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\WoodResource.js" />
      <Compile Include="Assets\Scripts\ZMover.js" />
      <Compile Include="Assets\Scripts\carenterscript.js" />
+     <Compile Include="Assets\Scripts\distractorScript.js" />
      <Compile Include="Assets\Scripts\fallListener.js" />
      <Compile Include="Assets\Scripts\grenadeLauncher.js" />
      <Compile Include="Assets\Scripts\guitext.js" />

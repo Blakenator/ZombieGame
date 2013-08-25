@@ -37,8 +37,8 @@ function Update () {
 		var accel = Input.GetAxis("Vertical");
 		var steerAngle=Input.GetAxis("Horizontal")*maxSteerAng;
 		
-		//fl.motorTorque = accel * power;
-		//fr.motorTorque = accel * power;
+		fl.motorTorque = accel * power;
+		fr.motorTorque = accel * power;
 		
 		bl.motorTorque = accel * power;
 		br.motorTorque = accel * power;
@@ -94,7 +94,8 @@ function Use(){
 }
 function OnCollisionEnter(other:Collision){
 	if(other.gameObject.CompareTag("enemy")){
-		if(other.relativeVelocity.magnitude>15){
+		Debug.Log(rigidbody.velocity.magnitude);
+		if(rigidbody.velocity.magnitude>5){
 			other.gameObject.GetComponent(zombieAI1).OnDeath();
 		}
 	}

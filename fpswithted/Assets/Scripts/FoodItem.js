@@ -40,6 +40,9 @@ function OnPickup(){
 	transform.localRotation.z=0;
 	rigidbody.isKinematic=true;
 	gameObject.collider.enabled=false;
+	
+	Destroy(gameObject.collider);
+	
 	gameObject.tag="Pickup";
 }
 

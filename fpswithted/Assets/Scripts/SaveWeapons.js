@@ -9,22 +9,7 @@ function Start(){
 	if (File.Exists(fileName)){
         Debug.Log(fileName+" already exists.");
     }
-    
-    //var sw : StreamWriter = new StreamWriter(fileName,false);
-    
-	//sw.Write("");
-	//sw.WriteLine ("Weapons");
-    //sw.Close();
 }
-
-/*
-function Update () {
-	if(Input.GetKeyDown("0")){
-		
-		Save();
-	}
-}
-*/
 
 function Save(){
 	gameObject.tag="Untagged";

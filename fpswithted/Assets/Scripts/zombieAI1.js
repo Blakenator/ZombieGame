@@ -13,6 +13,11 @@ var Speed : float = 2.0;
 private var player:Transform;
 private var playerScript:player;
 var engagerange:int;
+private var engaging:boolean;
+
+var canHear:boolean=true;
+var hearRange:float=30;
+
 
 var nextWaypointDistance:float=5.0;
 var currentWaypoint:int=0;
@@ -58,6 +63,8 @@ function Start () {
 	wanderstart=false;
 	
 	//lastPos=player.transform.position;
+	engaging=false;
+	
 }
 
 function Update () {
@@ -104,6 +111,8 @@ function SmoothLookAt(target:Vector3,speed:float)
     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * speed);
 }
 
+
+
 function CheckValues(){
 	if(path==null)
 	{
@@ -130,7 +139,11 @@ function CheckValues(){
 	}
 }
 
+
+
 function CreateNewPlayerPath (){
+	engaging=true;
+	
 	canRefresh=false;
 	movePosition=targetPosition;
 	yield WaitForSeconds(.2);
@@ -139,6 +152,7 @@ function CreateNewPlayerPath (){
 }
 
 function ForceWander(){
+	engaging=false;
 	movePosition=Vector3(Random.Range(-15,15),-1,Random.Range(-15,15));
 	var plusminus:int=Random.Range(1,3);
 	if(plusminus==1){
@@ -161,6 +175,8 @@ function CreateNewWander (){
 	}
 	if(currentWaypoint>=path.vectorPath.Count-1)
 	{
+		engaging=false;
+		
 		movePosition=Vector3(Random.Range(-15,15),-1,Random.Range(-15,15));
 		
 		var plusminus:int=Random.Range(1,3);
@@ -281,4 +297,16 @@ function RagdollEnemy(){
 	var clone:GameObject =Instantiate(ragdoll,transform.position,transform.rotation);
 	Destroy(gameObject);
 	Destroy(clone,15);
+}
+
+public function alertToPosition(alertPos:Vector3){
+	if(canHear){
+		if(!engaging){
+			var dist:float=Vector3.Distance(gameObject.transform.position, alertPos);
+			if(dist<=hearRange){
+				movePosition=alertPos;
+				seeker.StartPath(transform.position,movePosition,OnPathComplete);
+			}
+		}
+	}
 }
