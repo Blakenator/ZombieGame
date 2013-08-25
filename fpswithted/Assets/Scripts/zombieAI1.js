@@ -111,8 +111,6 @@ function SmoothLookAt(target:Vector3,speed:float)
     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * speed);
 }
 
-
-
 function CheckValues(){
 	if(path==null)
 	{
@@ -138,8 +136,6 @@ function CheckValues(){
 		return;
 	}
 }
-
-
 
 function CreateNewPlayerPath (){
 	engaging=true;
