@@ -135,8 +135,7 @@ function Update(){
 				Debug.Log("GRAB ON!");
 				isHolding=true;
 				holdPoint.connectedBody=hit.transform.gameObject.rigidbody;
-			}
-			else{
+			}else{
 				hit.transform.gameObject.SendMessage("Use",SendMessageOptions.DontRequireReceiver);
 			}
 		}
@@ -148,15 +147,14 @@ function Update(){
 		if(isCrouching){
 			ch.height=chHeight/2;
 			cam.transform.localPosition.y=camHeight/2;
-			extraCollider.bounds.size.y=extraCollider.bounds.size.y/2;
+			//extraCollider.bounds.size=Vector3(extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z);
 			chMotor.movement.maxForwardSpeed = crouchSpeed;
 		}else{
 			transform.position.y+=.7;//chHeight/2;
 			
-			
 			ch.height=chHeight;
 			cam.transform.localPosition.y=camHeight;
-			extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
+			//extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
 			chMotor.movement.maxForwardSpeed = walkSpeed;
 		}
 	}
@@ -165,7 +163,8 @@ function Update(){
 		isCrouching=true;
 		ch.height=chHeight/2;
 		cam.transform.localPosition.y=camHeight/2;
-		extraCollider.bounds.size.y=extraCollider.bounds.size.y/2;
+		//extraCollider.bounds.size.Scale((extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z)
+		//extraCollider.bounds.size.y=0;//Vector3(extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z);
 		chMotor.movement.maxForwardSpeed = crouchSpeed;
 	}
 	if(!crouchToggle&&Input.GetButtonUp("Crouch")){
@@ -174,7 +173,7 @@ function Update(){
 		
 		ch.height=chHeight;
 		cam.transform.localPosition.y=camHeight;
-		extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
+		//extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
 		chMotor.movement.maxForwardSpeed = walkSpeed;
 	}
 	
