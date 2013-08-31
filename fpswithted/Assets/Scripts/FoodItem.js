@@ -30,6 +30,10 @@ function getVal(){
 	return foodValue;
 }
 
+
+
+
+
 function OnPickup(){
 	GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).addObject(gameObject);
 	

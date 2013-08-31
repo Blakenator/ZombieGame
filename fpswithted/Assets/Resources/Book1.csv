@@ -1,11 +1,11 @@
-EBR,m,1
-G36C,m,2
-FAMAS,m,4
-empty,m,93
-Water Bottle,f,20
-Canned Food,f,20
-Cheese,f,20
-empty,f,40
-M9,c,25
-Tin Can,c,25
-empty,c,50
+EBR,mil,1
+G36C,mil,2
+FAMAS,mil,4
+empty,mil,93
+Water Bottle,food,20
+Canned Food,food,20
+Cheese,food,20
+empty,food,40
+M9,civ,25
+Tin Can,civ,25
+empty,civ,50

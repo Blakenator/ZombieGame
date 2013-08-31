@@ -16,20 +16,16 @@ function Update () {
 		if (Input.GetButtonDown("Pick Up")){
 			OnLadder=!OnLadder;
 			
-			
 			//firstTime=true;
-			
 			return;
 		}
 		
 		if(OnLadder){
 			var hit:RaycastHit;
 			
-			
-			
 			if(Physics.Raycast (playert.transform.position, -Vector3.up, hit, 1)){
 				if(hit.transform.CompareTag("Ground")){
-					playert.position.y=playert.position.y;
+					//playert.position.y=playert.position.y;
 					//getOffLadder();
 					return;
 				}
@@ -40,25 +36,25 @@ function Update () {
 			
 			playert.GetComponent(CharacterMotor).enabled=false;
 			
-			
 			//playert.position.y+=(Input.GetAxis("Vertical")*speed)*Time.deltaTime;
 			//var movedir=(Input.GetAxis("Vertical")*speed)*Time.deltaTime;
-			
-			
 			
 			var movedir=Vector3.up;
 			
 			movedir*=(Input.GetAxis("Vertical")*speed)*Time.deltaTime;
 			
-			
 			playercontroller.Move(movedir);
-			if(playert.position.y>=collider.bounds.size.y){		//+playerheight/6>=collider.bounds.size.y){
-				
+			if(playert.position.y>=collider.bounds.size.y){
 				//movedir=playert.forward*Time.deltaTime;
-				
 				//playercontroller.Move(movedir);
-				playert.position+=playert.forward*Time.deltaTime;
 				
+				
+				playert.position+=(Vector3.up+playert.forward)*Time.deltaTime;
+				
+				
+				//movedir=playert.forward+Vector3.up;
+				//movedir*=Time.deltaTime;
+				//playercontroller.Move(movedir);
 			}
 			
 			
@@ -66,6 +62,8 @@ function Update () {
 		}else{
 			getOffLadder();
 		}
+	}else{
+		//getOffLadder();
 	}
 }
 
@@ -83,8 +81,11 @@ function OnTriggerEnter (other : Collider){
 function OnTriggerExit(other : Collider){
 	if(other.gameObject.CompareTag("Player")){
 		isInTrigger=false;
-		yield WaitForSeconds(.25);
+		yield WaitForSeconds(.5);
 		//playert.GetComponent(player).toggleGravity(true);
-		playert.GetComponent(CharacterMotor).enabled=true;
+		//playert.GetComponent(CharacterMotor).enabled=true;
+		if(OnLadder){
+			getOffLadder();
+		}
 	}
 }

@@ -1,8 +1,13 @@
 #pragma strict
 import Pathfinding;
 
-var targetPosition : Vector3;
-var movePosition : Vector3;
+var LayersToCheck:LayerMask;
+
+var Health:float=100;
+var Damage:float=-15;
+private var isAttacking:boolean=false;
+private var targetPosition : Vector3;
+private var movePosition : Vector3;
 
 
 private var seeker:Seeker;
@@ -81,10 +86,16 @@ function Update () {
 		if(renderer.isVisible&&distance<75){
 			transform.rotation.x = 0;
 			transform.rotation.z = 0;
+		}else if(distance>150){
+			if(!gameObject.name.Equals("EnemyAI")){
+				Kill();
+			}
+			//Debug.Log("Killed");
 		}
 		
 		CheckValues();
 		Move();
+		
 	}
 }
 
@@ -118,8 +129,6 @@ function CheckValues(){
 	}
 	if(distance>=engagerange)//if out of range
 	{
-		
-		
 		if(distance>=engagerange*2){
 			rigidbody.isKinematic=true;
 		}else{
@@ -129,11 +138,17 @@ function CheckValues(){
 		CreateNewWander();
 		return;
 	}else if(HasMoved()||distance<engagerange){
-		wanderstart=true;
+		var hit:RaycastHit;
 		if(canRefresh){
-			StartCoroutine("CreateNewPlayerPath");
+			if(Physics.Raycast (transform.position, player.position-transform.position, hit, engagerange,LayersToCheck)){
+				if(hit.transform.gameObject.CompareTag("Player")){
+					wanderstart=true;
+					StartCoroutine("CreateNewPlayerPath");
+					return;
+				}
+			}	
 		}
-		return;
+		
 	}
 }
 
@@ -203,8 +218,14 @@ function Move(){
 	if(distance<2){
 		SmoothLookAt(player.position,300.0);
 		
-		//Attack();
-		return;
+		var hit:RaycastHit;
+		if(Physics.Raycast (transform.position, player.position-transform.position, hit, 2,LayersToCheck)){
+			
+			if(!isAttacking){
+				Attack();
+			}
+			return;
+		}
 	}
 	if(renderer.isVisible&&distance<75){
 		//animator.Play("run",PlayMode.StopAll);
@@ -268,10 +289,36 @@ function HasMoved(){
 }
 
 function Attack(){
-	animator.animation.Play("Attack",PlayMode.StopAll);
-	yield WaitForSeconds(0.25);
+	isAttacking=true;
+	
 	yield;
+	var hit:RaycastHit;
+	
+	if(Physics.Raycast (transform.position, player.position-transform.position, hit, 2,LayersToCheck)){
+		if(hit.transform.gameObject.CompareTag("Player")){
+			StatsController.updateHealth(Damage);
+			Debug.Log("hit player");
+		}
+		
+	}
+	//animator.animation.Play("Attack",PlayMode.StopAll);
+	yield WaitForSeconds(2);
+	isAttacking=false;
+	
 }
+
+function OnHit(dmg:int){
+
+	
+	Health-=dmg;
+	
+	
+	if(Health<=0){
+		OnDeath();
+	}
+}
+
+
 function OnDeath(){
 	if(!isDead){
 		
@@ -282,9 +329,13 @@ function OnDeath(){
 	}
 }
 
+
 function Kill(){
 	if(!isDead){
+		Destroy(gameObject);
+		
 		Zspawn.Spawn();
+		Debug.Log("Killed");
 		isDead=true;
 	}
 }
@@ -294,6 +345,7 @@ function RagdollEnemy(){
 	Destroy(gameObject);
 	Destroy(clone,15);
 }
+
 
 public function alertToPosition(alertPos:Vector3){
 	if(canHear){

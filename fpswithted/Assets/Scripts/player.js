@@ -16,12 +16,17 @@ private var camHeight:float;
 private var chMotor: CharacterMotor;
 private var chHeight:float;
 
-var extraCollider:Collider;
+var extraCollider:CapsuleCollider;
 
 private var ch: CharacterController;
 private var stats:StatsController;
 var holdPoint:HingeJoint;
 var Strength:float=20;
+
+
+var kickStrength:float=20;
+
+
 private var isHolding:boolean=false;
 
 public var crouchToggle:boolean=true;
@@ -30,6 +35,10 @@ private var isCrouching:boolean=false;
 private var car:Carscript;
 
 var zSpawn:zSpawnerRandom;
+
+var walkAlertRange:float=5;
+var runAlertRange:float=10;
+var crouchAlertRange:float=2;
 
 //var gun2:Gunshot;
 function Start () {
@@ -43,6 +52,10 @@ function Start () {
 
 
 function Update(){
+	
+	var speed:float=walkSpeed;
+	
+	
 	if(Time.timeScale>0){
 		Screen.lockCursor=true;
 		Screen.showCursor=false;
@@ -50,13 +63,17 @@ function Update(){
 		Screen.lockCursor=false;
 		Screen.showCursor=true;
 	}
+	
+	
 	if(Time.timeScale>0){
 		if(!CanMove){
 			chMotor.canControl=false;
 		}else{
 			chMotor.canControl=true;
 		}
-		var speed = walkSpeed;
+		
+		
+		
 		//var cam : Transform = Camera.main.transform;
 		var hit:RaycastHit;
 		
@@ -66,54 +83,16 @@ function Update(){
 			gunSwitcherObject.SendMessage("switchDown",SendMessageOptions.RequireReceiver);
 		}
 		
-		
-		/*
-		if (Input.GetKeyDown("j")){
-			//zombieAI1.alertToPosition(gameObject.transform.position);
-			var temparr=new Array();
-			temparr=zSpawn.getZombiesAroundPos(gameObject.transform.position,40);
+		if(Input.GetButtonDown("Kick")){
+			kick();
 			
-			Debug.Log(temparr.length);
-			
-			if(temparr.length>0){
-				for(var z in temparr){
-					var tempobj:GameObject=z;
-					var tempZ:zombieAI1=tempobj.GetComponent(zombieAI1);
-					
-					tempZ.alertToPosition(gameObject.transform.position);
-				}
-			}
 		}
-		*/
-		
 		
 		if (Input.GetButtonDown("Drop")){
 			Debug.Log("drop");
 			gunSwitcherObject.GetComponent(GunSwitcher).dropCurrent();
 		}
-		if (ch.isGrounded && Input.GetButton("Sprint") && hasMoved()&&!isCrouching){
-		   	stats.updateStamina(-0.1);
-		    if(stats.getStamina()>0){
-		        speed = runSpeed;
-		        audio.pitch=runSpeed/walkSpeed;
-		    }else{
-		      	speed=walkSpeed;
-		        audio.pitch=1;
-		    }
-	    }else if(ch.isGrounded&&stats.getStamina()<=100){
-	      	stats.updateStamina(staminaRegenRate*Time.deltaTime);
-	      	audio.pitch=1;
-	    }
-	    if(!isCrouching){
-			chMotor.movement.maxForwardSpeed = speed;
-		}
-		
 	}
-	
-	
-	
-	
-	
 	
  	//Debug.DrawRay(cam.transform.position, dir*6,Color.red);
 	if (Input.GetButtonDown("Pick Up")){
@@ -129,10 +108,10 @@ function Update(){
 			Debug.Log(hit.transform.gameObject);
 			
 			if(hit.transform.gameObject.CompareTag("Pickup")||hit.transform.gameObject.CompareTag("LootPickup")){
-				Debug.Log("HIT AN OBJECT!");
+				
 				hit.transform.gameObject.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);
 			}else if((isHolding==false)&&(hit.transform.gameObject.CompareTag("Grab"))&&(hit.transform.rigidbody.mass<Strength)){
-				Debug.Log("GRAB ON!");
+				
 				isHolding=true;
 				holdPoint.connectedBody=hit.transform.gameObject.rigidbody;
 			}else{
@@ -141,51 +120,154 @@ function Update(){
 		}
 	}
 	
-	if(crouchToggle&&Input.GetButtonDown("Crouch")){
-		isCrouching=!isCrouching;
-		//canSprint=!canSprint;
-		if(isCrouching){
+		if(crouchToggle&&Input.GetButtonDown("Crouch")){
+			isCrouching=!isCrouching;
+			//canSprint=!canSprint;
+			if(isCrouching){
+				ch.height=chHeight/2;
+				cam.transform.localPosition.y=camHeight/2;
+				//extraCollider.bounds.size=Vector3(extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z);
+				extraCollider.height=extraCollider.height/2;
+				
+				chMotor.movement.maxForwardSpeed = crouchSpeed;
+			}else if(!CheckUp()){
+				transform.position.y+=.7;//chHeight/2;
+				
+				ch.height=chHeight;
+				cam.transform.localPosition.y=camHeight;
+				//extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
+				extraCollider.height=extraCollider.height*2;
+				
+				chMotor.movement.maxForwardSpeed = walkSpeed;
+			}
+		}
+		
+		if(!crouchToggle&&Input.GetButton("Crouch")){
+			isCrouching=true;
 			ch.height=chHeight/2;
 			cam.transform.localPosition.y=camHeight/2;
-			//extraCollider.bounds.size=Vector3(extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z);
+			extraCollider.height=extraCollider.height/2;
+			//extraCollider.bounds.size.Scale((extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z)
+			//extraCollider.bounds.size.y=0;//Vector3(extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z);
 			chMotor.movement.maxForwardSpeed = crouchSpeed;
-		}else{
-			transform.position.y+=.7;//chHeight/2;
+		}
+		if(!crouchToggle&&Input.GetButtonUp("Crouch")&&!CheckUp()){
+			isCrouching=false;
+			transform.position.y+=.7;
 			
 			ch.height=chHeight;
 			cam.transform.localPosition.y=camHeight;
+			
+			extraCollider.height=extraCollider.height*2;
+			
 			//extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
+			
 			chMotor.movement.maxForwardSpeed = walkSpeed;
+		}
+		
+		
+		
+		if (Input.GetButtonUp("Pick Up")){
+			if(isHolding){
+				holdPoint.connectedBody=null;
+				isHolding=false;
+			}
+		}
+		
+		
+		if (ch.isGrounded && Input.GetButton("Sprint") && hasMoved()&&!isCrouching){
+		    if(stats.getStamina()>=.2){
+		    	
+		    	stats.updateStamina(-0.1);
+		    	
+		    	
+		        speed = runSpeed;
+		        chMotor.movement.maxForwardSpeed = speed;
+		        
+		        
+		        
+		        audio.pitch=runSpeed/walkSpeed;
+		    }else if(stats.getStamina()<.2){
+		    	
+		    	
+		      	speed=walkSpeed;
+		      	chMotor.movement.maxForwardSpeed = speed;
+		      	
+		        audio.pitch=1;
+		    }
+	    }else if(ch.isGrounded&&stats.getStamina()<=100){
+	    	
+	      	stats.updateStamina(staminaRegenRate*Time.deltaTime);
+	      	audio.pitch=1;
+	    }
+		
+		
+		if(!isCrouching&&!Input.GetButton("Sprint")){
+			speed=walkSpeed;
+			chMotor.movement.maxForwardSpeed = speed;
+		}
+		
+		
+		//Stealth stuff
+		if(!isCrouching&&!Input.GetButton("Sprint")){
+			AlertZombies(walkAlertRange);
+		}else if(ch.isGrounded && Input.GetButton("Sprint") && hasMoved()&&!isCrouching){
+			AlertZombies(runAlertRange);
+		}else if(isCrouching){
+			AlertZombies(crouchAlertRange);
+		}
+		
+	
+}
+
+function AlertZombies(attractdist:float){
+	var temparr=new Array();
+	temparr=zSpawn.getZombiesAroundPos(gameObject.transform.position,attractdist);
+	
+	if(temparr.length>0){
+		for(var z in temparr){
+			var tempobj:GameObject=z;
+			var tempZ:zombieAI1=tempobj.GetComponent(zombieAI1);
+			
+			tempZ.alertToPosition(gameObject.transform.position);
 		}
 	}
 	
-	if(!crouchToggle&&Input.GetButton("Crouch")){
-		isCrouching=true;
-		ch.height=chHeight/2;
-		cam.transform.localPosition.y=camHeight/2;
-		//extraCollider.bounds.size.Scale((extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z)
-		//extraCollider.bounds.size.y=0;//Vector3(extraCollider.bounds.size.x,extraCollider.bounds.size.y/2,extraCollider.bounds.size.z);
-		chMotor.movement.maxForwardSpeed = crouchSpeed;
-	}
-	if(!crouchToggle&&Input.GetButtonUp("Crouch")){
-		isCrouching=false;
-		transform.position.y+=.7;
+}
+
+
+function kick(){
+	
+	var dir:Vector3=cam.transform.forward;
+	
+	dir.Normalize();
+	var hit:RaycastHit;
+	
+	if(Physics.Raycast (cam.transform.position, dir, hit, 6,LayersToCheck)){
+	
+		Debug.Log(hit.transform.gameObject);
 		
-		ch.height=chHeight;
-		cam.transform.localPosition.y=camHeight;
-		//extraCollider.bounds.size.y=extraCollider.bounds.size.y*2;
-		chMotor.movement.maxForwardSpeed = walkSpeed;
-	}
-	
-	
-	
-	if (Input.GetButtonUp("Pick Up")){
-		if(isHolding){
-			holdPoint.connectedBody=null;
-			isHolding=false;
+		if(hit.transform.gameObject.CompareTag("Door")){
+			var door:Door=hit.transform.gameObject.GetComponent(Door);
+			door.Damage(kickStrength,hit.point,dir);
+			
 		}
 	}
 }
+
+
+function CheckUp(){
+	var hit:RaycastHit;
+	if(Physics.Raycast (gameObject.transform.position, Vector3.up, hit, 1.5,LayersToCheck)){
+		Debug.Log("cant stand here!"+hit.transform.gameObject);
+		return true;
+	}
+	return false;
+}
+
+
+
+
 
 //Change to fit new stats
 function addhealth(num:double)
@@ -220,7 +302,7 @@ function toggleGravity(g:boolean){
 function hasMoved() {
   var newPos = transform.position - lastPos;
   lastPos = transform.position;
-  if(newPos.magnitude > 0.01){
+  if(newPos.magnitude > 0.001){
   	return true;
   }
   return false;
@@ -245,3 +327,4 @@ function getIsInCar(){
 function getCar(){
 	return car;
 }
+

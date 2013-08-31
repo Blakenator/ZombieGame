@@ -15,7 +15,7 @@ function Awake () {
 			//Debug.Log(I.gameObject.name);
 		}
 	}
-	Debug.Log("done2!");
+	//Debug.Log("done2!");
 }
 
 static function getClips(str:String){

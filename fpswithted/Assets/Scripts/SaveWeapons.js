@@ -19,6 +19,7 @@ function Save(){
 	
 	yield StartCoroutine(SaveWeapons());
 	yield StartCoroutine(SaveItems());
+	yield StartCoroutine(SaveDoors());
 	
 }
 
@@ -94,4 +95,36 @@ function RemoveExtra(name:String){
 		//Debug.Log(name);
 	}
 	return name;
+}
+
+
+
+
+
+function SaveDoors(){
+	yield;
+	
+	var sw : StreamWriter = new StreamWriter(fileName,true);
+	
+	sw.WriteLine ("Doors");
+	var DoorArr:Array=GameObject.FindGameObjectsWithTag("Door");
+	
+	for(var I in DoorArr){
+		var temp:GameObject=I;
+		
+		var door:Door = temp.gameObject.GetComponent(Door);
+		var ID:int=temp.gameObject.GetInstanceID();
+		sw.WriteLine ("D"+","+ID+","+door.getState());
+	}
+	var DrawerArr:Array=GameObject.FindGameObjectsWithTag("Drawer");
+	
+	for(var I in DrawerArr){
+		temp=I;
+		
+		var drawer:DrawerOpen = temp.gameObject.GetComponent(DrawerOpen);
+		ID=temp.gameObject.GetInstanceID();
+		sw.WriteLine ("D"+","+ID+","+drawer.getState());
+	}
+	
+	sw.Close();
 }

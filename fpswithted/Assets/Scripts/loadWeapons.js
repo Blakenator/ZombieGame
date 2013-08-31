@@ -101,6 +101,44 @@ function load () {
 					clone.transform.position=Vector3(x2,y2,z2);
 					gameObject.tag="LootPickup";
 				}
+			}else if(type.Equals("D")){
+				var DoorArr:Array=GameObject.FindGameObjectsWithTag("Door");
+				var idtest:int=int.Parse(temp[1]);
+				var state:boolean=boolean.Parse(temp[2]);
+				
+				for(var I in DoorArr){
+					var tempobj:GameObject=I;
+					//var door:Door = tempobj.gameObject.GetComponent(Door);
+					var ID:int=tempobj.gameObject.GetInstanceID();
+					if(ID==idtest){
+						if(state){
+							//door.ForceClose();
+							tempobj.SendMessage("ForceClose",SendMessageOptions.DontRequireReceiver);
+						}else{
+							//door.ForceOpen();
+							tempobj.SendMessage("ForceOpen",SendMessageOptions.DontRequireReceiver);
+						}
+					}
+				}
+				
+				var drawerarr:Array=GameObject.FindGameObjectsWithTag("Drawer");
+				
+				for(var I in drawerarr){
+					tempobj=I;
+					//var door:Door = tempobj.gameObject.GetComponent(Door);
+					ID=tempobj.gameObject.GetInstanceID();
+					if(ID==idtest){
+						if(state){
+							//door.ForceClose();
+							tempobj.SendMessage("ForceClose",SendMessageOptions.DontRequireReceiver);
+						}else{
+							//door.ForceOpen();
+							tempobj.SendMessage("ForceOpen",SendMessageOptions.DontRequireReceiver);
+						}
+					}
+				}
+				
+				
 			}
 		}
 	}

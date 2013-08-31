@@ -1,5 +1,8 @@
 
-var isEnabled:boolean;
+private var isEnabled:boolean;
+
+var Damage:float=20;
+
 
 var semiAuto:boolean=false;
 
@@ -14,6 +17,11 @@ var accDecreasePerShot:float;
 var minAcc:float;
 var ADS_Multiplier:double;
 var isADS:boolean=false;
+var ADSPos:Vector3;
+private var origPos:Vector3;
+
+
+
 var bulletSpeed:float;
 var damageTodestructibles:int;
 
@@ -68,6 +76,7 @@ function Start(){
 	//Debug.Log(startPos.z+"||"+transform.localPosition.z+"|"+gameObject);
 	RecoilPos.z=startPos.z;
 	resetToAcc=originalAccuracy;
+	origPos=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	if(semiAuto){
 		fireRate=.01;
 	}
@@ -78,17 +87,27 @@ function Update(){
 	if(isEnabled&&canShoot){
 		targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + AmmoCounter.getClips(GunName);
 		
-		
-		
 		if (Input.GetButton("Fire3")&&!isADS){
 			isADS=true;
 			accuracy=accuracy*ADS_Multiplier;
 			resetToAcc=originalAccuracy*ADS_Multiplier;
+			
+			startPos=ADSPos;
+			//var temp:float=recoilPosZ;
+			RecoilPos.z=startPos.z;
+			transform.localPosition=ADSPos;
 		}
 		
 		if (Input.GetButtonUp("Fire3")){
 			isADS=false;
+			
 			resetToAcc=originalAccuracy;
+			
+			
+			startPos=origPos;
+			RecoilPos.z=startPos.z;
+			
+			transform.localPosition=origPos;
 		}
 		
 		if(semiAuto){
@@ -200,7 +219,8 @@ function spawnBullet(){
 	  		{
 	    		//Debug.Log("HIT");
 	    		//Debug.Log(hit.transform.gameObject);
-	            hit.transform.gameObject.GetComponent("zombieAI1").OnDeath();
+	            //hit.transform.gameObject.GetComponent("zombieAI1").OnDeath();
+	            hit.transform.gameObject.GetComponent("zombieAI1").OnHit(Damage);
 	    	}
 	    	
 	    	//Debug.Log(hit.collider.tag);
@@ -223,13 +243,20 @@ function OnPickup(){
 	
 	transform.parent=GameObject.Find("WeaponAnchor").transform;
 	
-	Debug.Log("in here");
+	//Debug.Log("in here");
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 	rigidbody.isKinematic=true;
 	gameObject.collider.enabled=false;
 	startAng=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 	startPos=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
+	
+	
+	
+	origPos=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
+	
+	
+	
 	//gameObject.tag="Pickup";
 	
 	//var script = gameObject.GetComponent(weaponBase);

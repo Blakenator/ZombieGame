@@ -1,12 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Door.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\player.js">
     <Files>
-      <File FileName="Assets\Scripts\player.js" Line="165" Column="45" />
-      <File FileName="Assets\Scripts\zombieAI1.js" Line="149" Column="1" />
-      <File FileName="Assets\Scripts\LootTable.js" Line="10" Column="28" />
-      <File FileName="Assets\Scripts\Door.js" Line="52" Column="93" />
-      <File FileName="Assets\Scripts\LootSpawn.js" Line="7" Column="18" />
+      <File FileName="Assets\Scripts\zombieAI1.js" Line="93" Column="6" />
+      <File FileName="Assets\Scripts\player.js" Line="211" Column="12" />
+      <File FileName="Assets\Scripts\zSpawnerRandom.js" Line="15" Column="1" />
+      <File FileName="Assets\Scripts\weaponBase.js" Line="109" Column="4" />
+      <File FileName="Assets\Scripts\distractorScript.js" Line="46" Column="2" />
+      <File FileName="Assets\Scripts\WeaponPosData.js" Line="43" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

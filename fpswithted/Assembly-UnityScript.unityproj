@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\DestrOptimizer.js" />
      <Compile Include="Assets\Scripts\DestructibleObject.js" />
      <Compile Include="Assets\Scripts\Door.js" />
+     <Compile Include="Assets\Scripts\DrawerOpen.js" />
      <Compile Include="Assets\Scripts\FPSText.js" />
      <Compile Include="Assets\Scripts\Flash.js" />
      <Compile Include="Assets\Scripts\Flashlight.js" />

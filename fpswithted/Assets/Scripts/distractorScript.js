@@ -15,7 +15,8 @@ function Start () {
 }
 
 function Update(){
-	if(Enabled){
+	if(Enabled&&Time.timeScale>0){
+		
 		if(Input.GetButtonDown("Fire1")){
 			var clone:GameObject=gunswitch.dropCurrent();
 			clone.GetComponent(distractorScript).setIsThrown(true);
@@ -28,7 +29,7 @@ function Update(){
 function OnCollisionEnter(collision : Collision) {
 	
 	//if(isThrown){
-		Debug.Log(collision.relativeVelocity.magnitude);
+		//Debug.Log(collision.relativeVelocity.magnitude);
 		if(collision.relativeVelocity.magnitude>5){
 			if(!(collision.gameObject.CompareTag("Player"))){
 				isThrown=false;

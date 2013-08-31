@@ -40,7 +40,7 @@ function getWepPos(str:String){
 	
 	var wepPos:Vector3=posArray[modName];
 	
-	Debug.Log(wepPos);
+	//Debug.Log(wepPos);
 	
 	//Debug.Log(myArray[modName]);
 	//Debug.Log(modName);

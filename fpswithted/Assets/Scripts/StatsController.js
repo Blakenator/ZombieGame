@@ -1,7 +1,7 @@
 #pragma strict
 
 //in the updates a negative value lowers the stat
-private static var stamina:double=100.0;
+private static var stamina:float=100.0;
 private static var health:float =100.0;
 private static var hunger:float=100.0;
 private static var thirst:float=100.0;
