@@ -54,7 +54,7 @@ function Start () {
 	//seeker.StartPath(transform.position,player.transform.position,OnPathComplete);
 	
 	targetPosition=player.transform.position;
-	distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
+	distance = Vector3.Distance(gameObject.transform.position, targetPosition);
 	//controller=this.GetComponent(CharacterController);
 	
 	
@@ -83,6 +83,7 @@ function Update () {
 		}
 		
 		distance=Vector3.Distance(gameObject.transform.position, targetPosition);
+		
 		if(renderer.isVisible&&distance<75){
 			transform.rotation.x = 0;
 			transform.rotation.z = 0;
@@ -90,12 +91,9 @@ function Update () {
 			if(!gameObject.name.Equals("EnemyAI")){
 				Kill();
 			}
-			//Debug.Log("Killed");
 		}
-		
 		CheckValues();
 		Move();
-		
 	}
 }
 
@@ -140,7 +138,7 @@ function CheckValues(){
 	}else if(HasMoved()||distance<engagerange){
 		var hit:RaycastHit;
 		if(canRefresh){
-			if(Physics.Raycast (transform.position, player.position-transform.position, hit, engagerange,LayersToCheck)){
+			if(Physics.Raycast (transform.position, targetPosition-transform.position, hit, engagerange,LayersToCheck)){
 				if(hit.transform.gameObject.CompareTag("Player")){
 					wanderstart=true;
 					StartCoroutine("CreateNewPlayerPath");
@@ -216,10 +214,10 @@ function Move(){
 		return; //path is null!
 	}
 	if(distance<2){
-		SmoothLookAt(player.position,300.0);
+		SmoothLookAt(targetPosition,300.0);
 		
 		var hit:RaycastHit;
-		if(Physics.Raycast (transform.position, player.position-transform.position, hit, 2,LayersToCheck)){
+		if(Physics.Raycast (transform.position, targetPosition-transform.position, hit, 2,LayersToCheck)){
 			
 			if(!isAttacking){
 				Attack();
@@ -294,7 +292,7 @@ function Attack(){
 	yield;
 	var hit:RaycastHit;
 	
-	if(Physics.Raycast (transform.position, player.position-transform.position, hit, 2,LayersToCheck)){
+	if(Physics.Raycast (transform.position, targetPosition-transform.position, hit, 2,LayersToCheck)){
 		if(hit.transform.gameObject.CompareTag("Player")){
 			StatsController.updateHealth(Damage);
 			Debug.Log("hit player");
@@ -335,7 +333,6 @@ function Kill(){
 		Destroy(gameObject);
 		
 		Zspawn.Spawn();
-		Debug.Log("Killed");
 		isDead=true;
 	}
 }

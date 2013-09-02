@@ -232,7 +232,6 @@ function AlertZombies(attractdist:float){
 			tempZ.alertToPosition(gameObject.transform.position);
 		}
 	}
-	
 }
 
 

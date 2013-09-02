@@ -68,13 +68,16 @@ function OnGUI(){
 		    	var Ammo:AmmoObject=obj.GetComponent(AmmoObject);
 		    	var Food:FoodItem=obj.GetComponent(FoodItem);
 		    	var Water:WaterItem=obj.GetComponent(WaterItem);
-		    	
+		    	var Bandage:BandageScript=obj.GetComponent(BandageScript);
+		    	var item:ItemClass=obj.GetComponent(ItemClass);
 		    	if(Ammo!=null){
 		    		GUI.Label(Rect (0,40, 150, 150), "Ammo: "+Ammo.getVal().ToString());
 		    	}else if(Food!=null){
 		    		GUI.Label(Rect (0,40, 150, 150), "Food value: "+Food.getVal().ToString());
 		    	}else if(Water!=null){
 		    		GUI.Label(Rect (0,40, 150, 150), "Water value: "+Water.getVal().ToString());
+		    	}else{
+		    		GUI.Label(Rect (0,40, 150, 150), "Value: "+item.getVal().ToString());
 		    	}
 		       
 		    GUI.EndGroup ();

@@ -11,13 +11,15 @@ var range:Vector2=Vector2(50,50);
 var player:Transform;
 private var dist:float;
 
+private var playerScript:player;
+
 private var zombies=new Array();
 
 
 function Awake () {
+	playerScript=player.GetComponent("player");
 	
-	
-	var pos:Vector3=player.position;
+	var pos:Vector3=Vector3(player.position.x,player.position.y,player.position.z);
 	//var pos:Vector3=player.position;
 	dist=0;
 	var i=0;
@@ -45,9 +47,24 @@ function addToMaxNum(num:int){
 }
 
 function Spawn(){
+	
+	
+	
 	currentZNumber--;
 	if(currentZNumber<maxnumber&&currentZNumber>0){
-		var pos:Vector3=player.position;
+		var pos:Vector3;
+		if(!playerScript.getIsInCar()){
+			//targetPosition=player.transform.position;
+			
+			pos=Vector3(player.position.x,player.position.y,player.position.z);
+		}else{
+			var tempVec:Vector3=playerScript.getCar().gameObject.transform.position;
+			
+			pos=Vector3(tempVec.x,tempVec.y,tempVec.z);
+		}
+		
+		
+		
 		var temp:Vector3;
 		
 		var clone:GameObject;

@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\AmmoCounter.js" />
      <Compile Include="Assets\Scripts\AmmoObject.js" />
      <Compile Include="Assets\Scripts\AntiCarRoll.js" />
+     <Compile Include="Assets\Scripts\BandageScript.js" />
      <Compile Include="Assets\Scripts\BarrelRotation.js" />
      <Compile Include="Assets\Scripts\Carscript.js" />
      <Compile Include="Assets\Scripts\ComboLock.js" />
@@ -64,7 +65,9 @@
      <Compile Include="Assets\Scripts\GuiScript.js" />
      <Compile Include="Assets\Scripts\GunSwitcher.js" />
      <Compile Include="Assets\Scripts\Hammer.js" />
+     <Compile Include="Assets\Scripts\ItemClass.js" />
      <Compile Include="Assets\Scripts\Knife.js" />
+     <Compile Include="Assets\Scripts\LODManager.js" />
      <Compile Include="Assets\Scripts\Ladder.js" />
      <Compile Include="Assets\Scripts\LevelGenerator.js" />
      <Compile Include="Assets\Scripts\LevelSaver.js" />

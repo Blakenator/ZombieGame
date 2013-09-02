@@ -22,7 +22,10 @@ function load () {
 	for(var i in lootarr){
 		Destroy(i);
 	}
-	
+	var cararr:Array=GameObject.FindGameObjectsWithTag("LootPickup");
+	for(var c in cararr){
+		Destroy(c);
+	}
 	
 	var reader=new System.IO.StreamReader(Application.dataPath+"/WeaponsSave.txt");
 	var lines=reader.ReadToEnd().Split("\n"[0]);
@@ -137,6 +140,13 @@ function load () {
 						}
 					}
 				}
+			}else if(type.Equals("C")){
+				var pos:Vector3=Vector3(float.Parse(temp[3]),float.Parse(temp[4]),float.Parse(temp[5]));
+				var rot=Quaternion.Euler(float.Parse(temp[6]),float.Parse(temp[7]),float.Parse(temp[8]));
+				name=temp[1].ToString();
+				name=TrimAll(name);
+				
+				clone=GameObject.Instantiate(Resources.Load("Prefabs/"+name),pos,rot);
 				
 				
 			}

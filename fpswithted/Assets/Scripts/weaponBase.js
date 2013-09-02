@@ -272,8 +272,9 @@ function OnPickup(){
 	}
 	
 	targetGuiText.text = "Ammo: " + currAmmo + " " + "Clip: " + AmmoCounter.getClips(GunName);
+	//gameObject.tag="Pickup";
+	gameObject.tag="InHand";
 	
-	gameObject.tag="Pickup";
 	//this.enabled=false;
 	yield WaitForSeconds(.2);
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);

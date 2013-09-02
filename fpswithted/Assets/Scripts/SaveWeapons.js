@@ -20,7 +20,7 @@ function Save(){
 	yield StartCoroutine(SaveWeapons());
 	yield StartCoroutine(SaveItems());
 	yield StartCoroutine(SaveDoors());
-	
+	yield StartCoroutine(saveCars());
 }
 
 function SaveWeapons(){
@@ -127,4 +127,32 @@ function SaveDoors(){
 	}
 	
 	sw.Close();
+}
+
+function saveCars(){
+	yield;
+	
+	var sw : StreamWriter = new StreamWriter(fileName,true);
+	
+	sw.WriteLine ("Cars");
+	var CarArr:Array=GameObject.FindGameObjectsWithTag("Car");
+	
+	for(var I in CarArr){
+		var temp:GameObject=I;
+		var tempTrans:Vector3=temp.transform.position;
+		var tempRot=Quaternion.Euler(temp.transform.eulerAngles.x,temp.transform.eulerAngles.y,temp.transform.eulerAngles.z);
+		
+		var name:String=temp.gameObject.ToString();
+		name = RemoveExtra(name);
+		
+		var car:Carscript = temp.gameObject.GetComponent(Carscript);
+		var ID:int=temp.gameObject.GetInstanceID();
+		
+		
+		sw.WriteLine ("C"+","+name+","+ID+","+tempTrans.x+","+tempTrans.y+","+tempTrans.z+","+tempRot.x+","+tempRot.y+","+tempRot.z);
+	}
+	
+	sw.Close();
+	
+	
 }

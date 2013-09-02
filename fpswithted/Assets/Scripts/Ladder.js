@@ -23,7 +23,10 @@ function Update () {
 		if(OnLadder){
 			var hit:RaycastHit;
 			
-			if(Physics.Raycast (playert.transform.position, -Vector3.up, hit, 1)){
+			var pos:Vector3=playert.transform.position;
+			pos.y-=1;
+			
+			if(Physics.Raycast (pos, -Vector3.up, hit, .1)){
 				if(hit.transform.CompareTag("Ground")){
 					//playert.position.y=playert.position.y;
 					//getOffLadder();
@@ -62,8 +65,6 @@ function Update () {
 		}else{
 			getOffLadder();
 		}
-	}else{
-		//getOffLadder();
 	}
 }
 

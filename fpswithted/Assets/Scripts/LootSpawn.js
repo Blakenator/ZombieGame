@@ -5,7 +5,7 @@
 Categorys can be added at will so long as they are added to the enum the order MUST stay the same
 add all new categorys to the end otherwise all of the spawn point will be broken!
 */
-enum ZoneCat{Mil, Civ, Food};	
+enum ZoneCat{Mil, Civ, Food, Med};	
 var zone:ZoneCat;
 
 
