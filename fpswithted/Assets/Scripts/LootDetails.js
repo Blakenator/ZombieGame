@@ -76,7 +76,7 @@ function OnGUI(){
 		    		GUI.Label(Rect (0,40, 150, 150), "Food value: "+Food.getVal().ToString());
 		    	}else if(Water!=null){
 		    		GUI.Label(Rect (0,40, 150, 150), "Water value: "+Water.getVal().ToString());
-		    	}else{
+		    	}else if(item!=null){
 		    		GUI.Label(Rect (0,40, 150, 150), "Value: "+item.getVal().ToString());
 		    	}
 		       

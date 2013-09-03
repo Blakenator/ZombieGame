@@ -183,7 +183,7 @@ function Use(){
 }
 function OnCollisionEnter(other:Collision){
 	if(other.gameObject.CompareTag("enemy")){
-		Debug.Log(rigidbody.velocity.magnitude);
+		//Debug.Log(rigidbody.velocity.magnitude);
 		if(rigidbody.velocity.magnitude>5){
 			other.gameObject.GetComponent(zombieAI1).OnDeath();
 		}

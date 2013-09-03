@@ -14,11 +14,14 @@ private var dist:float;
 private var playerScript:player;
 
 private var zombies=new Array();
-
+var playerOverride:boolean=false;
 
 function Awake () {
-	playerScript=player.GetComponent("player");
-	
+	if(!playerOverride){
+		playerScript=player.GetComponent("player");
+	}else{
+		player=transform;
+	}
 	var pos:Vector3=Vector3(player.position.x,player.position.y,player.position.z);
 	//var pos:Vector3=player.position;
 	dist=0;
@@ -46,12 +49,13 @@ function addToMaxNum(num:int){
 	maxnumber+=num;
 }
 
-function Spawn(){
-	
-	
-	
+function ZombieWasKilled(){
 	currentZNumber--;
-	if(currentZNumber<maxnumber&&currentZNumber>0){
+}
+
+function SpawnZombie(){
+	//currentZNumber--;
+	if(currentZNumber<maxnumber&&currentZNumber>=0){
 		var pos:Vector3;
 		if(!playerScript.getIsInCar()){
 			//targetPosition=player.transform.position;
@@ -62,9 +66,6 @@ function Spawn(){
 			
 			pos=Vector3(tempVec.x,tempVec.y,tempVec.z);
 		}
-		
-		
-		
 		var temp:Vector3;
 		
 		var clone:GameObject;
@@ -82,6 +83,16 @@ function Spawn(){
 		dist=0;
 	}
 }
+
+function SpawnAllZombies(){
+	while(currentZNumber<maxnumber){
+		SpawnZombie();
+	}
+	//Debug.Log(currentZNumber);
+}
+
+
+
 
 function getZombiesAroundPos(pos:Vector3,dist:float){
 	var tempZombiesArr=new Array();

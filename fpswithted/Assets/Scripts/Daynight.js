@@ -9,10 +9,12 @@ var rotationAxis:String;
 
 private var origRot:Transform;
 private var origInt:double;
+private var Spawner:zSpawnerRandom;
 
 //private var Completion:CompletionTester;
 
 function Start () {
+	Spawner=GameObject.Find("_A*").GetComponent(zSpawnerRandom);
 	currTime=startTime;
 	origRot=lightobj.transform;
 	origInt=lightobj.intensity;
@@ -27,6 +29,9 @@ function Update () {
 			animation["sunset"].wrapMode=WrapMode.Once;
 			//animation.Play();
 			//lightobj.intensity=0;
+			if(Spawner!=null){
+				Spawner.SpawnAllZombies();
+			}
 		}else{
 			if(currTime>lengthOfDaylight-animation["sunset"].length){
 				animation["sunset"].speed=1.0;

@@ -17,6 +17,7 @@ private var path:Path;
 var Speed : float = 2.0;
 private var player:Transform;
 private var playerScript:player;
+private var playerObj:GameObject;
 var engagerange:int;
 private var engaging:boolean;
 
@@ -47,13 +48,19 @@ var Zspawn:zSpawnerRandom;
 
 function Start () {
 	seeker=this.GetComponent(Seeker);
-	player=GameObject.Find("player").transform;
+	playerObj=GameObject.Find("player");
+	if(playerObj!=null){
+		player=GameObject.Find("player").transform;
 	
-	playerScript=player.GetComponent("player");
+		playerScript=player.GetComponent("player");
 	
-	//seeker.StartPath(transform.position,player.transform.position,OnPathComplete);
+		//seeker.StartPath(transform.position,player.transform.position,OnPathComplete);
 	
-	targetPosition=player.transform.position;
+		targetPosition=player.transform.position;
+	}else{
+		targetPosition=Vector3(0,0,0);
+	}
+	
 	distance = Vector3.Distance(gameObject.transform.position, targetPosition);
 	//controller=this.GetComponent(CharacterController);
 	
@@ -74,15 +81,19 @@ function Start () {
 
 function Update () {
 	if(Time.timeScale>=1){
+		
 		lastPos=targetPosition;
 		
-		if(!playerScript.getIsInCar()){
-			targetPosition=player.transform.position;
+		if(playerObj!=null){
+			if(!playerScript.getIsInCar()){
+				targetPosition=player.transform.position;
+			}else{
+				targetPosition=playerScript.getCar().gameObject.transform.position;
+			}
+			distance=Vector3.Distance(gameObject.transform.position, targetPosition);
 		}else{
-			targetPosition=playerScript.getCar().gameObject.transform.position;
+			distance=25;
 		}
-		
-		distance=Vector3.Distance(gameObject.transform.position, targetPosition);
 		
 		if(renderer.isVisible&&distance<75){
 			transform.rotation.x = 0;
@@ -320,7 +331,7 @@ function OnHit(dmg:int){
 function OnDeath(){
 	if(!isDead){
 		
-		Zspawn.Spawn();
+		Zspawn.ZombieWasKilled();
 		RagdollEnemy();
 		
 		isDead=true;
@@ -332,7 +343,7 @@ function Kill(){
 	if(!isDead){
 		Destroy(gameObject);
 		
-		Zspawn.Spawn();
+		Zspawn.ZombieWasKilled();
 		isDead=true;
 	}
 }
