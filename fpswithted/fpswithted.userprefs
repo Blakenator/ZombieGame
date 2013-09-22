@@ -1,13 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\zombieAI1.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\player.js">
     <Files>
-      <File FileName="Assets\Scripts\zombieAI1.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Daynight.js" Line="16" Column="20" />
-      <File FileName="Assets\Scripts\Carscript.js" Line="186" Column="5" />
-      <File FileName="Assets\Scripts\LootDetails.js" Line="48" Column="11" />
-      <File FileName="Assets\Scripts\zSpawnerRandom.js" Line="23" Column="19" />
-      <File FileName="Assets\Scripts\turn.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DeathGUI.js" Line="27" Column="24" />
+      <File FileName="Assets\Scripts\StatsController.js" Line="101" Column="4" />
+      <File FileName="Assets\Scripts\ScoreCounter.js" Line="25" Column="29" />
+      <File FileName="Assets\Scripts\zSpawnerRandom.js" Line="45" Column="4" />
+      <File FileName="Assets\Scripts\loadWeapons.js" Line="26" Column="64" />
+      <File FileName="Assets\Scripts\SaveWeapons.js" Line="34" Column="17" />
+      <File FileName="Assets\Scripts\LevelStart.js" Line="16" Column="22" />
+      <File FileName="Assets\Scripts\player.js" Line="96" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

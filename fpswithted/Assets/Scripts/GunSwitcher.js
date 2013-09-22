@@ -20,7 +20,6 @@ function getCurrGunIndex(){
 function allButCurrent(){
 	if(inventoryArray.length>0){
 		
-		
 		hands.active=false;
 		for(var gun:GameObject in inventoryArray){
 			gun.renderer.enabled=false;
@@ -48,6 +47,7 @@ function allButCurrent(){
 		
 	}else{
 		hands.active=true;
+		//hands.SendMessage("setEnabled",true,SendMessageOptions.RequireReceiver);
 	}
 }
 function setChildrenVisible(obj:GameObject,val:boolean){
@@ -117,8 +117,12 @@ function dropCurrent(){	//returns clone
 	Destroy(inventoryArray[currentGunIndex]);
 	inventoryArray.RemoveAt(currentGunIndex);
 	switchUp();
+	clone.layer=15;
 	
-	
+	var arr=clone.GetComponentsInChildren(MeshRenderer);
+	for(var obj:MeshRenderer in arr){
+		obj.gameObject.layer=15;
+	}
 	
 	return clone;
 	//Debug.Log(inventoryArray.length-1);
@@ -145,7 +149,6 @@ function switchUp(){
 			currentGunIndex=0;
 			allButCurrent();
 			Debug.Log("switchup");
-			
 		}else{
 			currentGunIndex+=1;
 			allButCurrent();
@@ -183,4 +186,11 @@ function setCurrentIndex(val:int){
 	currentGunIndex=val;
 	allButCurrent();
 }
+function ShowHands(bool:boolean){
+	hands.active=bool;
+}
 
+function UseCurrentItem(){
+	var tmp:GameObject=inventoryArray[currentGunIndex];
+	tmp.SendMessage("PrimaryAction",SendMessageOptions.DontRequireReceiver);
+}

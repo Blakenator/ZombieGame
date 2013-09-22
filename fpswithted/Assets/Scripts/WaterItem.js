@@ -8,7 +8,12 @@ public class WaterItem extends ItemClass{
 		StatsController.updateThirst(thirstValue);
 		var c=GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).dropCurrent();
 		Destroy(c);
-	}
+	}/*
+	function PrimaryAction(){
+		if(Enabled){
+			ItemUse();
+		}
+	}*/
 	function getVal(){
 		return thirstValue;
 	}

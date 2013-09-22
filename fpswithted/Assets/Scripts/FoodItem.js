@@ -8,7 +8,12 @@ public class FoodItem extends ItemClass{
 		StatsController.updateHunger(foodValue);
 		var c=GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).dropCurrent();
 		Destroy(c);
-	}
+	}/*
+	function PrimaryAction(){
+		if(Enabled){
+			ItemUse();
+		}
+	}*/
 	function getVal(){
 		return foodValue;
 	}

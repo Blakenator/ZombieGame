@@ -36,9 +36,10 @@ function IsCategory(str:String){
 	var temp=zone.ToString();
 	temp=temp.ToLower();
 	//Debug.Log(temp+" "+str);
-	
+	return temp.Equals(str);
+	/*
 	if(temp.Equals(str)){
 		return true;
 	}
-	return false;
+	return false;*/
 }

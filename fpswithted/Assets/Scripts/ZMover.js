@@ -1,5 +1,8 @@
 #pragma strict
-
+private var myTransform:Transform;
+function Awake(){
+	myTransform=transform;
+}
 function move(vector:Vector3){
-	gameObject.transform.position+=vector;
+	myTransform.position+=vector;
 }

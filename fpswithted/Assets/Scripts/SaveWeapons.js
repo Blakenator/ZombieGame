@@ -30,7 +30,8 @@ function SaveWeapons(){
 	var gunArr:Array=gunSwitch.GetInventory();
 	var sw : StreamWriter = new StreamWriter(fileName,true);//false means it will overwrite ALL data! true is append to end!
 	
-	sw.WriteLine("p"+","+player.position.x+","+player.position.y+","+player.position.z);
+	sw.WriteLine("pPos"+","+player.position.x+","+player.position.y+","+player.position.z);
+	sw.WriteLine("pStats"+","+StatsController.getStats());
 	//sw.Flush();
 	sw.WriteLine ("Weapons");
 	for(var I in gunArr){
@@ -121,9 +122,15 @@ function SaveDoors(){
 	for(var I in DrawerArr){
 		temp=I;
 		
-		var drawer:DrawerOpen = temp.gameObject.GetComponent(DrawerOpen);
+		var openable:OpenableClass = temp.gameObject.GetComponent(OpenableClass);
+		//var garagedoor:GarageDoor = temp.gameObject.GetComponent(GarageDoor);
 		ID=temp.gameObject.GetInstanceID();
-		sw.WriteLine ("D"+","+ID+","+drawer.getState());
+		
+		//if(drawer!=null){
+			sw.WriteLine ("D"+","+ID+","+openable.getState());
+		//}else{
+			//sw.WriteLine ("D"+","+ID+","+garagedoor.getState());
+		//}
 	}
 	
 	sw.Close();

@@ -15,14 +15,15 @@ function Update(){
 	}
 }
 */
+
 function load () {
 	gameObject.tag="Untagged";
 	gunSwitch.ClearInventory();
-	var lootarr:Array=GameObject.FindGameObjectsWithTag("LootPickup");
+	var lootarr:GameObject[]=GameObject.FindGameObjectsWithTag("LootPickup");
 	for(var i in lootarr){
 		Destroy(i);
 	}
-	var cararr:Array=GameObject.FindGameObjectsWithTag("LootPickup");
+	var cararr:GameObject[]=GameObject.FindGameObjectsWithTag("Car");
 	for(var c in cararr){
 		Destroy(c);
 	}
@@ -40,23 +41,25 @@ function load () {
 			
 			var name:String;
 			
-			if(type.Equals("p")){
+			if(type.Equals("pPos")){
+				
 				var x1:float=float.Parse(temp[1]);
 				var y1:float=float.Parse(temp[2]);
 				var z1:float=float.Parse(temp[3]);
 				player.position=Vector3(x1,y1,z1);
-				
-			}
-			
-			
-			if(type.Equals("w")){
+			}else if(type.Equals("pStats")){
+				var hea:float=float.Parse(temp[1]);
+				var stam:float=float.Parse(temp[2]);
+				var hun:float=float.Parse(temp[3]);
+				var thi:float=float.Parse(temp[1]);
+				StatsController.setStats(hea,stam,hun,thi);
+			}else if(type.Equals("w")){
 				name=temp[1].ToString();
 				name=TrimAll(name);
 				
 				clone=GameObject.Instantiate(Resources.Load("Prefabs/"+name),Vector3.zero,Quaternion(0,0,0,0));
 				clone.name=name;
 				wscript=clone.GetComponent(weaponBase);
-				
 				
 				var currAmmo:int=int.Parse(temp[2]);
 				
@@ -68,14 +71,10 @@ function load () {
 				name=temp[1].ToString();
 				name=TrimAll(name);
 				
-				
-				
 				clone=GameObject.Instantiate(Resources.Load("Prefabs/"+name));
-				
 				
 				clone.name=name;
 				clone.SendMessage("OnPickup",SendMessageOptions.RequireReceiver);
-				
 				
 			}else if(type.Equals("l")){
 				name=temp[1].ToString();
@@ -105,50 +104,30 @@ function load () {
 					gameObject.tag="LootPickup";
 				}
 			}else if(type.Equals("D")){
-				var DoorArr:Array=GameObject.FindGameObjectsWithTag("Door");
 				var idtest:int=int.Parse(temp[1]);
 				var state:boolean=boolean.Parse(temp[2]);
 				
-				for(var I in DoorArr){
-					var tempobj:GameObject=I;
-					//var door:Door = tempobj.gameObject.GetComponent(Door);
+				var OpenableArr:Array=GameObject.FindObjectsOfType(OpenableClass);
+				for(var I in OpenableArr){
+					var openableobj:OpenableClass=I;
+					var tempobj:GameObject=openableobj.gameObject;
+					
 					var ID:int=tempobj.gameObject.GetInstanceID();
 					if(ID==idtest){
-						if(state){
-							//door.ForceClose();
-							tempobj.SendMessage("ForceClose",SendMessageOptions.DontRequireReceiver);
-						}else{
-							//door.ForceOpen();
-							tempobj.SendMessage("ForceOpen",SendMessageOptions.DontRequireReceiver);
-						}
-					}
-				}
-				
-				var drawerarr:Array=GameObject.FindGameObjectsWithTag("Drawer");
-				
-				for(var I in drawerarr){
-					tempobj=I;
-					//var door:Door = tempobj.gameObject.GetComponent(Door);
-					ID=tempobj.gameObject.GetInstanceID();
-					if(ID==idtest){
-						if(state){
-							//door.ForceClose();
-							tempobj.SendMessage("ForceClose",SendMessageOptions.DontRequireReceiver);
-						}else{
-							//door.ForceOpen();
-							tempobj.SendMessage("ForceOpen",SendMessageOptions.DontRequireReceiver);
-						}
+						tempobj.SendMessage("setState",state,SendMessageOptions.DontRequireReceiver);
 					}
 				}
 			}else if(type.Equals("C")){
+				try{
 				var pos:Vector3=Vector3(float.Parse(temp[3]),float.Parse(temp[4]),float.Parse(temp[5]));
 				var rot=Quaternion.Euler(float.Parse(temp[6]),float.Parse(temp[7]),float.Parse(temp[8]));
 				name=temp[1].ToString();
 				name=TrimAll(name);
 				
 				clone=GameObject.Instantiate(Resources.Load("Prefabs/"+name),pos,rot);
-				
-				
+				}catch(e){
+					Debug.Log("ERR!!: "+clone);
+				}
 			}
 		}
 	}

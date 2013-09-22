@@ -276,10 +276,21 @@ function OnPickup(){
 	gameObject.tag="InHand";
 	
 	//this.enabled=false;
+	
+	gameObject.layer=11;
+	var arr:Array=new Array();
+	arr=gameObject.GetComponentsInChildren(MeshRenderer);
+	for(var obj:MeshRenderer in arr){
+		obj.gameObject.layer=11;
+	}
+	
+	
 	yield WaitForSeconds(.2);
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);
 }
+
+
 function OnSwitchTo(){
 	transform.localPosition=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepPos(gameObject.name);
 	transform.localEulerAngles=GameObject.Find("GunSwitcher").GetComponent(WeaponPosData).getWepRot(gameObject.name);

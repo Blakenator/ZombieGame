@@ -294,5 +294,4 @@ function Contains(str:String){
 		}
 	}
 	return false;
-	
 }

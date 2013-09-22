@@ -13,6 +13,7 @@ private var Spawner:zSpawnerRandom;
 
 //private var Completion:CompletionTester;
 
+private var daysSurvived:int=0;
 function Start () {
 	Spawner=GameObject.Find("_A*").GetComponent(zSpawnerRandom);
 	currTime=startTime;
@@ -37,7 +38,9 @@ function Update () {
 				animation["sunset"].speed=1.0;
 				animation.Play();
 			}
+			
 			lightobj.intensity=origInt;
+			/*
 			var val=170.0/lengthOfDaylight*Time.deltaTime;
 			if(rotationAxis.ToLower() =="x"){
 				lightobj.transform.Rotate(val,0,0);
@@ -47,6 +50,20 @@ function Update () {
 				lightobj.transform.Rotate(0,0,val);
 				Debug.Log(transform.rotation.z+"|"+170.0/lengthOfDaylight+"|"+Time.deltaTime);
 			}
+			*/
+			var val=currTime/lengthOfDaylight*170.0;
+			if(rotationAxis.ToLower() =="x"){
+				lightobj.transform.rotation=new Quaternion.Euler(10+val,0,0);
+				//lightobj.transform.Rotate(val,0,0);
+			}else if(rotationAxis.ToLower() =="y"){
+				lightobj.transform.rotation=new Quaternion.Euler(0,10+val,0);
+				//lightobj.transform.Rotate(0,val,0);
+			}else if(rotationAxis.ToLower() =="z"){
+				lightobj.transform.rotation=new Quaternion.Euler(0,0,10+val);
+				//lightobj.transform.Rotate(0,0,val);
+				//Debug.Log(transform.rotation.z+"|"+170.0/lengthOfDaylight+"|"+Time.deltaTime);
+			}
+
 		}
 		currTime+=Time.deltaTime;
 	}else{
@@ -55,11 +72,18 @@ function Update () {
 			isDaytime=true;
 			
 			//Completion.addDays();
-			
+			daysSurvived++;
 		}else if(currTime>lengthOfNight-animation["sunset"].length){
-				animation["sunset"].speed=-1.0;
-				animation.Play();
+			animation["sunset"].speed=-1.0;
+			animation.Play();
 		}
 		currTime+=Time.deltaTime;
 	}
+}
+function getDaysSurvived(){
+	return daysSurvived;
+	
+}
+function setDaysSurvived(num:int){
+	daysSurvived=num;
 }

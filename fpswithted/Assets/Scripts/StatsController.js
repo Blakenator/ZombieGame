@@ -28,6 +28,10 @@ var hungerDegrade:float=-.15;
 var thirstDegrade:float=-.15;
 
 var healthDegrade:float=-.15;
+
+
+var onDeathGui:DeathGUI;
+
 //var hungerDegrade:float=-.1;
 function getStamina(){
 	return stamina;
@@ -37,6 +41,9 @@ function Update(){
 	updateThirst(thirstDegrade*Time.deltaTime);
 	if(hunger<=0||thirst<=0){
 		updateHealth(healthDegrade*Time.deltaTime);
+	}
+	if(health<=0){
+		onDeathGui.PlayerDied();
 	}
 }
 
@@ -66,6 +73,32 @@ public static function updateThirst (ammount:float){
 	if(thirst<0){
 		thirst=0;
 	}
+}
+
+public static function getStats(){
+	return (health+","+stamina+","+hunger+","+thirst);
+}
+public static function setStats(hea:float,stam:float,hun:float,thi:float){
+	if(hea==-1){
+	}else{
+		health=hea;
+	}
+	
+	if(stam==-1){
+	}else{
+		stamina=stam;
+	}
+	
+	if(hun==-1){
+	}else{
+		hunger=hun;
+	}
+	
+	if(thi==-1){
+	}else{
+		thirst=thi;
+	}
+	//return (health+","+stamina+","+hunger+","+thirst);
 }
 
 

@@ -15,7 +15,7 @@ private var playerScript:player;
 
 private var zombies=new Array();
 var playerOverride:boolean=false;
-
+var zombiesKilled:int;
 function Awake () {
 	if(!playerOverride){
 		playerScript=player.GetComponent("player");
@@ -51,6 +51,7 @@ function addToMaxNum(num:int){
 
 function ZombieWasKilled(){
 	currentZNumber--;
+	zombiesKilled+=1;
 }
 
 function SpawnZombie(){
@@ -97,6 +98,22 @@ function SpawnAllZombies(){
 function getZombiesAroundPos(pos:Vector3,dist:float){
 	var tempZombiesArr=new Array();
 	
+	var hitColliders = Physics.OverlapSphere(pos, dist);
+	
+	for (var i = 0; i < hitColliders.Length; i++) {
+		var tempobj:GameObject = hitColliders[i].gameObject;
+		if(tempobj.CompareTag("enemy")){
+			
+			tempZombiesArr.Add(tempobj);
+			
+			Debug.Log("Zombie added");
+			//hitColliders[i].SendMessage("AddDamage");
+		}
+	}
+	
+	
+	
+	/*
 	for (var zTemp in zombies){
 		var tempobj:GameObject = zTemp;
 		if(tempobj!=null){
@@ -106,6 +123,36 @@ function getZombiesAroundPos(pos:Vector3,dist:float){
 				//Debug.Log(tempobj.gameObject.transform.position);
 			}
 		}
-	}
+	}*/
+	
+	
+	
 	return tempZombiesArr;
+}
+
+
+function AlertZombiesAroundPos(pos:Vector3,dist:float){
+	
+	
+	var hitColliders = Physics.OverlapSphere(pos, dist);
+	
+	for (var i = 0; i < hitColliders.Length; i++) {
+		var tempobj:GameObject = hitColliders[i].gameObject;
+		if(tempobj.CompareTag("enemy")){
+			var tempz:zombieAI1=tempobj.GetComponent(zombieAI1);
+			
+			tempz.alertToPosition(pos);
+			
+			//Debug.Log("Zombie Alerted");
+		}
+	}
+}
+
+
+function getZombiesKilled(){
+	return zombiesKilled;
+}
+function setZombiesKilled
+(num:int){
+	zombiesKilled=num;
 }

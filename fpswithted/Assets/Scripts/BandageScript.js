@@ -1,4 +1,27 @@
 ﻿#pragma strict
+public class BandageScript extends ItemClass{
+
+
+
+
+
+
+	var HealthValue:float=10;
+	function BandageScript(){
+		super(HealthValue);
+	}
+	function ItemUse(){//add animation/sounds
+		StatsController.updateHealth(HealthValue);
+		var c=GameObject.Find("GunSwitcher").GetComponent(GunSwitcher).dropCurrent();
+		Destroy(c);
+	}
+	function getVal(){
+		return HealthValue;
+	}
+	
+
+
+/*
 private var Enabled;
 var healthValue:float=20;
 private var stats:StatsController;
@@ -51,4 +74,6 @@ function OnPickup(){
 	rigidbody.isKinematic=true;
 	gameObject.collider.enabled=false;
 	gameObject.tag="Pickup";
+}
+*/
 }
